@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "7f2a5508-20da-4326-916b-5f47602c4eb4",
+		"name": "API DigimonRevolutionOnline V2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20065981"
+	},
+	"item": [
+		{
+			"name": "JOGADOR",
+			"item": [
+				{
+					"name": "cadastrarJogadorSucesso",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\":\"usuario\",\r\n    \"senha\":\"senhaSegura\",\r\n    \"email\":\"email@email.com\",\r\n    \"dataNascimento\":\"2000-10-10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/jogador/cadastrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"jogador",
+								"cadastrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testeAPI",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DIGIMON",
+			"item": [
+				{
+					"name": "selecionarDigimon",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idJogador\":\"1\",\r\n    \"idRookie\":3,\r\n    \"nome\":\"Digimon Radical5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/digimon/selecaoInicial",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"digimon",
+								"selecaoInicial"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CIRCUIT BREAKER TEST",
+			"item": [
+				{
+					"name": "teste1",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CACADA",
+			"item": [
+				{
+					"name": "verificarTempoDisponivel",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"3\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cacada/verificarTempoDisponivel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cacada",
+								"verificarTempoDisponivel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "iniciarCacada",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idDigimon\":\"2\",\r\n    \"minutos\":10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cacada/iniciarCacada",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cacada",
+								"iniciarCacada"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verificarCacadaEmAndamento",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
