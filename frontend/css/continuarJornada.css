@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    position: relative;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.header .logout-btn {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.header .logout-btn:hover {
+    background: #c82333;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-basis: calc(33.333% - 1rem); /* Cada card ocupará 33.333% do espaço menos 1rem de margem */
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: center;
+    padding: 1rem;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.card img {
+    width: 100px;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.card-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: auto;
+}
+
+.card-btn:hover {
+    background: #0056b3;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .card {
+        flex-basis: calc(50% - 1rem); /* Em telas menores, os cards ocuparão 50% do espaço */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        flex-basis: 100%; /* Em telas pequenas, os cards ocuparão 100% do espaço */
+    }
+}
