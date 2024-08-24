@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         confirmButtonText: 'OK'
                     }).then(() => {
                         // Redirecionar para outra página ou realizar outra ação
-                        window.location.href = 'selecaoInicial.html';
+                        window.location.href = 'selecaoInicialv2.html';
                     });
                 } else {
                     Swal.fire({

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DigimonService {
@@ -24,6 +26,11 @@ public class DigimonService {
     @Autowired
     RegistroConquistasService registroConquistasService;
 
+    public List<Digimon> getDigimonByUsuario(String nomeUsuario) {
+        return digimonRepository.getDigimonByIdJogador(jogadorService.getIdByUsuario(nomeUsuario));
+    }
+
+
     public Digimon selecionarDigimon(Digimon digimonSelecionado) throws Exception {
         if (!jogadorService.verificarJogadorExistente(digimonSelecionado.getIdJogador())) {
             logService.logAction("Digimon selecionado - Erro", "Jogador não encontrado");
@@ -33,10 +40,10 @@ public class DigimonService {
             logService.logAction("Digimon selecionado - Erro", "o parametro idRookie precisa ser maior que 0");
             throw new RuntimeException("o parametro idRookie precisa ser maior que 0");
         }
-        if (digimonRepository.existsByNome(digimonSelecionado.getNome())) {
-            logService.logAction("Digimon selecionado - Erro", "Esse nome de digimon já foi escolhido");
-            throw new RuntimeException("Esse nome de digimon já foi escolhido");
-        }
+//        if (digimonRepository.existsByNome(digimonSelecionado.getNome())) {
+//            logService.logAction("Digimon selecionado - Erro", "Esse nome de digimon já foi escolhido");
+//            throw new RuntimeException("Esse nome de digimon já foi escolhido");
+//        }
 
         EnumDigimonRookie rookie = EnumDigimonRookie.getEnumById(digimonSelecionado.getIdRookie());
         String nomeJogador = jogadorService.getNomeJogador(digimonSelecionado.getIdJogador());
@@ -169,8 +176,17 @@ public class DigimonService {
                 .orElseThrow(() -> new RuntimeException("Digimon não encontrado"));
     }
 
+
     public boolean getDigimonByIdJogador(int idJogador) {
         return digimonRepository.existsByIdJogador(idJogador);
 
     }
+
+    public String getIdByDescricao (String descricao){
+        System.out.println("DESCRICAO: "+descricao);
+        System.out.println("ID: "+EnumDigimonRookie.getIdByDescricao(descricao));
+        return EnumDigimonRookie.getIdByDescricao(descricao);
+    }
+
+
 }
