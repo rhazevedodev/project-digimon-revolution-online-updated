@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="./css/stylesAll.css" rel="stylesheet" type="text/css">
+    <script defer src="./scripts/lanchonete_scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>Missoes</title>
+</head>
+
+<body style="padding: 0px 0px 154px;">
+    <div class="background"></div>
+    <h2 id="titulo" style="text-align: center;">Digimon Revolution Online</h2>
+    <!--INICIO DIV PRINCIPAL-->
+    <div id="div_principal" style="height: auto !important;">
+        <!--INICIO DIV BANNER PRINCIPAL-->
+        <div id="banner_principal">
+            <!--INICIO BARRA DE IDIOMAS-->
+            <div id="idiomas">
+                <img src="/imagens/narutoplayers/brasil.gif" alt="Português" width="20" height="14" border="0">
+                <img src="/imagens/narutoplayers/espanhol.gif" alt="Espanhol" width="20" height="14" border="0">
+                <!--FIM BARRA DE IDIOMAS-->
+            </div>
+            <!--FIM DIV BANNER PRINCIPAL-->
+
+        </div>
+        <br>
+        <div id="caixa-informacoes-menu">
+            <div id="menu">
+                <a href="">Novidades</a>
+                |
+                <a href="status.html">Status</a>
+                |
+                <a href="">Clã</a>
+                |
+                <a href="cacadas.html">Caçadas</a>
+                |
+                <a href="">Eventos</a>
+                |
+                <a href="">Ranking</a>
+                |
+                <a href="">Missões</a>
+                |
+                <a href="">Elementos</a>
+                |
+                <a href="">Perfil</a>
+                |
+                <a href="">Contato</a>
+                |
+                <a href="">Conquistas</a>
+                <br>
+            </div>
+            <div id="menu-2">
+                <a href="">Manual</a>
+                |
+                <a href="invasoes.html">Invasão</a>
+                |
+                <a href="lanchonete.html">Lanchonete</a>
+                |
+                <a href="">Trocas</a>
+                |
+                <a href="loja.html">Mercado</a>
+                |
+                <a href="">Habilidades</a>
+                |
+                <a href="">Excelência</a>
+                |
+                <a href="">Raids</a>
+                |
+                <a href="">F.A.Q</a>
+                |
+                <a href="">Premium</a>
+                |
+                <a href="">Logout</a>
+                <br>
+            </div>
+        </div>
+        <!--<div id="sombra_baixo_menu"></div>-->
+        <br>
+        <div id="conteudo">
+            <div id="motor_game">
+                <div id="col_esquerda">
+
+                    <div id="image-container"></div>
+                    <div id="caixa-informacoes-esquerda"></div>
+                </div>
+                <div id="col_direita">
+                    <!-- Nova caixa adicionada -->
+                    <div id="caixa_informacoes">
+                        <h3 class="titulo-caixa">Lanchonete Digimon - Um Refúgio para Aventureiros</h3>
+                        <hr class="separador">
+                        <p style="text-align: justify;">A Lanchonete Digimon é um local essencial para todos os Tamers
+                            em suas jornadas. Aqui, os jogadores podem comprar refeições que restauram seus pontos de
+                            vida, garantindo que estejam prontos para continuar suas explorações no mundo digital. Ao
+                            visitar a lanchonete, os Tamers podem usar seus bits acumulados para adquirir alimentos
+                            nutritivos que não apenas satisfazem a fome, mas também revitalizam seus Digimons..</p>
+
+                        <hr class="separador">
+                        <div align="center" class="banner-lanchonete">
+                            <!--
+                            <img src="/imagens/digimon_banner_missao.jpg" alt="Missões" width="190" height="80">
+                            -->
+                        </div>
+                        <hr class="separador">
+                        <table border="0" cellspacing="1" cellpadding="0" class="box_largura_100">
+                            <tbody>
+                                <tr>
+                                    <td width="200">Refeição:</td>
+                                    <td>
+                                        <div style="margin-left: 85px;">Custo:</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr class="separador">
+                        <table border="0" cellspacing="" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td><img src="/imagens/hamburger.jpg" alt="Hamburger" width="190" height="80"
+                                            data-id="1" class="missao-img">
+                                    </td>
+                                    <td>
+                                        <div style="margin-left: 85px;">
+                                            <strong>1.000 Bits</strong>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="margin-left: 40px; margin-bottom: 15px;">
+                                            <br> <!-- Adicionando quebra de linha -->
+                                            <button type="button" class="button-confirmar" id="button-comer">
+                                                Confirmar
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div id="resultadoModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <br><br>
+                        <p style="text-align: center;"><strong>Vida restaurada com sucesso!</strong></p>
+                        <br><br>
+                        <button align="center" style="margin-left: 235px;" id="fecharModal"
+                            class="button-confirmar">Fechar</button>
+                    </div>
+                </div>
+
+                <!--FIM DIV PRINCIPAL-->
+            </div>
+</body>
+
+</html>

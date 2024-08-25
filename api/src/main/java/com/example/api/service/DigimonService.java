@@ -30,6 +30,13 @@ public class DigimonService {
         return digimonRepository.getDigimonByIdJogador(jogadorService.getIdByUsuario(nomeUsuario));
     }
 
+    public void recuperarTodoHp(Long idDigimon){
+        Digimon digimon = getDigimonById(idDigimon);
+        Atributos atributos = digimon.getAtributos();
+        atributos.setPontosVida(50 * (digimon.getNivel()));
+        digimon.setAtributos(atributos);
+        digimonRepository.save(digimon);
+    }
 
     public Digimon selecionarDigimon(Digimon digimonSelecionado) throws Exception {
         if (!jogadorService.verificarJogadorExistente(digimonSelecionado.getIdJogador())) {
