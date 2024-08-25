@@ -16,7 +16,33 @@ Este projeto é um jogo de navegador baseado no universo de Digimon. O objetivo 
 ### 3. Sistema de Continuar Jornada
 - [ ] **Continuar Jornada:** Permite que um jogador já cadastrado e que já tenha passado pela etapa de escolha inicial possa selecionar um digimon anteriormente criado para continuar sua jornada.
 
+### 4. Sistema de Caçadas
+- [x] **Caçar:** Permite que o jogador entre em uma caçada com tempo pré determinado em busca de recompensas pré definidas aleatoriamente. EXPERIÊNCIA ++
 
+### 5. Sistema de Invasão
+- [ ] **Invasão:** Permite que o jogador entre em combate com uma espécie de chefe mundial. Todo ataque é recompensado com uma pequena quantia de experiência, além de ter a chance de ganhar um baú do chefe. O jogador que eliminar o invasor ganha uma recompensa maravilhosa.
+
+### 6. Sistema de Lanchonete
+- [ ] **Lanchonete:** Permite que o jogador recupere seus pontos de vida por uma pequena quantia de Bits.
+
+### 7. Sistema de Missão
+- [ ] **Missões:** Permite que o jogador entre em missões com tempo pré determinado em busca de recompensas pré definidas aleatoriamente. BITS ++
+
+### 8. Sistema de Atributos
+- [ ] **Melhoria de Atributos por Bits:** Permite que o jogador use os bits ganhos no jogo para melhorar seus atributos.
+
+## Sistemas que estão sendo implementados
+
+## Sistemas que serão implementados futuramente
+
+### 1. Sistema de Conquistas
+- [ ] **Conquistas:** Todo e qualquer esforço do jogador no jogo será recompensado! 
+
+### 2. Sistema de Quests
+- [ ] **Quests Diárias:** Serão disponibilizadas uma ou mais quests diárias para todos os jogadores.
+- [ ] **Quests Mensais:** Serão disponibilizadas uma ou mais quests pré definidas mensalmente para todos os jogadores.
+- [ ] **Quests Surpresas:** Serão disponibilizadas quests surpresas no jogo para todos os jogadores eventualmente.
+- [ ] **Quests Temáticas:** Serão disponibilizadas quests temáticas em datas comemorativas. Ex: Páscoa, Natal, Ano Novo, Dia dos Namorados, Dias das Bruxas, etc.
 
 ## Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests para melhorias e novas funcionalidades.
