@@ -16,7 +16,7 @@ Este projeto é um jogo de navegador baseado no universo de Digimon. O objetivo 
 ### 3. Sistema de Continuar Jornada
 - [ ] **Continuar Jornada:** Permite que um jogador já cadastrado e que já tenha passado pela etapa de escolha inicial possa selecionar um digimon anteriormente criado para continuar sua jornada.
 
-
+## Sistemas que serão implementados futuramente
 
 ## Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests para melhorias e novas funcionalidades.
