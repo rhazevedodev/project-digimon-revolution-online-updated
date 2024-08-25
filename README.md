@@ -36,9 +36,12 @@ Este projeto é um jogo de navegador baseado no universo de Digimon. O objetivo 
 
 </details>
 
-## Sistemas que estão sendo implementados
+<details>
+<summary>Sistemas que estão sendo implementados</summary>
+</details>
 
-## Sistemas que serão implementados futuramente
+<details>
+<summary>Sistemas que serão implementados futuramente</summary>
 
 ### 1. Sistema de Conquistas
 - [ ] **Conquistas:** Todo e qualquer esforço do jogador no jogo será recompensado! 
@@ -48,6 +51,8 @@ Este projeto é um jogo de navegador baseado no universo de Digimon. O objetivo 
 - [ ] **Quests Mensais:** Serão disponibilizadas uma ou mais quests pré definidas mensalmente para todos os jogadores.
 - [ ] **Quests Surpresas:** Serão disponibilizadas quests surpresas no jogo para todos os jogadores eventualmente.
 - [ ] **Quests Temáticas:** Serão disponibilizadas quests temáticas em datas comemorativas. Ex: Páscoa, Natal, Ano Novo, Dia dos Namorados, Dias das Bruxas, etc.
+
+</details>
 
 ## Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests para melhorias e novas funcionalidades.
