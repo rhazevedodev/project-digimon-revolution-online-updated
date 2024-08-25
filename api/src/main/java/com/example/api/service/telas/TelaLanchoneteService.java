@@ -13,11 +13,11 @@ public class TelaLanchoneteService {
     private DigimonService digimonService;
 
     public void fazerLanche(RequestFazerLanche request) {
-        digimonService.recuperarTodoHp(Long.valueOf(request.getIdDigimon()));
         Digimon digimon = digimonService.getDigimonById(Long.valueOf(request.getIdDigimon()));
         if(digimon.getBits() < 1000) {
             throw new RuntimeException("Você não tem bits suficientes para fazer um lanche");
         }
+        digimonService.recuperarTodoHp(Long.valueOf(request.getIdDigimon()));
         digimonService.atualizarBitsDigimon(digimon, -1000);
     }
 }

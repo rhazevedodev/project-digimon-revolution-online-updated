@@ -42,8 +42,6 @@ public class DigimonController {
         }
     }
 
-    @GetMapping("/obter/")
-
     @PostMapping("/selecaoInicialv2")
     public ResponseEntity<?> selecionarDigimonv2(@RequestBody RequestSelecaoInicial request) {
         try {
