@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const urlApi = 'http://localhost:8080/api/digimon/obterDigimons/' + localStorage.getItem('usuario');
 
-    // Faz a requisição à API para obter os Digimons
     fetch(urlApi)
         .then(response => response.json())
         .then(data => {
@@ -37,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     case 7:
                         imgSrc = './images/rookies/patamon.jpg';
                         break;
-                    // Adicione mais casos conforme necessário
                     default:
                         imgSrc = './images/rookies/default.jpg'; // Caminho para uma imagem padrão caso o idRookie não seja reconhecido
                 }
@@ -47,9 +45,22 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="card-title">${digimon.nome}</div>
                     <p>Nível: ${digimon.nivel}</p>
                     <p>Bits: ${digimon.bits}</p>
-                    <button class="card-btn">Continuar</button>
+                    <div hidden>${digimon.id}</div>
+                    <button class="card-btn" data-id="${digimon.id}">Continuar</button>
                 `;
                 container.appendChild(card);
+            });
+
+            // Adiciona o event listener para os botões "Continuar"
+            const continueButtons = document.querySelectorAll('.card-btn');
+            continueButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const id = this.getAttribute('data-id');
+                    console.log('ID do Digimon:', id);
+                    localStorage.setItem('idDigimon', id);
+                    // Redirecionar para outra página ou realizar outra ação
+                    window.location.href = 'status.html';
+                });
             });
         })
         .catch(error => {

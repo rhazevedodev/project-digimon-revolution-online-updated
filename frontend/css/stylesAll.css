@@ -1,0 +1,551 @@
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+ a {
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 10pt;
+     color: #ffcc99;
+ }
+
+ a:link,
+ a:visited,
+ a:active {
+     /*color: #f08112;
+     color: #311bf8;*/
+     color: #ba9a7b;
+     font-weight: bold;
+     text-decoration: none;
+ }
+
+ body {
+     /*background-color: #7e7e7e;*/
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 9pt;
+     color: #ba9a7b;
+     /*background-image: url(/imagens/bg.jpg);
+     background-size: cover;
+     background-repeat: no-repeat;*/
+     margin-left: 0px;
+     margin-top: 0px;
+     margin-right: 0px;
+     margin-bottom: 0px;
+     opacity: 0.9;
+ }
+
+ .background {
+    background-image: url('/imagens/background-login.jpg');
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+ #div_principal {
+     position: relative;
+     width: 780px;
+     height: auto;
+     margin-left: auto;
+     margin-right: auto;
+     /*background-image: url(/imagens/bg_layout.jpg);*/
+     background-repeat: repeat-y;
+ }
+
+
+ #banner_principal {
+     position: relative;
+     width: 780px;
+     height: 208px;
+     background-image: url(/imagens/banner_topo.jpg);
+     background-size: cover;
+     /* Adicionado para garantir que a imagem cubra toda a div */
+     background-position: center;
+     /* Centraliza a imagem na div */
+     background-repeat: no-repeat;
+     /* Evita a repetição da imagem */
+     /*
+            opacity: 0.5; /* Ajuste o valor de opacidade conforme necessário 
+            */
+     border: #1a1a1a 1px solid;
+ }
+
+ #idiomas {
+     position: absolute;
+     height: 14px;
+     width: 73px;
+     left: 679px;
+     top: 19px;
+     text-align: center;
+ }
+
+ #titulo {
+     color: #311bf8;
+ }
+
+ #fundo_menu_principal {
+     position: relative;
+     width: 780px;
+     height: 103px;
+     background-image: url(/imagens/background-digimon3.jpeg);
+     background-size: cover;
+     /* Adicionado para garantir que a imagem cubra toda a div */
+     background-position: center;
+     /* Centraliza a imagem na div */
+     background-repeat: no-repeat;
+     /* Evita a repetição da imagem */
+     border: #1a1a1a 1px solid;
+ }
+
+ #menu {
+     position: relative;
+     width: 780px;
+     height: 20px;
+     text-align: left;
+     top: 15px;
+     opacity: 0.9;
+     margin-left: 10px;
+ }
+
+ #menu-2 {
+     position: relative;
+     width: 780px;
+     height: 40px;
+     text-align: left;
+     top: 25px;
+     opacity: 0.9;
+     margin-left: 0px;
+ }
+
+ #caixa-informacoes-menu {
+    position: relative;
+    width: 708px;
+    height: 100px;
+    border: 5px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-left: 30px;
+}
+
+ #sombra_baixo_menu {
+     position: relative;
+     width: 780px;
+     height: 15px;
+     background-image: url(/imagens/bg_sombra_baixo_menu.jpg);
+ }
+
+ #conteudo {
+     position: relative;
+     width: 720px;
+     left: 30px;
+ }
+
+ #motor_game {
+     position: relative;
+ }
+
+ #col_esquerda {
+     position: relative;
+     width: 163px;
+     float: left;
+ }
+
+ #caixa-informacoes-esquerda{
+    position: relative;
+    width: 163px;
+    height: 150px;
+    border: 5px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-top: 5px;
+ }
+
+ .img-bordered {
+    border: 5px solid #ccc;
+     /*padding: 5px;*/
+     margin-top: 10px;
+     margin-bottom: 5px;
+     display: block;
+     max-width: 100%;
+     
+ }
+
+ #col_direita {
+     position: relative;
+     width: 554px;
+     float: left;
+ }
+
+ .box_preto_novo_simples_sup {
+     background-image: url(/imagens/fundo_box_simples_02.jpg);
+     font-weight: bold;
+     width: 520px;
+     font-size: 9pt;
+     color: #ba9a7b;
+ }
+
+ /* Adicionei CSS para estilizar a caixa */
+ /*
+ #caixa_direita {
+     border: 1px solid #ccc;
+     padding: 10px;
+     margin: 10px;
+     background-color: #f9f9f9;
+     border-radius: 5px;
+     margin-left: 30px;
+ }
+
+ #caixa_direita h3 {
+     margin-top: 0;
+ }
+     */
+
+ #caixa_informacoes {
+     border: 5px solid #ccc;
+     padding: 10px;
+     margin: 10px;
+     background-color: #f9f9f9;
+     border-radius: 5px;
+     margin-left: 30px;
+ }
+
+ #caixa_informacoes h3 {
+     margin-top: 0;
+ }
+
+ #caixa_informacoes h3 {
+     margin-top: 0;
+ }
+
+ 
+ #caixa_informacoes_bloq {
+    border: 5px solid #ccc;
+    padding: 10px;
+    background-color: #facdcd;
+    border-radius: 5px;
+}
+
+#caixa_informacoes_bloq h3 {
+    margin-top: 0;
+}
+
+#caixa_informacoes_bloq h3 {
+    margin-top: 0;
+}
+
+ .titulo-caixa{
+    padding-bottom: 5px;
+    text-align: center;;
+ }
+
+ .separador{
+        border-bottom: 1px solid #ccc;
+        margin: 10px 0;
+ }
+ /* Adicione este estilo para remover espaçamento entre as imagens
+ .barra {
+     display: inline-block;
+     vertical-align: top;
+     margin: 0;
+     padding: 0;
+ } */
+
+ .box_preto_tarja {
+     /*background:url(/imagens/narutoplayers/batalha.jpg);*/
+ }
+/*
+ .progress-bar {
+     display: flex;
+     width: 100%;
+     height: 26px;
+     background-image: url('/imagens/narutoplayers/barras/azul/barra_centro.jpg');
+     background-size: cover;
+     border-radius: 13px;
+ }
+
+ .progress-bar-inner {
+     display: flex;
+     background-image: url('/imagens/narutoplayers/barras/azul/ponta_barra.jpg'),
+         url('/imagens/narutoplayers/barras/azul/fim_barra.jpg'),
+         url('/imagens/narutoplayers/barras/azul/barra_centro.jpg');
+     background-repeat: no-repeat, no-repeat, repeat-x;
+     background-position: left, right, center;
+     background-size: 16px 26px, 16px 26px, auto;
+     height: 100%;
+     border-radius: 13px;
+ }
+*/
+ .center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-content select {
+    margin-left: 10px;
+}
+
+.styled-select {
+    text-align: center;
+    appearance: none;
+    background-color: #ba9a7b;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    width: 150px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.styled-select:hover {
+    background-color: #1a1a1a;
+}
+
+.styled-select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 228, 141, 0.5);
+}
+
+
+.box_largura_100{
+	width: 100%;
+}
+
+.table-align-center th, 
+.table-align-center td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Estilos para o select */
+.select-horas {
+    width: 78px;
+    margin-right: 10px;
+    text-align: center;
+    
+    appearance: none;
+    background-color: #ba9a7b;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.select-horas:hover {
+    background-color: #1a1a1a;
+}
+
+.select-cacada {
+    width: 78px;
+    margin-right: 10px;
+    text-align: center;
+    
+    appearance: none;
+    background-color: #ba9a7b;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.select-cacada:hover {
+    background-color: #1a1a1a;
+}
+
+.cacada-box {
+    text-align: center;
+    padding: 10px;
+}
+
+/* Estilos para o botão */
+.button-confirmar {
+    padding: 5px 10px;
+    background-color: #ba9a7b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    appearance: none;
+    width: 78px;
+}
+.button-confirmar:hover {
+    background-color: #073f09;
+}
+
+.button-resgatar {
+    padding: 5px 10px;
+    background-color: #ba9a7b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    appearance: none;
+    width: 78px;
+}
+.button-resgatar:hover {
+    background-color: #073f09;
+}
+
+.button-confirmar-atributos {
+    padding: 3px 0px;
+    background-color: #ba9a7b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    appearance: none;
+    width: 50px;
+}
+.button-confirmar-atributos:hover {
+    background-color: #073f09;
+}
+
+.button-resetar-salvar-atributos {
+    display: block;
+    margin: 0 auto; /* Isso centraliza horizontalmente */
+    margin-top: 10px; /* Ajuste conforme necessário */
+    padding: 5px 0px;
+    background-color: #ba9a7b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    appearance: none;
+    width: 150px;
+}
+.button-resetar-salvar-atributos:hover {
+    background-color: #073f09;
+}
+
+        /* Estilos CSS para fazer a imagem cobrir a div */
+.banner-missao {
+    background-image: url('/imagens/digimon_banner_missao.jpg'); /* Caminho para a imagem */
+    background-size: cover; /* Faz a imagem cobrir toda a div */
+    background-position: center; /* Centraliza a imagem */
+    height: 200px; /* Altura desejada da div */
+    width: 100%; /* Garante que a div ocupe toda a largura disponível */
+}
+
+.banner-lanchonete {
+    background-image: url('/imagens/lanchonete.png'); /* Caminho para a imagem */
+    background-size: cover; /* Faz a imagem cobrir toda a div */
+    background-position: center; /* Centraliza a imagem */
+    height: 200px; /* Altura desejada da div */
+    width: 100%; /* Garante que a div ocupe toda a largura disponível */
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Ajusta a posição do modal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Define a largura do modal */
+    max-width: 600px; /* Define uma largura máxima */
+    min-width: 300px; /* Define uma largura mínima */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* Adiciona bordas arredondadas */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Garantir que o container do log de invasão ocupe toda a largura disponível */
+#log-invasao-container {
+    width: 100%;
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
+}
+
+/* Garantir que a tabela ocupe toda a largura disponível */
+#combateLogTable {
+    width: 100%;
+    border-collapse: collapse; /* Remove espaços entre as células da tabela */
+}
+
+#combateLogTable th, #combateLogTable td {
+    width: 100%;
+    padding: 8px; /* Adicionar algum preenchimento para tornar o texto mais legível */
+    text-align: center; /* Centralizar o texto */
+}
+
+/* Alternar cores para as linhas do log de combate */
+.table-row-even {
+    background-color: #f2f2f2; /* Cor para linhas pares */
+}
+
+.table-row-odd {
+    background-color: #ffffff; /* Cor para linhas ímpares */
+}
+
+#life-bar-container {
+    width: 100%;
+    background-color: #ccc; /* Cor do fundo da barra */
+    border: 1px solid #000; /* Borda da barra */
+    border-radius: 5px;
+    height: 20px; /* Altura da barra */
+    margin-top: 0px; /* Espaçamento superior */
+    position: relative; /* Necessário para posicionar o texto */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+#life-bar {
+    height: 100%;
+    width: 0%; /* Início com a largura 0, será ajustada via JavaScript */
+    background-color: green; /* Cor da barra de vida */
+    border-radius: 5px;
+    transition: width 0.3s; /* Animação para a mudança de largura */
+}
+
+#life-bar-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: white; /* Cor do texto */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold; /* Para destacar o texto */
+}
+
+
