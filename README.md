@@ -9,7 +9,7 @@ Este projeto é um jogo de navegador baseado no universo de Digimon. O objetivo 
 <summary>Sistemas Implementados</summary>
 
 ### 1. Sistema de Registro e Login
-- [ ] **Registro de Usuários:** Permite que os jogadores criem contas com e-mail e senha.
+- [x] **Registro de Usuários:** Permite que os jogadores criem contas com e-mail e senha.
 - [x] **Autenticação:** Segurança para proteger os dados dos usuários, como hashing de senhas.
 
 ### 2. Sistema de Seleção de Digimon
