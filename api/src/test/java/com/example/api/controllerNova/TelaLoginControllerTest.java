@@ -1,6 +1,6 @@
 package com.example.api.controllerNova;
-
 import com.example.api.modelNova.requests.RequestAutenticarUsuario;
+import com.example.api.modelNova.responses.ResponseError;
 import com.example.api.serviceNova.LoginServiceNova;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -57,6 +57,32 @@ public class TelaLoginControllerTest {
 
         // Assert
         assertEquals(401, response.getStatusCodeValue());
-        assertEquals("Credenciais inválidas", response.getBody());
+        assertEquals("Credenciais inválidas", ((ResponseError) response.getBody()).getErro());
+    }
+
+    @Test
+    public void testAutenticar_MissingUsernameOrPassword() {
+        // Arrange
+        RequestAutenticarUsuario request = new RequestAutenticarUsuario();
+        request.setUsuario(null);
+        request.setSenha("somePassword");
+
+        // Act
+        ResponseEntity<?> response = telaLoginController.autenticar(request);
+
+        // Assert
+        assertEquals(400, response.getStatusCodeValue());
+        assertEquals("Usuário e senha são obrigatórios", ((ResponseError) response.getBody()).getErro());
+
+        // Arrange
+        request.setUsuario("someUser");
+        request.setSenha(null);
+
+        // Act
+        response = telaLoginController.autenticar(request);
+
+        // Assert
+        assertEquals(400, response.getStatusCodeValue());
+        assertEquals("Usuário e senha são obrigatórios", ((ResponseError) response.getBody()).getErro());
     }
 }

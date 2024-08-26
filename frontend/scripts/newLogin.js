@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             usuario: document.getElementById('username').value,
             senha: document.getElementById('password').value
         };
-        
+
         // Configurações da requisição
         const requestOptions = {
             method: 'POST',
@@ -27,7 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(apiURL, requestOptions)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Erro na rede, status: ' + response.status);
+                    return response.json().then(errorData => {
+                        throw new Error(errorData.erro || 'Erro desconhecido');
+                    });
                 }
                 return response.json();
             })
@@ -50,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => {
                 Swal.fire({
                     title: 'Erro!',
-                    text: 'Usuário ou senha incorretos!',
+                    text: `Erro ao fazer login: ${error.message}`,
                     icon: 'error',
                     confirmButtonText: 'Tentar novamente'
                 });
