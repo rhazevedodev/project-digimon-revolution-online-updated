@@ -7,68 +7,42 @@ Este projeto é um jogo de navegador baseado no universo de Digimon. O objetivo 
 
 ### 1. Sistema de Registro e Login
 - [ ] **Registro de Usuários:** Permite que os jogadores criem contas com e-mail e senha.
-- [ ] **Autenticação:** Segurança para proteger os dados dos usuários, como hashing de senhas.
+- [x] **Autenticação:** Segurança para proteger os dados dos usuários, como hashing de senhas.
 
-### 2. Sistema de Seleção de Digimon Inicial
-- [ ] **Escolha Inicial:** Permite que os jogadores escolham um Digimon inicial de uma lista de Digimon Rookie.
-- [ ] **Descrição Detalhada:** Fornece descrições detalhadas de cada Digimon para ajudar na escolha.
+### 2. Sistema de Seleção de Digimon
+- [x] **Escolha Inicial:** Permite que os jogadores escolham um Digimon inicial de uma lista de Digimon Rookie.
+- [x] **Descrição Detalhada:** Fornece descrições detalhadas de cada Digimon para ajudar na escolha.
 
-### 3. Sistema de Evolução
-- [ ] **Linhas de Evolução:** Árvores de evolução que permitem que os Digimon evoluam em diferentes formas conforme ganham experiência.
-- [ ] **Condições de Evolução:** Define condições específicas (nível, itens, etc.) para evoluir.
+### 3. Sistema de Continuar Jornada
+- [ ] **Continuar Jornada:** Permite que um jogador já cadastrado e que já tenha passado pela etapa de escolha inicial possa selecionar um digimon anteriormente criado para continuar sua jornada.
 
-### 4. Sistema de Missões e Exploração
-- [ ] **Missões Diárias e Semanais:** Oferece missões regulares para manter o engajamento dos jogadores.
-- [ ] **Exploração:** Áreas que os jogadores podem explorar, encontrando Digimon selvagens e itens.
+### 4. Sistema de Caçadas
+- [x] **Caçar:** Permite que o jogador entre em uma caçada com tempo pré determinado em busca de recompensas pré definidas aleatoriamente. EXPERIÊNCIA ++
 
-### 5. Sistema de Combate
-- [ ] **Combate PvE:** Permite que os jogadores lutem contra Digimon controlados pelo jogo.
-- [ ] **Combate PvP:** Sistema para batalhas entre jogadores.
-- [x] **Atributos:** Usa os atributos de força, inteligência e agilidade para determinar os resultados dos combates.
+### 5. Sistema de Invasão
+- [ ] **Invasão:** Permite que o jogador entre em combate com uma espécie de chefe mundial. Todo ataque é recompensado com uma pequena quantia de experiência, além de ter a chance de ganhar um baú do chefe. O jogador que eliminar o invasor ganha uma recompensa maravilhosa.
 
-### 6. Sistema de Atributos e Habilidades
-- [x] **Atributos do Digimon:** Inclui atributos como vitalidade, força, inteligência, agilidade, ataque físico, defesa física, ataque elemental e defesa elemental.
-- [ ] **Habilidades Especiais:** Cada Digimon tem habilidades únicas que podem ser usadas em combate.
+### 6. Sistema de Lanchonete
+- [ ] **Lanchonete:** Permite que o jogador recupere seus pontos de vida por uma pequena quantia de Bits.
 
-### 7. Sistema de Treinamento
-- [ ] **Treinamento de Habilidades:** Permite que os jogadores treinem seus Digimon para melhorar atributos específicos.
-- [ ] **Campos de Treinamento:** Áreas específicas onde os jogadores podem treinar seus Digimon.
+### 7. Sistema de Missão
+- [ ] **Missões:** Permite que o jogador entre em missões com tempo pré determinado em busca de recompensas pré definidas aleatoriamente. BITS ++
 
-### 8. Sistema de Itens e Inventário
-- [ ] **Inventário do Jogador:** Permite que os jogadores armazenem e gerenciem itens.
-- [ ] **Itens de Batalha e Evolução:** Inclui itens que podem ser usados em combate ou para evoluir Digimon.
+### 8. Sistema de Atributos
+- [ ] **Melhoria de Atributos por Bits:** Permite que o jogador use os bits ganhos no jogo para melhorar seus atributos.
 
-### 9. Sistema de Mercado e Comércio
-- [ ] **Mercado:** Mercado onde os jogadores podem comprar e vender itens.
-- [ ] **Troca Entre Jogadores:** Permite a troca de itens e Digimon entre jogadores.
+## Sistemas que estão sendo implementados
 
-### 10. Sistema de Conquistas e Recompensas
-- [ ] **Conquistas:** Oferece conquistas para completar determinadas tarefas ou objetivos.
-- [ ] **Recompensas:** Dá recompensas por alcançar conquistas, como itens especiais ou Digimon raros.
+## Sistemas que serão implementados futuramente
 
-### 11. Sistema de Clãs e Guildas
-- [ ] **Formação de Clãs:** Permite que os jogadores formem clãs ou guildas para cooperar e competir juntos.
-- [ ] **Eventos de Clã:** Eventos específicos para clãs que incentivem a colaboração.
+### 1. Sistema de Conquistas
+- [ ] **Conquistas:** Todo e qualquer esforço do jogador no jogo será recompensado! 
 
-### 12. Sistema de Eventos e Torneios
-- [ ] **Eventos Temporários:** Eventos temporários com recompensas exclusivas.
-- [ ] **Torneios:** Torneios regulares onde os jogadores podem competir por prêmios.
-
-### 13. Sistema de Comunicação
-- [ ] **Chat:** Sistema de chat para facilitar a comunicação entre jogadores.
-- [ ] **Mensagens Privadas:** Permite que os jogadores enviem mensagens privadas uns aos outros.
-
-### 14. Sistema de Economia
-- [x] **Moeda do Jogo:** Moeda que pode ser usada para comprar itens e serviços.
-- [ ] **Microtransações:** Compras dentro do jogo para itens especiais (se aplicável).
-
-### 15. Sistema de Personalização
-- [ ] **Personalização de Personagens:** Permite que os jogadores personalizem a aparência de seus avatares.
-- [ ] **Skins de Digimon:** Skins para Digimon que mudem sua aparência.
-
-### 16. Sistema de Salvamento e Backup
-- [x] **Salvamento de Progresso:** Assegura que o progresso dos jogadores seja salvo automaticamente.
-- [ ] **Backup:** Sistema de backup para proteger os dados dos jogadores.
+### 2. Sistema de Quests
+- [ ] **Quests Diárias:** Serão disponibilizadas uma ou mais quests diárias para todos os jogadores.
+- [ ] **Quests Mensais:** Serão disponibilizadas uma ou mais quests pré definidas mensalmente para todos os jogadores.
+- [ ] **Quests Surpresas:** Serão disponibilizadas quests surpresas no jogo para todos os jogadores eventualmente.
+- [ ] **Quests Temáticas:** Serão disponibilizadas quests temáticas em datas comemorativas. Ex: Páscoa, Natal, Ano Novo, Dia dos Namorados, Dias das Bruxas, etc.
 
 ## Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests para melhorias e novas funcionalidades.

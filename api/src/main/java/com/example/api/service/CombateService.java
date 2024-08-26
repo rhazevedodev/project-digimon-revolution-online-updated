@@ -1,6 +1,5 @@
 package com.example.api.service;
 
-import com.example.api.exception.DigimonSemVidaException;
 import com.example.api.model.Atributos;
 import com.example.api.model.ResultadoCombateInvasao;
 import com.example.api.model.entity.Digimon;

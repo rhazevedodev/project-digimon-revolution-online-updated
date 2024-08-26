@@ -1,0 +1,122 @@
+# Digimon Revolution Online
+
+#TC001 - CADASTRO BEM SUCEDIDO DE JOGADOR
+
+Descrição: Testar o cadastro de um jogador com dados válidos.
+
+Pré Condição: Nenhum
+
+Passos:
+
+Enviar uma requisição 'POST' para '/usuario' com um corpo JSON contendo um usuario com entre 4 e 20 caracteres.
+Incluir uma senha com pelo menos 6 caracteres no corpo da requisição.
+Incluir um email válido e uma data de nascimento válida.
+Resultado Esperado: Jogador é cadastrado com sucesso e o status 201 CREATED é retornado junto com os dados do jogador.
+
+#TC002 - FALHA NO CADASTRO DEVIDO AO CAMPO USUARIO COM MENOS DE 4 CARACTERES
+
+Descrição: Testar o cadastro de um jogador com um nome de usuário com menos de 4 caracteres.
+
+Pré Condição: Nenhum
+
+Passos:
+
+Enviar uma requisição 'POST' para '/usuario' com um corpo JSON contendo usuario com menos de 4 caracteres.
+Incluir uma senha, email e data de nascimento válidos no corpo da requisição.
+Resultado Esperado: O sistema retorna erro 400 BAD REQUEST com a mensagem "O campo usuario deve ter entre 4 e 20 caracteres".
+
+#TC003 - FALHA NO CADASTRO DEVIDO AO CAMPO USUARIO COM MAIS DE 20 CARACTERES
+
+Descrição: Testar o cadastro de um jogador com um nome de usuário com mais de 20 caracteres.
+
+Pré Condição: Nenhum
+
+Passos:
+
+Enviar uma requisição 'POST' para '/usuario' com um corpo JSON contendo usuario com mais de 20 caracteres.
+Incluir uma senha, email e data de nascimento válidos no corpo da requisição.
+Resultado Esperado: O sistema retorna erro 400 BAD REQUEST com a mensagem "O campo usuario deve ter entre 4 e 20 caracteres".
+
+#TC004 - FALHA NO CADASTRO DEVIDO AO CAMPO SENHA COM MENOS DE 6 CARACTERES
+
+Descrição: Testar o cadastro de um jogador com uma senha com menos de 6 caracteres.
+
+Pré Condição: Nenhum
+
+Passos:
+
+Enviar uma requisição 'POST' para '/usuario' com um corpo JSON contendo uma senha com menos de 6 caracteres.
+Incluir um usuario, email e data de nascimento válidos no corpo da requisição.
+Resultado Esperado: O sistema retorna erro 400 BAD REQUEST com a mensagem "O campo senha deve ter pelo menos 6 caracteres".
+
+#TC005 - FALHA NO CADASTRO DEVIDO AO USUARIO JÁ CADASTRADO
+
+Descrição: Testar o cadastro de um jogador com um nome de usuário já existente no sistema.
+
+Pré Condição: O usuario já deve estar cadastrado no sistema.
+
+Passos:
+
+Enviar uma requisição 'POST' para '/usuario' com um corpo JSON contendo um usuario já cadastrado.
+Incluir uma senha, email e data de nascimento válidos no corpo da requisição.
+Resultado Esperado: O sistema retorna erro 226 IM USED com a mensagem "usuário já cadastrado".
+
+#TC006 - FALHA NO CADASTRO DEVIDO AO EMAIL JÁ CADASTRADO
+
+Descrição: Testar o cadastro de um jogador com um email já existente no sistema.
+
+Pré Condição: O email já deve estar cadastrado no sistema.
+
+Passos:
+
+Enviar uma requisição 'POST' para '/usuario' com um corpo JSON contendo um email já cadastrado.
+Incluir um usuario, senha e data de nascimento válidos no corpo da requisição.
+Resultado Esperado: O sistema retorna erro 226 IM USED com a mensagem "email já cadastrado".
+
+#TC007 - FALHA NO CADASTRO DEVIDO A DATA DE NASCIMENTO INVÁLIDA
+
+Descrição: Testar o cadastro de um jogador com uma data de nascimento inválida.
+
+Pré Condição: Nenhum
+
+Passos:
+
+Enviar uma requisição 'POST' para '/usuario' com um corpo JSON contendo uma data de nascimento inválida.
+Incluir um usuario, senha e email válidos no corpo da requisição.
+Resultado Esperado: O sistema retorna erro 400 BAD REQUEST com a mensagem "data de nascimento inválida".
+
+#TC008 - FALHA NO CADASTRO DEVIDO A UM ERRO DESCONHECIDO
+
+Descrição: Testar o cadastro de um jogador onde ocorre uma exceção não esperada durante o processo de cadastro.
+
+Pré Condição: Simular uma exceção inesperada dentro do método cadastrarJogador.
+
+Passos:
+
+Enviar uma requisição 'POST' para '/usuario' com um corpo JSON válido contendo usuario, senha, email e data de nascimento.
+Causar uma exceção inesperada no backend durante o processo de cadastro.
+Resultado Esperado: O sistema retorna erro 400 BAD REQUEST com a mensagem correspondente à exceção lançada.
+
+#TC009 - CADASTRO DE JOGADOR COM SENHA EXATAMENTE 6 CARACTERES
+
+Descrição: Testar o cadastro de um jogador com uma senha de exatamente 6 caracteres.
+
+Pré Condição: Nenhum
+
+Passos:
+
+Enviar uma requisição 'POST' para '/usuario' com um corpo JSON válido contendo usuario, senha (com exatamente 6 caracteres), email e data de nascimento.
+Resultado Esperado: Jogador é cadastrado com sucesso e o status '201 CREATED' é retornado junto com os dados do jogador.
+
+#TC010 - CADASTRO DE JOGADOR COM USUARIO DE 4 E 20 CARACTERES (BORDAS)
+
+Descrição: Testar o cadastro de um jogador com um usuario de exatamente 4 caracteres e outro com 20 caracteres.
+
+Pré Condição: Nenhum
+
+Passos:
+
+Enviar uma requisição 'POST' para '/usuario' com um corpo JSON válido contendo usuario de exatamente 4 caracteres, senha, email e data de nascimento.
+Enviar uma requisição 'POST' para '/usuario' com um corpo JSON válido contendo usuario de exatamente 20 caracteres, senha, email e data de nascimento.
+Resultado Esperado: Jogador é cadastrado com sucesso em ambos os casos e o status '201 CREATED' é retornado junto com os dados do jogador.
+

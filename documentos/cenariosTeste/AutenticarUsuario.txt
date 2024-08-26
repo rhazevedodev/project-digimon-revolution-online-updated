@@ -1,0 +1,42 @@
+#TC001 - AUTENTICAÇÃO BEM-SUCEDIDA
+
+Descrição: Testar a autenticação de um usuário com credenciais válidas.
+Pré Condição: O usuário deve estar previamente cadastrado e possuir credenciais válidas no sistema.
+Passos:
+Enviar uma requisição 'POST' para '/autenticar' com um corpo JSON contendo um usuario e senha válidos.
+Resultado Esperado: O sistema retorna status 200 OK com um token de autenticação.
+#TC002 - FALHA NA AUTENTICAÇÃO DEVIDO A CREDENCIAIS INVÁLIDAS
+
+Descrição: Testar a autenticação de um usuário com credenciais inválidas.
+Pré Condição: O usuário deve estar previamente cadastrado no sistema, mas as credenciais fornecidas na requisição devem ser inválidas.
+Passos:
+Enviar uma requisição 'POST' para '/autenticar' com um corpo JSON contendo um usuario e/ou senha inválidos.
+Resultado Esperado: O sistema retorna status 401 UNAUTHORIZED com a mensagem "Credenciais inválidas".
+#TC003 - FALHA NA AUTENTICAÇÃO DEVIDO A USUÁRIO NÃO FORNECIDO
+
+Descrição: Testar a autenticação onde o campo usuario não é fornecido na requisição.
+Pré Condição: Nenhum
+Passos:
+Enviar uma requisição 'POST' para '/autenticar' com um corpo JSON contendo senha válida, mas sem o campo usuario.
+Resultado Esperado: O sistema retorna status 400 BAD REQUEST com a mensagem "Usuário e senha são obrigatórios".
+#TC004 - FALHA NA AUTENTICAÇÃO DEVIDO A SENHA NÃO FORNECIDA
+
+Descrição: Testar a autenticação onde o campo senha não é fornecido na requisição.
+Pré Condição: Nenhum
+Passos:
+Enviar uma requisição 'POST' para '/autenticar' com um corpo JSON contendo usuario válido, mas sem o campo senha.
+Resultado Esperado: O sistema retorna status 400 BAD REQUEST com a mensagem "Usuário e senha são obrigatórios".
+#TC005 - FALHA NA AUTENTICAÇÃO DEVIDO A CAMPOS USUARIO E SENHA NÃO FORNECIDOS
+
+Descrição: Testar a autenticação onde nem o campo usuario nem o campo senha são fornecidos na requisição.
+Pré Condição: Nenhum
+Passos:
+Enviar uma requisição 'POST' para '/autenticar' com um corpo JSON sem os campos usuario e senha.
+Resultado Esperado: O sistema retorna status 400 BAD REQUEST com a mensagem "Usuário e senha são obrigatórios".
+#TC006 - FALHA NA AUTENTICAÇÃO DEVIDO A FORMATO INVÁLIDO DO CORPO DA REQUISIÇÃO
+
+Descrição: Testar a autenticação com um formato de JSON inválido ou malformado.
+Pré Condição: Nenhum
+Passos:
+Enviar uma requisição 'POST' para '/autenticar' com um corpo JSON malformado ou com formato inválido.
+Resultado Esperado: O sistema retorna status 400 BAD REQUEST devido à falha na validação do corpo da requisição.

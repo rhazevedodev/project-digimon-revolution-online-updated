@@ -1,0 +1,42 @@
+#TC001 - SELEÇÃO BEM-SUCEDIDA DE DIGIMON
+
+Descrição: Testar a seleção de um Digimon para um usuário com dados válidos.
+Pré Condição: O usuário deve estar autenticado e o Digimon selecionado deve ser válido.
+Passos:
+Enviar uma requisição 'POST' para '/selecionarDigimon' com um corpo JSON válido contendo nomeUsuario, nomeDigimon, e apelidoDigimon.
+Resultado Esperado: O Digimon é selecionado com sucesso, e o status 200 OK é retornado junto com os dados do Digimon selecionado.
+#TC002 - FALHA NA SELEÇÃO DE DIGIMON DEVIDO A nomeUsuario INVÁLIDO
+
+Descrição: Testar a seleção de um Digimon quando o nomeUsuario fornecido não é encontrado no sistema.
+Pré Condição: O usuário com o nomeUsuario especificado não deve existir no sistema.
+Passos:
+Enviar uma requisição 'POST' para '/selecionarDigimon' com um corpo JSON contendo um nomeUsuario que não existe.
+Resultado Esperado: O sistema retorna status 400 BAD REQUEST com a mensagem de erro apropriada.
+#TC003 - FALHA NA SELEÇÃO DE DIGIMON DEVIDO A nomeDigimon INVÁLIDO
+
+Descrição: Testar a seleção de um Digimon quando o nomeDigimon fornecido não é encontrado no sistema.
+Pré Condição: O Digimon com o nomeDigimon especificado não deve existir no sistema.
+Passos:
+Enviar uma requisição 'POST' para '/selecionarDigimon' com um corpo JSON contendo um nomeDigimon que não existe.
+Resultado Esperado: O sistema retorna status 400 BAD REQUEST com a mensagem de erro apropriada.
+#TC004 - FALHA NA SELEÇÃO DE DIGIMON DEVIDO A apelidoDigimon INVÁLIDO
+
+Descrição: Testar a seleção de um Digimon quando o apelidoDigimon fornecido não é válido.
+Pré Condição: O apelidoDigimon fornecido deve ser inválido ou malformado.
+Passos:
+Enviar uma requisição 'POST' para '/selecionarDigimon' com um corpo JSON contendo um apelidoDigimon inválido.
+Resultado Esperado: O sistema retorna status 400 BAD REQUEST com a mensagem de erro apropriada.
+#TC005 - FALHA NA SELEÇÃO DE DIGIMON DEVIDO A DADOS NÃO FORNECIDOS
+
+Descrição: Testar a seleção de um Digimon quando um ou mais campos obrigatórios não são fornecidos.
+Pré Condição: Nenhum
+Passos:
+Enviar uma requisição 'POST' para '/selecionarDigimon' com um corpo JSON incompleto, faltando um ou mais campos obrigatórios como nomeUsuario, nomeDigimon, ou apelidoDigimon.
+Resultado Esperado: O sistema retorna status 400 BAD REQUEST com a mensagem "Dados obrigatórios não fornecidos".
+#TC006 - FALHA NA SELEÇÃO DE DIGIMON DEVIDO A FORMATO INVÁLIDO DO CORPO DA REQUISIÇÃO
+
+Descrição: Testar a seleção de um Digimon com um formato de JSON inválido ou malformado.
+Pré Condição: Nenhum
+Passos:
+Enviar uma requisição 'POST' para '/selecionarDigimon' com um corpo JSON malformado ou com formato inválido.
+Resultado Esperado: O sistema retorna status 400 BAD REQUEST devido à falha na validação do corpo da requisição.

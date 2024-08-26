@@ -1,7 +1,10 @@
 package com.example.api.modelNova.requests;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class RequestVerificaPrimeiroAcesso {
 
+    @NotBlank(message = "Nome de usuário é obrigatório")
     String usuario;
 
     public RequestVerificaPrimeiroAcesso() {
