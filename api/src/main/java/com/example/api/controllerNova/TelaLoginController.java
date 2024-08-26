@@ -3,13 +3,11 @@ package com.example.api.controllerNova;
 import com.example.api.modelNova.requests.RequestAutenticarUsuario;
 import com.example.api.modelNova.responses.ResponseError;
 import com.example.api.serviceNova.LoginServiceNova;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 import java.util.Optional;
@@ -33,6 +31,11 @@ public class TelaLoginController {
         } else {
             return new ResponseEntity<>(new ResponseError("Credenciais inválidas"), HttpStatus.UNAUTHORIZED);
         }
+    }
+
+    @GetMapping("/encryptUsuario/{usuario}")
+    public ResponseEntity<?> encryptUsuario(@PathVariable("usuario") String usuario) {
+        return ResponseEntity.ok(Map.of("usuario", loginService.encryptUsuario(usuario)));
     }
 
 }

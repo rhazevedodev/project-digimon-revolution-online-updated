@@ -4,6 +4,7 @@ import com.example.api.model.entity.Jogador;
 import com.example.api.model.entity.Token;
 import com.example.api.repository.JogadorRepository;
 import com.example.api.repository.TokenRepository;
+import com.example.api.utils.EncryptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,5 +55,13 @@ public class LoginServiceNova {
         byte[] tokenBytes = new byte[24];
         secureRandom.nextBytes(tokenBytes);
         return Base64.getUrlEncoder().withoutPadding().encodeToString(tokenBytes);
+    }
+
+    public String encryptUsuario(String usuario) {
+        try {
+            return EncryptionUtils.encrypt3DES(usuario);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

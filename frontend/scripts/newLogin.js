@@ -1,118 +1,89 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
 
     const apiURL = 'http://localhost:8080/api/login/autenticar';
     const firstAccessURL = 'http://localhost:8080/api/digimon/verificaPrimeiroAcesso';
+    const encryptUrl = 'http://localhost:8080/api/login/encryptUsuario/';
 
-    let dataLogin = {};
-
-    function autenticarUsuario(event) {
+    async function autenticarUsuario(event) {
         event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
 
-        // Dados que serão enviados no corpo da requisição
-        const requestBody = {
-            usuario: document.getElementById('username').value,
-            senha: document.getElementById('password').value
-        };
+        try {
+            const usuario = document.getElementById('username').value;
+            const senha = document.getElementById('password').value;
 
-        // Configurações da requisição
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestBody)
-        };
+            const data = await fetchAPI(apiURL, 'POST', { usuario, senha });
 
-        // Fazer a requisição à API
-        fetch(apiURL, requestOptions)
-            .then(response => {
-                if (!response.ok) {
-                    return response.json().then(errorData => {
-                        throw new Error(errorData.erro || 'Erro desconhecido');
-                    });
-                }
-                return response.json();
-            })
-            .then(data => {
-                Swal.fire({
-                    title: 'Login bem-sucedido!',
-                    text: 'Você será redirecionado para a página principal.',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    // Redirecionar para outra página ou realizar outra ação
-                    localStorage.setItem('token', data.token);
-                    localStorage.setItem('usuario', document.getElementById('username').value);
-                    var usuario = document.getElementById('username').value;
-
-                    // Verificar se é o primeiro acesso
-                    verificarPrimeiroAcesso(usuario);
-                });
-            })
-            .catch(error => {
-                Swal.fire({
-                    title: 'Erro!',
-                    text: `Erro ao fazer login: ${error.message}`,
-                    icon: 'error',
-                    confirmButtonText: 'Tentar novamente'
-                });
+            Swal.fire({
+                title: 'Login bem-sucedido!',
+                text: 'Você será redirecionado para a página principal.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(async () => {
+                localStorage.setItem('token', data.token);
+                await encryptUsuario(usuario);
+                await verificarPrimeiroAcesso(localStorage.getItem('usuario'));
             });
+        } catch (error) {
+            displayError('Erro ao fazer login', error.message);
+        }
     }
 
-    function verificarPrimeiroAcesso(usuario) {
-        // Dados que serão enviados no corpo da requisição
-        const requestBody = {
-            usuario
-        };
-
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: requestBody.usuario
-        };
-
-        fetch(firstAccessURL, requestOptions)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro na rede, status: ' + response.status);
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.primeiroAcesso == true) {
-                    Swal.fire({
-                        title: 'Bem-vindo!',
-                        text: 'Este é o seu primeiro acesso. Aproveite!',
-                        icon: 'info',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        // Redirecionar para outra página ou realizar outra ação
-                        window.location.href = 'selecaoInicialv2.html';
-                    });
-                } else {
-                    Swal.fire({
-                        title: 'Bem-vindo de volta!',
-                        text: 'Bom vê-lo novamente!',
-                        icon: 'info',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        // Redirecionar para outra página ou realizar outra ação
-                        window.location.href = 'continuarJornada.html';
-                    });
-                }
-            })
-            .catch(error => {
-                Swal.fire({
-                    title: 'Erro!',
-                    text: 'Não foi possível verificar o primeiro acesso.',
-                    icon: 'error',
-                    confirmButtonText: 'Tentar novamente'
-                });
-            });
+    async function encryptUsuario(usuario) {
+        try {
+            const data = await fetchAPI(`${encryptUrl}${usuario}`, 'GET');
+            localStorage.setItem('usuario', data.usuario);
+        } catch (error) {
+            displayError('Erro ao criptografar usuário', error.message);
+        }
     }
 
-    // Adiciona um ouvinte de evento para o formulário
+    async function verificarPrimeiroAcesso(usuario) {
+        try {
+            const data = await fetchAPI(firstAccessURL, 'POST', { usuario });
+            const mensagem = data.primeiroAcesso 
+                ? 'Este é o seu primeiro acesso. Aproveite!' 
+                : 'Bom vê-lo novamente!';
+
+            Swal.fire({
+                title: data.primeiroAcesso ? 'Bem-vindo!' : 'Bem-vindo de volta!',
+                text: mensagem,
+                icon: 'info',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                const redirectPage = data.primeiroAcesso 
+                    ? 'selecaoInicialv2.html' 
+                    : 'continuarJornada.html';
+                window.location.href = redirectPage;
+            });
+
+        } catch (error) {
+            displayError('Não foi possível verificar o primeiro acesso', error.message);
+        }
+    }
+
+    async function fetchAPI(url, method, body = null) {
+        const requestOptions = {
+            method,
+            headers: { 'Content-Type': 'application/json' },
+            body: body ? JSON.stringify(body) : null
+        };
+
+        const response = await fetch(url, requestOptions);
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.erro || 'Erro desconhecido');
+        }
+        return response.json();
+    }
+
+    function displayError(title, message) {
+        Swal.fire({
+            title: 'Erro!',
+            text: `${title}: ${message}`,
+            icon: 'error',
+            confirmButtonText: 'Tentar novamente'
+        });
+    }
+
     document.getElementById('loginForm').addEventListener('submit', autenticarUsuario);
 });
