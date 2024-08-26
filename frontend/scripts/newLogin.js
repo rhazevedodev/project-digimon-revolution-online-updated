@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const apiURL = 'http://localhost:8080/api/login/autenticar';
-    const firstAccessURL = 'http://localhost:8080/api/digimon/verificaPrimeiroAcesso';
+    const firstAccessURL = 'http://localhost:8080/api/login/verificaPrimeiroAcesso';
     const encryptUrl = 'http://localhost:8080/api/login/encryptUsuario/';
 
     async function autenticarUsuario(event) {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function verificarPrimeiroAcesso(usuario) {
         try {
-            const data = await fetchAPI(firstAccessURL, 'POST', { usuario });
+            const data = await fetchAPI(firstAccessURL, 'POST', usuario);
             const mensagem = data.primeiroAcesso 
                 ? 'Este é o seu primeiro acesso. Aproveite!' 
                 : 'Bom vê-lo novamente!';
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 confirmButtonText: 'OK'
             }).then(() => {
                 const redirectPage = data.primeiroAcesso 
-                    ? 'selecaoInicialv2.html' 
+                    ? 'selecaoDigimon.html' 
                     : 'continuarJornada.html';
                 window.location.href = redirectPage;
             });

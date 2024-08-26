@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@RestController
-@RequestMapping("/api/digimon")
 public class DigimonController {
 
     @Autowired
@@ -45,10 +43,6 @@ public class DigimonController {
     @PostMapping("/selecaoInicialv2")
     public ResponseEntity<?> selecionarDigimonv2(@RequestBody RequestSelecaoInicial request) {
         try {
-              System.out.println(request.getNomeUsuario());
-              System.out.println(request.getNomeDigimon());
-              System.out.println(request.getApelidoDigimon());
-
             Digimon digimonSelecionado = new Digimon();
             digimonSelecionado.setIdJogador((long) jogadorService.getIdByUsuario(request.getNomeUsuario()));
             digimonSelecionado.setIdRookie(Integer.parseInt(digimonService.getIdByDescricao(request.getNomeDigimon())));

@@ -102,42 +102,74 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const apiURL = 'http://localhost:8080/api/digimon/selecaoInicialv2';
+    
+    async function decryptUsuario(decryptingUsuario) {
+        const decryptUrl = `http://localhost:8080/api/login/decryptUsuario/${decryptingUsuario}`;
+        try {
+            const response = await fetch(decryptUrl, { method: 'GET' });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            return data.usuario;
+            // return data.usuario; // Descomente se desejar retornar o valor
+        } catch (error) {
+            displayError('Erro ao decriptografar usuário', error.message);
+        }
+    }
 
-    function selecionarDigimon() {
-        // Dados que serão enviados no corpo da requisição
-        const requestBody = {
-            "nomeUsuario": localStorage.getItem('usuario'),
-            "nomeDigimon": localStorage.getItem('chosenDigimon'),
-            "apelidoDigimon": localStorage.getItem('nickname')
-        };
+    async function selecionarDigimon() {
+        const decryptingUsuario = localStorage.getItem('usuario');
 
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestBody)
-        };
+        try {
+            // Espera o resultado da função decryptUsuario
+            const nomeUsuario = await decryptUsuario(decryptingUsuario);
 
-        fetch(apiURL, requestOptions)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro na rede, status: ' + response.status);
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Redirecionar para outra página ou realizar outra ação
-                //localStorage.removeItem('usuario');
-                localStorage.removeItem('chosenDigimon');
-                localStorage.removeItem('nickname');
+            // Dados que serão enviados no corpo da requisição
+            const requestBody = {
+                "nomeUsuario": nomeUsuario,
+                "nomeDigimon": localStorage.getItem('chosenDigimon'),
+                "apelidoDigimon": localStorage.getItem('nickname')
+            };
 
-                window.location.href = 'continuarJornada.html';
-                console.log("DIGIMON CADASTRADO COM SUCESSO");
-            })
-            .catch(error => {
-                console.log("ERRO SELECAO DIGIMON: "+error);
-            });
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            };
+
+            fetch(apiURL, requestOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro na rede, status: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Redirecionar para outra página ou realizar outra ação
+                    localStorage.removeItem('chosenDigimon');
+                    localStorage.removeItem('nickname');
+
+                    window.location.href = 'continuarJornada.html';
+                    console.log("DIGIMON CADASTRADO COM SUCESSO");
+                })
+                .catch(error => {
+                    console.log("ERRO SELECAO DIGIMON: " + error);
+                });
+        } catch (error) {
+            displayError('Erro ao selecionar Digimon', error.message);
+        }
+    }
+    
+    function displayError(title, message) {
+        Swal.fire({
+            title: 'Erro!',
+            text: `${title}: ${message}`,
+            icon: 'error',
+            confirmButtonText: 'Tentar novamente'
+        });
     }
 
 });

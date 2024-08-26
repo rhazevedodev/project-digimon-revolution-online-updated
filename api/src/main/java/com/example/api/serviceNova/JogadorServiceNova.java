@@ -6,6 +6,8 @@ import com.example.api.utils.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class JogadorServiceNova {
 
@@ -23,6 +25,14 @@ public class JogadorServiceNova {
             throw new RuntimeException("Data de nascimento inválida");
         }
         return jogadorRepository.save(jogador);
+    }
+
+    public int getIdByUsuario(String usuario) {
+        Optional<Jogador> jogador = jogadorRepository.findByUsuario(usuario);
+        if(jogador.isPresent()) {
+            return jogador.get().getId().intValue();
+        }
+        return -1;
     }
 
 }

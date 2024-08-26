@@ -190,8 +190,6 @@ public class DigimonService {
     }
 
     public String getIdByDescricao (String descricao){
-        System.out.println("DESCRICAO: "+descricao);
-        System.out.println("ID: "+EnumDigimonRookie.getIdByDescricao(descricao));
         return EnumDigimonRookie.getIdByDescricao(descricao);
     }
 

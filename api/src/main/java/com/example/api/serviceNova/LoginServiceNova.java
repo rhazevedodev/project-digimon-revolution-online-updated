@@ -64,4 +64,12 @@ public class LoginServiceNova {
             throw new RuntimeException(e);
         }
     }
+
+    public String decryptUsuario(String usuario) {
+        try {
+            return EncryptionUtils.decrypt3DES(usuario);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

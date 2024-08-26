@@ -1,7 +1,10 @@
 package com.example.api.controllerNova;
 
 import com.example.api.modelNova.requests.RequestAutenticarUsuario;
+import com.example.api.modelNova.requests.RequestVerificaPrimeiroAcesso;
 import com.example.api.modelNova.responses.ResponseError;
+import com.example.api.serviceNova.DigimonServiceNova;
+import com.example.api.serviceNova.JogadorServiceNova;
 import com.example.api.serviceNova.LoginServiceNova;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,10 @@ public class TelaLoginController {
 
     @Autowired
     private LoginServiceNova loginService;
+    @Autowired
+    private JogadorServiceNova jogadorService;
+    @Autowired
+    private DigimonServiceNova digimonService;
 
     @PostMapping("/autenticar")
     public ResponseEntity<?> autenticar(@RequestBody RequestAutenticarUsuario request) {
@@ -33,9 +40,29 @@ public class TelaLoginController {
         }
     }
 
+    @PostMapping("/verificaPrimeiroAcesso")
+    public ResponseEntity<?> verificaPrimeiroAcesso(@RequestBody RequestVerificaPrimeiroAcesso request) {
+        try {
+            int idJogador = jogadorService.getIdByUsuario(loginService.decryptUsuario(request.getUsuario()));
+            boolean primeiroAcesso = digimonService.getDigimonByIdJogador(idJogador);
+            if(!primeiroAcesso) {
+                return ResponseEntity.ok(Map.of("primeiroAcesso", true));
+            } else {
+                return ResponseEntity.ok(Map.of("primeiroAcesso", false));
+            }
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
     @GetMapping("/encryptUsuario/{usuario}")
     public ResponseEntity<?> encryptUsuario(@PathVariable("usuario") String usuario) {
         return ResponseEntity.ok(Map.of("usuario", loginService.encryptUsuario(usuario)));
+    }
+
+    @GetMapping("/decryptUsuario/{usuario}")
+    public ResponseEntity<?> decryptUsuario(@PathVariable("usuario") String usuario) {
+        return ResponseEntity.ok(Map.of("usuario", loginService.decryptUsuario(usuario)));
     }
 
 }
