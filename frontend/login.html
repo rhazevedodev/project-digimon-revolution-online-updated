@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de Autenticação</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylesLogin.css">
     <script defer src="./scripts/newLogin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -19,6 +19,8 @@
             <label for="password">Senha</label>
             <input type="password" id="password" name="password" required>
             <button type="submit">Entrar</button>
+            <a href="/recuperar-senha" class="forgot-password">Esqueceu sua senha?</a>
+            <a href="./cadastro.html" class="forgot-password">Novo por aqui? Crie sua conta.</a>
         </form>
         <p id="error-message" class="error-message"></p>
     </div>

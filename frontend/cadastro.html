@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Autenticação</title>
+    <link rel="stylesheet" href="css/stylesLogin.css">
+    <script defer src="./scripts/cadastroJogador.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="background"></div>
+    <h1 class="title">Digimon Revolution Online</h1>
+    <div class="login-container">
+        <h2>Cadastro</h2>
+        <form id="loginForm">
+            <label for="username">Usuário</label>
+            <input type="text" id="username" name="username" value="rafael1" required>
+            
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" value="a@gmail.com" required>
+            
+            <label for="birthdate">Data de Nascimento</label>
+            <input type="date" id="birthdate" name="birthdate" value = "2020-10-10" required>
+            
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" value = "123456" required>
+
+            <label for="confirm-password">Confirmar Senha</label>
+            <input type="password" id="confirm-password" name="confirm-password" value = "123456" required>
+            
+            <button type="submit">Cadastrar</button>
+        </form>
+        <p id="error-message" class="error-message"></p>
+    </div>
+    
+</body>
+</html>
