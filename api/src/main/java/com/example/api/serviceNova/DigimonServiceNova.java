@@ -53,4 +53,8 @@ public class DigimonServiceNova {
         return EnumDigimonRookie.getIdByDescricao(descricao);
     }
 
+    public boolean getNomeDigimon(String nomeDigimon){
+        return digimonRepository.existsByNome(nomeDigimon);
+    }
+
 }

@@ -75,8 +75,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const nickname = nicknameInput.value.trim();
         if (nickname) {
             nicknameModal.style.display = "none";
-            showCustomAlert(`Você escolheu ${chosenDigimon} e o apelidou de ${nickname}!`);
             localStorage.setItem('nickname', nickname);
+            showCustomAlert(`Você escolheu ${chosenDigimon} e o apelidou de ${nickname}!`);
             selecionarDigimon();
         } else {
             showCustomAlert('Por favor, insira um apelido para seu Digimon.');
@@ -121,19 +121,13 @@ document.addEventListener("DOMContentLoaded", function () {
         */
 
     async function selecionarDigimon() {
-        //const decryptingUsuario = localStorage.getItem('usuario');
-
         try {
-            // Espera o resultado da função decryptUsuario
-            //const nomeUsuario = await decryptUsuario(decryptingUsuario);
-
-            // Dados que serão enviados no corpo da requisição
             const requestBody = {
                 "nomeUsuario": localStorage.getItem('usuario'),
                 "nomeDigimon": localStorage.getItem('chosenDigimon'),
                 "apelidoDigimon": localStorage.getItem('nickname')
             };
-
+    
             const requestOptions = {
                 method: 'POST',
                 headers: {
@@ -141,37 +135,41 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify(requestBody)
             };
-
-            fetch(apiURL, requestOptions)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro na rede, status: ' + response.status);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Redirecionar para outra página ou realizar outra ação
-                    localStorage.removeItem('chosenDigimon');
-                    localStorage.removeItem('nickname');
-
-                    window.location.href = 'continuarJornada.html';
-                    console.log("DIGIMON CADASTRADO COM SUCESSO");
-                })
-                .catch(error => {
-                    console.log("ERRO SELECAO DIGIMON: " + error);
-                });
+    
+            const response = await fetch(apiURL, requestOptions);
+            const data = await response.json();
+    
+            if (!response.ok) {
+                // Verifica se a resposta contém a chave "erro"
+                if (data.erro) {
+                    throw new Error(data.erro);
+                } else {
+                    throw new Error('Erro na rede, status: ' + response.status);
+                }
+            }
+    
+            // Se o cadastro for bem-sucedido, limpa os dados e redireciona
+            localStorage.removeItem('chosenDigimon');
+            localStorage.removeItem('nickname');
+            
+    
+            window.location.href = 'continuarJornada.html';
+            console.log("DIGIMON CADASTRADO COM SUCESSO");
+    
         } catch (error) {
+            // Exibe a mensagem de erro utilizando o displayError
             displayError('Erro ao selecionar Digimon', error.message);
         }
     }
-
+    
     function displayError(title, message) {
         Swal.fire({
-            title: 'Erro!',
-            text: `${title}: ${message}`,
+            title: title,
+            text: message,
             icon: 'error',
             confirmButtonText: 'Tentar novamente'
         });
     }
+    
 
 });

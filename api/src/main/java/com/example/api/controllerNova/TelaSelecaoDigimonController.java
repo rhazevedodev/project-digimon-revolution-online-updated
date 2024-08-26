@@ -3,6 +3,7 @@ package com.example.api.controllerNova;
 import com.example.api.model.entity.Digimon;
 import com.example.api.model.request.RequestSelecaoInicial;
 import com.example.api.modelNova.requests.RequestSelecaoDigimon;
+import com.example.api.modelNova.responses.ResponseError;
 import com.example.api.service.DigimonService;
 import com.example.api.service.JogadorService;
 import com.example.api.serviceNova.DigimonServiceNova;
@@ -12,6 +13,7 @@ import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,7 +44,11 @@ public class TelaSelecaoDigimonController {
             Digimon digimonSelecionado = new Digimon();
             digimonSelecionado.setIdJogador((long) jogadorService.getIdByUsuario(loginService.decryptUsuario(request.getNomeUsuario())));
             digimonSelecionado.setIdRookie(Integer.parseInt(digimonService.getIdByDescricao(request.getNomeDigimon())));
-            digimonSelecionado.setNome(request.getApelidoDigimon());
+            if(digimonService.getNomeDigimon(request.getApelidoDigimon())){
+                return new ResponseEntity<>(new ResponseError("Esse apelido de digimon já foi escolhido, escolha outro!"), HttpStatus.BAD_REQUEST);
+            } else {
+                digimonSelecionado.setNome(request.getApelidoDigimon());
+            }
 
             Digimon novoDigimon = digimonService.selecionarDigimon(digimonSelecionado);
             logger.info("Digimon selecionado com sucesso para o usuário: {}", request.getNomeUsuario());

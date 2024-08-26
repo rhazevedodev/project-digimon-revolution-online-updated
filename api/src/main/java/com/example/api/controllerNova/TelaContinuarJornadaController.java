@@ -1,6 +1,7 @@
 package com.example.api.controllerNova;
 
 import com.example.api.service.DigimonService;
+import com.example.api.serviceNova.DigimonServiceNova;
 import com.example.api.serviceNova.LoginServiceNova;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +19,7 @@ public class TelaContinuarJornadaController {
     private static final Logger logger = LoggerFactory.getLogger(TelaContinuarJornadaController.class);
 
     @Autowired
-    private DigimonService digimonService;
+    private DigimonServiceNova digimonService;
     @Autowired
     private LoginServiceNova loginService;
 
