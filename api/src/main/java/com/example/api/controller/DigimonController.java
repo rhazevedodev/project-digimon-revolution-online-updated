@@ -30,15 +30,15 @@ public class DigimonController {
         }
     }
 
-    @GetMapping("/obterDigimons/{nomeUsuario}")
-    public ResponseEntity<?> getDigimonByUsuario(@PathVariable String nomeUsuario) {
-        try {
-            System.out.println("getDigimonByUsuario");
-            return ResponseEntity.ok(digimonService.getDigimonByUsuario(nomeUsuario));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
+//    @GetMapping("/obterDigimons/{nomeUsuario}")
+//    public ResponseEntity<?> getDigimonByUsuario(@PathVariable String nomeUsuario) {
+//        try {
+//            System.out.println("getDigimonByUsuario");
+//            return ResponseEntity.ok(digimonService.getDigimonByUsuario(nomeUsuario));
+//        } catch (Exception e) {
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//    }
 
     @PostMapping("/selecaoInicialv2")
     public ResponseEntity<?> selecionarDigimonv2(@RequestBody RequestSelecaoInicial request) {

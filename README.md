@@ -17,7 +17,7 @@ Este projeto é um jogo de navegador baseado no universo de Digimon. O objetivo 
 - [x] **Descrição Detalhada:** Fornece descrições detalhadas de cada Digimon para ajudar na escolha.
 
 ### 3. Sistema de Continuar Jornada
-- [ ] **Continuar Jornada:** Permite que um jogador já cadastrado e que já tenha passado pela etapa de escolha inicial possa selecionar um digimon anteriormente criado para continuar sua jornada.
+- [x] **Continuar Jornada:** Permite que um jogador já cadastrado e que já tenha passado pela etapa de escolha inicial possa selecionar um digimon anteriormente criado para continuar sua jornada.
 
 ### 4. Sistema de Caçadas
 - [x] **Caçar:** Permite que o jogador entre em uma caçada com tempo pré determinado em busca de recompensas pré definidas aleatoriamente. EXPERIÊNCIA ++

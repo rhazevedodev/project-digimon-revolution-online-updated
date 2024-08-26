@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Armazena o Digimon escolhido
             chosenDigimon = button.textContent.split(' ')[1];
             localStorage.setItem('chosenDigimon', chosenDigimon);
-            
+
             // Exibe o modal de apelido
             nicknameModal.style.display = "block";
         });
@@ -101,8 +101,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    const apiURL = 'http://localhost:8080/api/digimon/selecaoInicialv2';
-    
+    const apiURL = 'http://localhost:8080/api/digimon/selecaoDigimon';
+
+    /*
     async function decryptUsuario(decryptingUsuario) {
         const decryptUrl = `http://localhost:8080/api/login/decryptUsuario/${decryptingUsuario}`;
         try {
@@ -117,17 +118,18 @@ document.addEventListener("DOMContentLoaded", function () {
             displayError('Erro ao decriptografar usuário', error.message);
         }
     }
+        */
 
     async function selecionarDigimon() {
-        const decryptingUsuario = localStorage.getItem('usuario');
+        //const decryptingUsuario = localStorage.getItem('usuario');
 
         try {
             // Espera o resultado da função decryptUsuario
-            const nomeUsuario = await decryptUsuario(decryptingUsuario);
+            //const nomeUsuario = await decryptUsuario(decryptingUsuario);
 
             // Dados que serão enviados no corpo da requisição
             const requestBody = {
-                "nomeUsuario": nomeUsuario,
+                "nomeUsuario": localStorage.getItem('usuario'),
                 "nomeDigimon": localStorage.getItem('chosenDigimon'),
                 "apelidoDigimon": localStorage.getItem('nickname')
             };
@@ -162,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
             displayError('Erro ao selecionar Digimon', error.message);
         }
     }
-    
+
     function displayError(title, message) {
         Swal.fire({
             title: 'Erro!',

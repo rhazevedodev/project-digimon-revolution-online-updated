@@ -1,76 +1,75 @@
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById('cardsContainer');
+    const usuario = localStorage.getItem('usuario');
+    const urlApi = `http://localhost:8080/api/continuarJornada/obterDigimons/${usuario}`;
 
-    const urlApi = 'http://localhost:8080/api/digimon/obterDigimons/' + localStorage.getItem('usuario');
+    const digimonImages = {
+        1: './images/rookies/agumon.jpg',
+        2: './images/rookies/gabumon.jpg',
+        3: './images/rookies/piyomon.jpg',
+        4: './images/rookies/tentomon.jpg',
+        5: './images/rookies/palmon.jpg',
+        6: './images/rookies/gomamon.jpg',
+        7: './images/rookies/patamon.jpg',
+        default: './images/rookies/default.jpg',
+    };
 
-    fetch(urlApi)
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(digimon => {
-                console.log(digimon);
-                const card = document.createElement('div');
-                card.className = 'card';
+    function getImageSrc(idRookie) {
+        return digimonImages[idRookie] || digimonImages.default;
+    }
 
-                const idRookie = digimon.idRookie;
-                let imgSrc;
+    function createDigimonCard(digimon) {
+        const card = document.createElement('div');
+        card.className = 'card';
 
-                switch (idRookie) {
-                    case 1:
-                        imgSrc = './images/rookies/agumon.jpg';
-                        break;
-                    case 2:
-                        imgSrc = './images/rookies/gabumon.jpg';
-                        break;
-                    case 3:
-                        imgSrc = './images/rookies/piyomon.jpg';
-                        break;
-                    case 4:
-                        imgSrc = './images/rookies/tentomon.jpg';
-                        break;
-                    case 5:
-                        imgSrc = './images/rookies/palmon.jpg';
-                        break;
-                    case 6:
-                        imgSrc = './images/rookies/gomamon.jpg';
-                        break;
-                    case 7:
-                        imgSrc = './images/rookies/patamon.jpg';
-                        break;
-                    default:
-                        imgSrc = './images/rookies/default.jpg'; // Caminho para uma imagem padrão caso o idRookie não seja reconhecido
-                }
+        const imgSrc = getImageSrc(digimon.idRookie);
 
-                card.innerHTML = `
-                    <img src="${imgSrc}" alt="${digimon.nome}">
-                    <div class="card-title">${digimon.nome}</div>
-                    <p>Nível: ${digimon.nivel}</p>
-                    <p>Bits: ${digimon.bits}</p>
-                    <div hidden>${digimon.id}</div>
-                    <button class="card-btn" data-id="${digimon.id}">Continuar</button>
-                `;
-                container.appendChild(card);
-            });
+        card.innerHTML = `
+            <img src="${imgSrc}" alt="${digimon.nome}">
+            <div class="card-title">${digimon.nome}</div>
+            <p>Nível: ${digimon.nivel}</p>
+            <p>Bits: ${digimon.bits}</p>
+            <div hidden>${digimon.id}</div>
+            <button class="card-btn" data-id="${digimon.id}">Continuar</button>
+        `;
 
-            // Adiciona o event listener para os botões "Continuar"
-            const continueButtons = document.querySelectorAll('.card-btn');
-            continueButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const id = this.getAttribute('data-id');
-                    console.log('ID do Digimon:', id);
-                    localStorage.setItem('idDigimon', id);
-                    // Redirecionar para outra página ou realizar outra ação
-                    window.location.href = 'status.html';
-                });
-            });
-        })
-        .catch(error => {
-            console.error('Erro ao carregar os Digimons:', error);
+        card.querySelector('.card-btn').addEventListener('click', function () {
+            handleContinueButtonClick(digimon.id);
         });
+
+        return card;
+    }
+
+    function handleContinueButtonClick(id) {
+        console.log('ID do Digimon:', id);
+        localStorage.setItem('idDigimon', id);
+        window.location.href = 'status.html';
+    }
+
+    function fetchDigimons() {
+        fetch(urlApi)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erro na requisição: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                data.forEach(digimon => {
+                    const card = createDigimonCard(digimon);
+                    container.appendChild(card);
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao carregar os Digimons:', error);
+            });
+    }
+
+    fetchDigimons();
 });
 
 function logout() {
-    // Lógica para realizar logout (exemplo)
     localStorage.removeItem('usuario');
     localStorage.removeItem('token');
-    window.location.href = 'login.html'; // Redireciona para a página de login
+    window.location.href = 'login.html';
 }

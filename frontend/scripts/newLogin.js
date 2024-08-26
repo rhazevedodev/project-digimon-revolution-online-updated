@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function verificarPrimeiroAcesso(usuario) {
         try {
-            const data = await fetchAPI(firstAccessURL, 'POST', usuario);
+            const data = await fetchAPI(firstAccessURL, 'POST', { usuario });
             const mensagem = data.primeiroAcesso 
                 ? 'Este é o seu primeiro acesso. Aproveite!' 
                 : 'Bom vê-lo novamente!';
