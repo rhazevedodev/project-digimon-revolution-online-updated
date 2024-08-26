@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/api/login")
+//@RestController
+//@RequestMapping("/api/login")
 public class LoginController {
 
     @Autowired
