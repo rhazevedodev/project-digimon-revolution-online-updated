@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     atributo3_conhecimento: data.atributo3_conhecimento,
                     atributo4_agilidade: data.atributo4_agilidade,
                     atributo0_vida: data.atributo0_vida,
+                    pontosEnergia: data.pontosEnergia,
                     experiencia: data.experiencia,
                     experienciaNecessaria: data.experienciaNecessaria,
                     bits_obtidos: data.bits_obtidos,
@@ -66,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 atualizarEstatisticas();
                 displayPremiumContent(dataInformacoesStatus);
                 displayLifeBar();
+                displayEnergyBar();
             })
             .catch(error => {
                 console.error('Erro ao fazer requisição:', error);
@@ -158,6 +160,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 `;
         }
 
+    }
+
+
+    function displayEnergyBar() {
+        var energiaTotal = 100;
+        const energiaAtual = dataInformacoesStatus.pontosEnergia; // Pontos de energia atuais
+        const energiaMaxima = energiaTotal; // Pontos de energia máximos
+
+
+        // Calcula a largura da barra de vida com base na porcentagem
+        const energyBarWidth = (energiaAtual / energiaMaxima) * 100;
+        const energyBar = document.getElementById('energy-bar');
+        energyBar.style.width = energyBarWidth + '%';
+
+        const energyBarText = document.getElementById('energy-bar-text');
+        energyBarText.textContent = `${energiaAtual}/${energiaMaxima}`;
+
+        /*
+                document.getElementById('life-bar').style.width = porcentagemVida + '%';
+                document.getElementById('life-bar-text').textContent = `${vidaAtual}/${vidaMaxima}`;
+                */
     }
 
 

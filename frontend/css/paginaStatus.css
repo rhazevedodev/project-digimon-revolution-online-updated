@@ -502,40 +502,7 @@ body {
     cursor: pointer;
 }
 
-/* Garantir que o container do log de invasão ocupe toda a largura disponível */
-#log-invasao-container {
-    width: 100%;
-    box-sizing: border-box;
-    /* Inclui padding e borda na largura total */
-}
-
-/* Garantir que a tabela ocupe toda a largura disponível */
-#combateLogTable {
-    width: 100%;
-    border-collapse: collapse;
-    /* Remove espaços entre as células da tabela */
-}
-
-#combateLogTable th,
-#combateLogTable td {
-    width: 100%;
-    padding: 8px;
-    /* Adicionar algum preenchimento para tornar o texto mais legível */
-    text-align: center;
-    /* Centralizar o texto */
-}
-
-/* Alternar cores para as linhas do log de combate */
-.table-row-even {
-    background-color: #f2f2f2;
-    /* Cor para linhas pares */
-}
-
-.table-row-odd {
-    background-color: #ffffff;
-    /* Cor para linhas ímpares */
-}
-
+/* Estilização da barra de vida */
 #life-bar-container {
     width: 100%;
     background-color: #ccc;
@@ -556,6 +523,7 @@ body {
     /* Centraliza verticalmente */
 }
 
+/* Estilização da barra de vida */
 #life-bar {
     height: 100%;
     width: 0%;
@@ -567,7 +535,55 @@ body {
     /* Animação para a mudança de largura */
 }
 
+/* Estilização do texto da barra de vida */
 #life-bar-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: white;
+    /* Cor do texto */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    /* Para destacar o texto */
+}
+
+/* Estilização da barra de vida */
+#energy-bar-container {
+    width: 100%;
+    background-color: #ccc;
+    /* Cor do fundo da barra */
+    border: 1px solid #000;
+    /* Borda da barra */
+    border-radius: 5px;
+    height: 20px;
+    /* Altura da barra */
+    margin-top: 0px;
+    /* Espaçamento superior */
+    position: relative;
+    /* Necessário para posicionar o texto */
+    display: flex;
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+}
+
+/* Estilização da barra de vida */
+#energy-bar {
+    height: 100%;
+    width: 0%;
+    /* Início com a largura 0, será ajustada via JavaScript */
+    background-color: rgb(253, 194, 0);
+    /* Cor da barra de vida */
+    border-radius: 5px;
+    transition: width 0.3s;
+    /* Animação para a mudança de largura */
+}
+
+/* Estilização do texto da barra de vida */
+#energy-bar-text {
     position: absolute;
     width: 100%;
     text-align: center;
