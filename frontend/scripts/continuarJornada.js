@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
         card.innerHTML = `
             <img src="${imgSrc}" alt="${digimon.nome}">
             <div class="card-title">${digimon.nome}</div>
+            <p>Energia: ${digimon.pontosEnergia}</p>
+            <p>Vida: ${digimon.atributos.pontosVida}</p>
             <p>Nível: ${digimon.nivel}</p>
             <p>Bits: ${digimon.bits}</p>
             <div hidden>${digimon.id}</div>

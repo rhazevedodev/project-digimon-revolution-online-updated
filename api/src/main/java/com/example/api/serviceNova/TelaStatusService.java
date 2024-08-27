@@ -1,4 +1,4 @@
-package com.example.api.service.telas;
+package com.example.api.serviceNova;
 
 import com.example.api.enumerator.*;
 import com.example.api.model.entity.Digimon;
