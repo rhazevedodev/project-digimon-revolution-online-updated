@@ -521,6 +521,7 @@ body {
     /* Centraliza horizontalmente */
     align-items: center;
     /* Centraliza verticalmente */
+    margin-bottom: 2px;
 }
 
 /* Estilização da barra de vida */
