@@ -43,6 +43,7 @@ body {
     background: #c82333;
 }
 
+/*
 .cards-container {
     display: flex;
     flex-wrap: wrap;
@@ -50,53 +51,75 @@ body {
     justify-content: center;
     padding: 1rem 0;
 }
+    */
 
+/* Estilização geral do container dos cards */
+#cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+
+/* Estilização dos cards */
 .card {
-    background: #fff;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    flex-basis: calc(33.333% - 1rem); /* Cada card ocupará 33.333% do espaço menos 1rem de margem */
-    flex-grow: 1;
-    flex-shrink: 1;
+    padding: 16px;
+    margin: 16px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    max-width: 250px;
     text-align: center;
-    padding: 1rem;
-    overflow: hidden;
-    box-sizing: border-box;
 }
 
+/* Estilização da imagem do Digimon */
 .card img {
-    width: 100%;
-    height: 100%;
-    max-height: 200px;
-    object-fit: cover;
-    margin-bottom: 1rem;
+    border-radius: 8px;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 16px;
 }
 
+/* Título do card */
 .card-title {
-    margin: 0.5rem 0;
-    font-size: 1.2rem;
+    font-size: 1.5em;
     font-weight: bold;
+    margin-bottom: 12px;
 }
 
+/* Estilização dos textos de atributos */
 .card p {
-    margin: 0.5rem 0;
-    font-size: 1rem;
-    color: #555;
+    font-size: 1em;
+    margin: 8px 0;
+    padding: 6px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+
+/* Botão de ação */
 .card-btn {
-    background: #007bff;
+    margin-top: 12px;
+    padding: 15px 20px;
+    background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 18px;
     cursor: pointer;
-    font-size: 1rem;
-    margin-top: auto;
+    transition: background-color 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
 }
 
 .card-btn:hover {
-    background: #0056b3;
+    background-color: #0056b3;
 }
 
 /* Responsividade */
@@ -111,3 +134,18 @@ body {
         flex-basis: 100%; /* Em telas pequenas, os cards ocuparão 100% do espaço */
     }
 }
+
+/* Estilização individual dos atributos */
+.card p::before {
+    font-family: 'Font Awesome 5 Free';
+    margin-right: 8px;
+    font-weight: 900; /* Necessário para exibir os ícones da Font Awesome */
+}
+
+/* Ícones dos atributos - nao funcionou */
+/*
+.card p:nth-child(2)::before { content: "\f0e7"; } Energia - Ícone de raio 
+.card p:nth-child(3)::before { content: "\f004"; } Vida - Ícone de coração 
+.card p:nth-child(4)::before { content: "\f091"; } Nível - Ícone de troféu 
+.card p:nth-child(5)::before { content: "\f0d6"; } Bits - Ícone de moeda 
+*/
