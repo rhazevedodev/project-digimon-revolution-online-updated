@@ -1,0 +1,57 @@
+Cadastro com Dados Válidos
+
+1.Cadastro com Dados Válidos OK 30/08/2024
+Objetivo: Verificar se o cadastro é realizado com sucesso quando todos os dados fornecidos são válidos.
+Dados de Entrada: Nome, e-mail, senha e outros campos obrigatórios preenchidos corretamente.
+Resultado Esperado: O jogador é cadastrado com sucesso, e uma mensagem de confirmação é exibida.
+
+
+2.Cadastro com Senha e Confirmar Senha Diferentes //FRONTEND
+Objetivo: Garantir que o sistema rejeita o cadastro quando a senha e a confirmação da senha não coincidem.
+Dados de Entrada: Nome, e-mail, senha e confirmação de senha diferentes.
+Resultado Esperado: O sistema exibe uma mensagem de erro indicando que as senhas não coincidem.
+
+
+3.Cadastro com E-mail Inválido OK 30/08/2024
+Objetivo: Verificar se o sistema valida corretamente o formato do e-mail.
+Dados de Entrada: Nome, e-mail inválido (ex: usuario@dominio), senha e confirmação de senha válidas.
+Resultado Esperado: O sistema exibe uma mensagem de erro indicando que o e-mail é inválido.
+
+
+4.Cadastro com Senha Muito Curta OK 30/08/2024
+Objetivo: Verificar se o sistema impõe uma regra de comprimento mínimo para a senha.
+Dados de Entrada: Nome, e-mail, senha com menos de 6 caracteres e confirmação de senha.
+Resultado Esperado: O sistema exibe uma mensagem de erro indicando que a senha é muito curta.
+
+
+5.Cadastro com Campos Obrigatórios Faltando OK 30/08/2024
+Objetivo: Garantir que o sistema não permita o cadastro quando campos obrigatórios estão ausentes.
+Dados de Entrada: Nome, e-mail ausente, senha e confirmação de senha.
+Resultado Esperado: O sistema exibe uma mensagem de erro indicando que o e-mail é obrigatório.
+
+
+6.Cadastro com Dados Duplicados OK 30/08/2024
+Objetivo: Verificar se o sistema lida corretamente com tentativas de cadastro com um e-mail já existente.
+Dados de Entrada: Nome, e-mail já cadastrado, senha e confirmação de senha.
+Resultado Esperado: O sistema exibe uma mensagem de erro indicando que o e-mail já está em uso.
+
+7.Cadastro com Dados Inválidos em Campos Não Obrigatórios // NAO NECESSARIO
+Objetivo: Testar a validação de campos não obrigatórios.
+Dados de Entrada: Nome, e-mail válido, dados inválidos em um campo não obrigatório, senha e confirmação de senha.
+Resultado Esperado: O sistema aceita o cadastro, mas pode exibir uma mensagem de aviso para o campo inválido.
+
+8.Cadastro com Formulário Enviado Sem Preencher OK 30/08/2024
+Objetivo: Garantir que o sistema exiba mensagens de erro quando o formulário é enviado sem preencher os campos obrigatórios.
+Dados de Entrada: Nenhum dado preenchido.
+Resultado Esperado: O sistema exibe mensagens de erro para todos os campos obrigatórios.
+
+9.Cadastro com XSS e SQL Injection PENDENTE
+Objetivo: Verificar a segurança do sistema contra ataques de injeção de código e SQL.
+Dados de Entrada: Dados contendo scripts maliciosos ou comandos SQL.
+Resultado Esperado: O sistema deve rejeitar entradas maliciosas e não executar nenhum código indesejado.
+Cadastro com Entrada Longa
+
+10.Cadastro com Entrada Longa OK 30/08/2024
+Objetivo: Testar a limitação do comprimento dos dados.
+Dados de Entrada: Nome, e-mail e senha com entradas muito longas.
+Resultado Esperado: O sistema deve truncar ou rejeitar entradas que excedem o limite máximo permitido.
