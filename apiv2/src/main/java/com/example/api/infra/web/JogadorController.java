@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controlador REST para operações relacionadas a jogadores.
+ */
 @RestController
 @RequestMapping("/jogadores")
 public class JogadorController {
@@ -21,10 +24,22 @@ public class JogadorController {
 
     private final CadastrarJogadorUseCase cadastrarJogadorUseCase;
 
+    /**
+     * Construtor da classe JogadorController.
+     *
+     * @param cadastrarJogadorUseCase Caso de uso para cadastrar jogadores.
+     */
     public JogadorController(CadastrarJogadorUseCase cadastrarJogadorUseCase) {
         this.cadastrarJogadorUseCase = cadastrarJogadorUseCase;
     }
 
+    /**
+     * Endpoint para cadastrar um novo jogador.
+     *
+     * @param jogador Objeto Jogador contendo os dados do jogador a ser cadastrado.
+     * @param request Objeto HttpServletRequest contendo informações da requisição HTTP.
+     * @return Um ResponseEntity contendo o jogador cadastrado e o status HTTP CREATED, ou uma mensagem de erro e o status HTTP BAD\_REQUEST.
+     */
     @PostMapping("/cadastrar")
     public ResponseEntity<?> cadastrarJogador(@Valid @RequestBody Jogador jogador, HttpServletRequest request){
         logger.info("Requisição para cadastrar jogador recebida: {}", jogador);

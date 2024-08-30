@@ -6,6 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * Classe responsável por executar o caso de uso de cadastro de jogador.
+ */
 @Component
 public class CadastrarJogadorUseCase {
 
@@ -13,10 +16,21 @@ public class CadastrarJogadorUseCase {
 
     private final JogadorService jogadorService;
 
+    /**
+     * Construtor da classe CadastrarJogadorUseCase.
+     *
+     * @param jogadorService Serviço de jogador utilizado para realizar o cadastro.
+     */
     public CadastrarJogadorUseCase(JogadorService jogadorService) {
         this.jogadorService = jogadorService;
     }
 
+    /**
+     * Método que executa o caso de uso para cadastrar um jogador.
+     *
+     * @param jogador Objeto Jogador contendo os dados do jogador a ser cadastrado.
+     * @return O objeto Jogador cadastrado.
+     */
     public Jogador executar(Jogador jogador) {
         // Pode ter lógica adicional aqui, como conversões de DTO, etc.
         logger.info("Executando caso de uso para cadastrar jogador: {}", jogador);
@@ -24,6 +38,4 @@ public class CadastrarJogadorUseCase {
         logger.info("Jogador cadastrado com sucesso: {}", novoJogador);
         return novoJogador;
     }
-
-
 }

@@ -22,12 +22,12 @@ public class JogadorService {
     @Transactional
     public Jogador cadastrarJogador(Jogador jogador) {
         // Lógica de validação e regras de negócio
-        logger.info("Cadastrando jogador com validações de negócio: {}", jogador);
+        logger.info("Cadastrando jogador com validações de negócio: nome={}, email={}", jogador.getNome(), jogador.getEmail());
         if(emailEmUso(jogador.getEmail())) {
             logger.warn("Tentativa de cadastro com email já em uso: {}", jogador.getEmail());
             throw new RuntimeException("Email já está em uso");
         }
-        logger.info("Criptografando a senha do jogador antes de salvar", jogador);
+        logger.info("Criptografando a senha do jogador antes de salvar");
         String senhaCriptografada = passwordEncoder.encode(jogador.getSenha());
         jogador.setSenha(senhaCriptografada);
         return jogadorRepository.save(jogador);
@@ -37,5 +37,4 @@ public class JogadorService {
         // Lógica para verificar se o email já está em uso
         return jogadorRepository.existsByEmail(email);
     }
-
 }
