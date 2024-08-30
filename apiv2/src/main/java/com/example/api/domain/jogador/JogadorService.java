@@ -3,6 +3,7 @@ package com.example.api.domain.jogador;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class JogadorService {
@@ -15,6 +16,7 @@ public class JogadorService {
         this.jogadorRepository = jogadorRepository;
     }
 
+    @Transactional
     public Jogador cadastrarJogador(Jogador jogador) {
         // Lógica de validação e regras de negócio
         logger.info("Cadastrando jogador com validações de negócio: {}", jogador);
