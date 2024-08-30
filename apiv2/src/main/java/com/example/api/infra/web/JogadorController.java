@@ -2,8 +2,6 @@ package com.example.api.infra.web;
 
 import com.example.api.app.jogador.CadastrarJogadorUseCase;
 import com.example.api.domain.jogador.Jogador;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -42,7 +40,6 @@ public class JogadorController {
      * @param request Objeto HttpServletRequest contendo informações da requisição HTTP.
      * @return Um ResponseEntity contendo o jogador cadastrado e o status HTTP CREATED, ou uma mensagem de erro e o status HTTP BAD\_REQUEST.
      */
-
     @PostMapping("/cadastrar")
     public ResponseEntity<?> cadastrarJogador(@Valid @RequestBody Jogador jogador, HttpServletRequest request){
         logger.info("Requisição para cadastrar jogador recebida: {}", jogador);
