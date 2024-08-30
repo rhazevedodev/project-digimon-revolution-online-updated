@@ -1,4 +1,4 @@
-package com.example.api.infra.jogador;
+package com.example.api.infra.persistence;
 
 import com.example.api.domain.jogador.Jogador;
 import com.example.api.domain.jogador.JogadorRepository;
@@ -22,5 +22,10 @@ public class JogadorRepositoryImpl implements JogadorRepository {
         // Lógica para salvar no banco de dados
         logger.info("Salvando jogador: {}", jogador);
         return jpaJogadorRepository.save(jogador);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return jpaJogadorRepository.existsByEmail(email);
     }
 }

@@ -27,7 +27,7 @@ public class JogadorService {
 
     private boolean emailEmUso(String email) {
         // Lógica para verificar se o email já está em uso
-        return false;
+        return jogadorRepository.existsByEmail(email);
     }
 
 }
