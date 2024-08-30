@@ -40,7 +40,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/jogadores/cadastrar").permitAll() // Permite acesso público à rota de cadastro
-                                .anyRequest().authenticated() // Requer autenticação para qualquer outra rota
+                                .anyRequest().permitAll() // Requer autenticação para qualquer outra rota
                 )
                 .formLogin(Customizer.withDefaults()) // Permite acesso ao formulário de login com configurações padrão
                 .logout(Customizer.withDefaults()); // Permite logout com configurações padrão
