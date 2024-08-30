@@ -40,6 +40,8 @@ public class Digimon {
 
     private int pontosExperiencia;
 
+    private int pontosEnergia = 100;
+
     @Embedded
     private Atributos atributos;
 
@@ -57,7 +59,7 @@ public class Digimon {
     public Digimon() {
     }
 
-    public Digimon(Long id, Long idJogador, int idRookie, int idChampion, int idUltimate, int idMega, String nome, int nivel, int bits, int diamantes, int pontosExperiencia, Atributos atributos, AtributosElementos atributosElementos, LocalDate dataCadastro, LocalDateTime dataUltimaAlteracao, Boolean bonusExperienciaAtivo, Boolean bonusBitsAtivo) {
+    public Digimon(Long id, Long idJogador, int idRookie, int idChampion, int idUltimate, int idMega, String nome, int nivel, int bits, int diamantes, int pontosExperiencia, int pontosEnergia, Atributos atributos, AtributosElementos atributosElementos, LocalDate dataCadastro, LocalDateTime dataUltimaAlteracao, Boolean bonusExperienciaAtivo, Boolean bonusBitsAtivo) {
         this.id = id;
         this.idJogador = idJogador;
         this.idRookie = idRookie;
@@ -69,6 +71,7 @@ public class Digimon {
         this.bits = bits;
         this.diamantes = diamantes;
         this.pontosExperiencia = pontosExperiencia;
+        this.pontosEnergia = pontosEnergia;
         this.atributos = atributos;
         this.atributosElementos = atributosElementos;
         this.dataCadastro = dataCadastro;
@@ -83,6 +86,14 @@ public class Digimon {
 
     public void setBonusExperienciaAtivo(boolean bonusExperienciaAtivo) {
         this.bonusExperienciaAtivo = bonusExperienciaAtivo;
+    }
+
+    public int getPontosEnergia() {
+        return pontosEnergia;
+    }
+
+    public void setPontosEnergia(int pontosEnergia) {
+        this.pontosEnergia = pontosEnergia;
     }
 
     public boolean isBonusBitsAtivo() {

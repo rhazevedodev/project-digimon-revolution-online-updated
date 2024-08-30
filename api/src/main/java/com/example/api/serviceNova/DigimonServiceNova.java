@@ -1,7 +1,9 @@
 package com.example.api.serviceNova;
 
 import com.example.api.enumerator.EnumDigimonRookie;
+import com.example.api.enumerator.EnumElementos;
 import com.example.api.model.Atributos;
+import com.example.api.model.AtributosElementos;
 import com.example.api.model.entity.Digimon;
 import com.example.api.repository.DigimonRepository;
 import com.example.api.service.JogadorService;
@@ -35,16 +37,21 @@ public class DigimonServiceNova {
         if (digimonSelecionado.getIdRookie() <= 0) {
             throw new RuntimeException("o parametro idRookie precisa ser maior que 0");
         }
-//        if (digimonRepository.existsByNome(digimonSelecionado.getNome())) {
-//            logService.logAction("Digimon selecionado - Erro", "Esse nome de digimon já foi escolhido");
-//            throw new RuntimeException("Esse nome de digimon já foi escolhido");
-//        }
 
         EnumDigimonRookie rookie = EnumDigimonRookie.getEnumById(digimonSelecionado.getIdRookie());
         String nomeJogador = jogadorService.getNomeJogador(digimonSelecionado.getIdJogador());
 
+        String elementoRookie = EnumDigimonRookie.getElementoByEnum(rookie);
+
+        int idElementoPrimitivoRookie = EnumElementos.getIdElemento(elementoRookie);
+
         Atributos atributos = new Atributos();
         digimonSelecionado.setAtributos(atributos);
+
+        AtributosElementos atributosElementos = new AtributosElementos();
+        atributosElementos.setElementoPrimitivo(idElementoPrimitivoRookie);
+        atributosElementos.setPontosElementoPrimitivo(1);
+        digimonSelecionado.setAtributosElementos(atributosElementos);
 
         return digimonRepository.save(digimonSelecionado);
     }

@@ -124,6 +124,7 @@ public class TelaStatusService {
         response.put("atributo3_conhecimento", digimon.getAtributos().getPontosConhecimento());
         response.put("atributo4_agilidade", digimon.getAtributos().getPontosAgilidade());
         response.put("atributo0_vida", digimon.getAtributos().getPontosVida());
+        response.put("pontosEnergia", digimon.getPontosEnergia());
         response.put("experiencia", digimon.getPontosExperiencia());
         response.put("experienciaNecessaria", experienciaNecessaria);
         response.put("bits_obtidos", registroConquistas.getBitsObtidos());
