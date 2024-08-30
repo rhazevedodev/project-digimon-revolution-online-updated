@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Autenticação</title>
+    <link rel="stylesheet" href="css/stylesLogin.css">
+    <script defer src="./scripts/newLogin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="background"></div>
+    <h1 class="title">Digimon Revolution Online</h1>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Usuário</label>
+            <input type="text" id="username" name="username" value="usuario1" required>
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" value="senhaSegura" required>
+            <button type="submit">Entrar</button>
+            <a href="/recuperar-senha" class="forgot-password">Esqueceu sua senha?</a>
+            <a href="./cadastro.html" class="forgot-password">Novo por aqui? Crie sua conta.</a>
+        </form>
+        <p id="error-message" class="error-message"></p>
+    </div>
+    
+</body>
+</html>
