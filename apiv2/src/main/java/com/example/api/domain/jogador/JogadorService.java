@@ -1,8 +1,8 @@
 package com.example.api.domain.jogador;
 
+import com.example.api.infra.helper.Criptografia;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,17 +15,14 @@ public class JogadorService {
     private static final Logger logger = LoggerFactory.getLogger(JogadorService.class);
 
     private final JogadorRepository jogadorRepository;
-    private final PasswordEncoder passwordEncoder;
 
     /**
      * Construtor da classe JogadorService.
      *
      * @param jogadorRepository O repositório de jogadores.
-     * @param passwordEncoder   O codificador de senhas.
      */
-    public JogadorService(JogadorRepository jogadorRepository, PasswordEncoder passwordEncoder) {
+    public JogadorService(JogadorRepository jogadorRepository) {
         this.jogadorRepository = jogadorRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     /**
@@ -43,20 +40,14 @@ public class JogadorService {
             throw new RuntimeException("Email já está em uso");
         }
         logger.info("Criptografando a senha do jogador antes de salvar");
-        String senhaCriptografada = passwordEncoder.encode(jogador.getSenha());
+        String senhaCriptografada = null;
+        try {
+            senhaCriptografada = Criptografia.encrypt3DES(jogador.getSenha());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         jogador.setSenha(senhaCriptografada);
         return jogadorRepository.save(jogador);
-    }
-
-    /**
-     * Verifica se a senha fornecida corresponde à senha codificada.
-     *
-     * @param senhaPlain      A senha em texto plano.
-     * @param senhaCodificada A senha codificada.
-     * @return true se as senhas corresponderem, false caso contrário.
-     */
-    public boolean verificarSenha(String senhaPlain, String senhaCodificada) {
-        return passwordEncoder.matches(senhaPlain, senhaCodificada);
     }
 
     /**

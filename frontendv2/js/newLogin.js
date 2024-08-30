@@ -1,15 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const apiURL = 'http://localhost:8080/api/login/autenticar';
-    const firstAccessURL = 'http://localhost:8080/api/login/verificaPrimeiroAcesso';
-    const encryptUrl = 'http://localhost:8080/api/login/encryptUsuario/';
+    const apiURL = process.env.API_URL || 'http://localhost:8080/api/login/autenticar';
+    const firstAccessURL = process.env.FIRST_ACCESS_URL || 'http://localhost:8080/api/login/verificaPrimeiroAcesso';
+    const encryptUrl = process.env.ENCRYPT_URL || 'http://localhost:8080/api/login/encryptUsuario/';
+
+    document.getElementById('loginForm').addEventListener('submit', autenticarUsuario);
 
     async function autenticarUsuario(event) {
-        event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
+        event.preventDefault();
 
         try {
-            const usuario = document.getElementById('username').value;
-            const senha = document.getElementById('password').value;
+            const usuario = document.getElementById('username').value.trim();
+            const senha = document.getElementById('password').value.trim();
+
+            if (!usuario || !senha) {
+                return displayError('Campos obrigatórios', 'Por favor, preencha todos os campos.');
+            }
 
             const data = await fetchAPI(apiURL, 'POST', { usuario, senha });
 
@@ -19,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon: 'success',
                 confirmButtonText: 'OK'
             }).then(async () => {
-                localStorage.setItem('token', data.token);
+                secureStoreToken(data.token);
                 await encryptUsuario(usuario);
                 await verificarPrimeiroAcesso(localStorage.getItem('usuario'));
             });
@@ -68,22 +74,29 @@ document.addEventListener('DOMContentLoaded', () => {
             body: body ? JSON.stringify(body) : null
         };
 
-        const response = await fetch(url, requestOptions);
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.erro || 'Erro desconhecido');
+        try {
+            const response = await fetch(url, requestOptions);
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.erro || 'Erro desconhecido');
+            }
+            return response.json();
+        } catch (error) {
+            throw new Error('Falha na conexão com o servidor.');
         }
-        return response.json();
     }
 
     function displayError(title, message) {
         Swal.fire({
-            title: 'Erro!',
-            text: `${title}: ${message}`,
+            title: title,
+            text: message,
             icon: 'error',
             confirmButtonText: 'Tentar novamente'
         });
     }
 
-    document.getElementById('loginForm').addEventListener('submit', autenticarUsuario);
+    function secureStoreToken(token) {
+        // Armazene o token de forma segura, preferencialmente em cookies com HttpOnly e Secure
+        localStorage.setItem('token', token);
+    }
 });
