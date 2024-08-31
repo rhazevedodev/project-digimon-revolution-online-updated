@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* stylesStatus.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+/* Seção de imagem e barras */
+.image-and-bars {
+    width: 10%;
+    background-color: #444;
+    color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.bars {
+    width: 100%;
+}
+
+.bar {
+    margin-bottom: 15px;
+}
+
+.bar .label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.progress {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 20px;
+    background-color: #76c7c0; /* Cor padrão */
+    border-radius: 10px;
+}
+
+.life-bar .progress-fill {
+    background-color: #ff4c4c; /* Cor da barra de vida */
+}
+
+.energy-bar .progress-fill {
+    background-color: #e98c22; /* Cor da barra de energia */
+}
+
+/* Estilo da barra lateral */
+.sidebar {
+    width: 15%; /* Ajustando a largura da sidebar */
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none; /* Remove os marcadores de lista */
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0; /* Espaçamento entre os itens */
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px 15px;
+    background-color: #007bff; /* Cor de fundo dos botões */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transição suave para hover e clique */
+}
+
+.sidebar ul li a:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
+.sidebar ul li a:active {
+    transform: scale(0.98); /* Efeito de clique */
+}
+
+/* Conteúdo principal */
+.main-content {
+    width: 75%; /* O restante da largura após a sidebar */
+    padding: 20px;
+    background-color: #f4f4f4;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.main-content section {
+    margin-bottom: 40px;
+}
+
+.main-content h1 {
+    margin-top: 0;
+}
+
+/* Status premium com leve mudança de cor */
+.premium-status {
+    margin-top: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.15); /* Cor de fundo levemente mais clara */
+    padding: 10px;
+    border-radius: 5px;
+}

@@ -1,22 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const apiURL = process.env.API_URL || 'http://localhost:8080/api/login/autenticar';
-    const firstAccessURL = process.env.FIRST_ACCESS_URL || 'http://localhost:8080/api/login/verificaPrimeiroAcesso';
-    const encryptUrl = process.env.ENCRYPT_URL || 'http://localhost:8080/api/login/encryptUsuario/';
+    const apiURL = getApiUrl('LOGIN_API_URL', 'http://localhost:8080/api/login/autenticar');
+    const firstAccessURL = getApiUrl('FIRST_ACCESS_URL', 'http://localhost:8080/api/login/verificaPrimeiroAcesso');
+    const encryptUrl = getApiUrl('ENCRYPT_URL', 'http://localhost:8080/api/login/encryptUsuario/');
 
     document.getElementById('loginForm').addEventListener('submit', autenticarUsuario);
 
     async function autenticarUsuario(event) {
         event.preventDefault();
 
+        const usuario = document.getElementById('username').value.trim();
+        const senha = document.getElementById('password').value.trim();
+
+        if (!usuario || !senha) {
+            return displayError('Campos obrigatórios', 'Por favor, preencha todos os campos.');
+        }
+
         try {
-            const usuario = document.getElementById('username').value.trim();
-            const senha = document.getElementById('password').value.trim();
-
-            if (!usuario || !senha) {
-                return displayError('Campos obrigatórios', 'Por favor, preencha todos os campos.');
-            }
-
             const data = await fetchAPI(apiURL, 'POST', { usuario, senha });
 
             Swal.fire({
@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     : 'continuarJornada.html';
                 window.location.href = redirectPage;
             });
-
         } catch (error) {
             displayError('Não foi possível verificar o primeiro acesso', error.message);
         }
@@ -88,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayError(title, message) {
         Swal.fire({
-            title: title,
+            title,
             text: message,
             icon: 'error',
             confirmButtonText: 'Tentar novamente'
@@ -98,5 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function secureStoreToken(token) {
         // Armazene o token de forma segura, preferencialmente em cookies com HttpOnly e Secure
         localStorage.setItem('token', token);
+    }
+
+    function getApiUrl(envVar, defaultUrl) {
+        return process.env[envVar] || defaultUrl;
     }
 });
