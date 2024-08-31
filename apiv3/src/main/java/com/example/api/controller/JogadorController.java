@@ -1,5 +1,6 @@
 package com.example.api.controller;
 
+import com.example.api.entity.dto.RequestAutenticarJogador;
 import com.example.api.service.JogadorService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -9,6 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/jogador")
@@ -37,6 +41,23 @@ public class JogadorController {
         } catch (Exception e) {
             logger.error("Erro ao cadastrar jogador: {}", e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/autenticar")
+    public ResponseEntity<?> autenticar(@Valid @RequestBody RequestAutenticarJogador request) {
+        logger.info("Autenticando usuário: {}", request.getUsuario());
+        if (request.getUsuario() == null || request.getSenha() == null) {
+            logger.warn("Usuário ou senha não fornecidos");
+            return new ResponseEntity<>(new RuntimeException("Usuário e senha são obrigatórios"), HttpStatus.BAD_REQUEST);
+        }
+        Optional<String> tokenOpt = jogadorService.autenticar(request);
+        if (tokenOpt.isPresent()) {
+            logger.info("Usuário autenticado com sucesso: {}", request.getUsuario());
+            return ResponseEntity.ok(Map.of("token", tokenOpt.get()));
+        } else {
+            logger.warn("Credenciais inválidas para o usuário: {}", request.getUsuario());
+            return new ResponseEntity<>(new RuntimeException("Credenciais inválidas"), HttpStatus.UNAUTHORIZED);
         }
     }
 
