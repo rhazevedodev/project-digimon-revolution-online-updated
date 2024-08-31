@@ -83,6 +83,19 @@ public class JogadorService {
     private Optional<Jogador> findbyUsuario(String usuario) {
         return jogadorRepository.findByUsuario(usuario);
     }
+
+    public int getIdByUsuario(String usuario) {
+        Optional<Jogador> jogador = null;
+        try {
+            jogador = jogadorRepository.findByUsuario(criptografiaService.decrypt3DES(usuario));
+            if (jogador.isPresent()) {
+                return jogador.get().getId().intValue();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return -1;
+    }
 }
 
 

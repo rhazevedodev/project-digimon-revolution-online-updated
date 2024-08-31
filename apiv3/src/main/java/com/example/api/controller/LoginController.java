@@ -1,6 +1,7 @@
 package com.example.api.controller;
 
 import com.example.api.entity.dto.RequestAutenticarJogador;
+import com.example.api.service.DigimonService;
 import com.example.api.service.JogadorService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -16,14 +17,16 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/jogador")
-public class JogadorController {
+public class LoginController {
 
-    private static final Logger logger = LoggerFactory.getLogger(JogadorController.class);
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     private final JogadorService jogadorService;
+    private final DigimonService digimonService;
 
-    public JogadorController(JogadorService jogadorService) {
+    public LoginController(JogadorService jogadorService, DigimonService digimonService) {
         this.jogadorService = jogadorService;
+        this.digimonService = digimonService;
     }
 
     @GetMapping("/healthCheck")
@@ -58,6 +61,19 @@ public class JogadorController {
         } else {
             logger.warn("Credenciais inválidas para o usuário: {}", request.getUsuario());
             return new ResponseEntity<>(new RuntimeException("Credenciais inválidas"), HttpStatus.UNAUTHORIZED);
+        }
+    }
+
+    @GetMapping("/verificaPrimeiroAcesso/{usuario}")
+    public ResponseEntity<?> verificaPrimeiroAcesso(@PathVariable String usuario) {
+        logger.info("Verificando primeiro acesso para o usuário: {}", usuario);
+        try {
+            int idJogador = jogadorService.getIdByUsuario(usuario);
+            boolean primeiroAcesso = digimonService.getDigimonByIdJogador(idJogador);
+            return ResponseEntity.ok(Map.of("primeiroAcesso", !primeiroAcesso));
+        } catch (Exception e) {
+            logger.error("Erro ao verificar primeiro acesso para o usuário: {}", usuario, e);
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
