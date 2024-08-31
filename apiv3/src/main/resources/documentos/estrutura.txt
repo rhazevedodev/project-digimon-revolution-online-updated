@@ -1,0 +1,18 @@
+src
+└── main
+    └── java
+        └── com
+            └── seuprojeto
+                ├── app
+                │   └── jogador
+                │       └── CadastrarJogadorUseCase.java
+                ├── domain
+                │   └── jogador
+                │       ├── Jogador.java
+                │       ├── JogadorRepository.java
+                │       └── JogadorService.java
+                └── infra
+                    ├── jogador
+                    │   └── JogadorRepositoryImpl.java
+                    └── web
+                        └── JogadorController.java
