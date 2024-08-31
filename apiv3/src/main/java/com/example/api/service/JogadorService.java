@@ -92,17 +92,29 @@ public class JogadorService {
         }
     }
 
-    public int getIdByUsuario(String usuario) {
-        Optional<Jogador> jogador = null;
+    public String decryptUsuario(String usuario) {
         try {
-            jogador = jogadorRepository.findByUsuario(criptografiaService.decrypt3DES(usuario));
-            if (jogador.isPresent()) {
-                return jogador.get().getId().intValue();
-            }
+            return criptografiaService.decrypt3DES(usuario);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public int getIdByUsuario(String usuario) {
+        Optional<Jogador> jogador = jogadorRepository.findByUsuario(usuario);
+        if(jogador.isPresent()) {
+            return jogador.get().getId().intValue();
+        }
         return -1;
+    }
+
+
+    public Boolean verificarJogadorExistente(Long idJogador){
+        return jogadorRepository.existsById(idJogador);
+    }
+
+    public String getNomeJogador(Long idJogador) {
+        return jogadorRepository.findById(idJogador).get().getUsuario();
     }
 }
 

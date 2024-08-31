@@ -69,7 +69,7 @@ public class LoginController {
     public ResponseEntity<?> verificaPrimeiroAcesso(@Valid @RequestBody RequestVerificarPrimeiroAcesso request) {
         logger.info("Verificando primeiro acesso para o usuário: {}", request.getUsuario());
         try {
-            int idJogador = jogadorService.getIdByUsuario(request.getUsuario());
+            int idJogador = jogadorService.getIdByUsuario(jogadorService.decryptUsuario(request.getUsuario()));
             boolean primeiroAcesso = digimonService.getDigimonByIdJogador(idJogador);
             return ResponseEntity.ok(Map.of("primeiroAcesso", !primeiroAcesso));
         } catch (Exception e) {

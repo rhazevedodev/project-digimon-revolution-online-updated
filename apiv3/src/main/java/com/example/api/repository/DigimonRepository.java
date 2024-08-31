@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DigimonRepository extends JpaRepository<Digimon, Long> {
     boolean existsByIdJogador(int idJogador);
+    boolean existsByNome(String nomeDigimon);
 }
