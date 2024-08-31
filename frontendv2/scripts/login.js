@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const apiURL = getApiUrl('LOGIN_API_URL', 'http://localhost:8080/api/login/autenticar');
-    const firstAccessURL = getApiUrl('FIRST_ACCESS_URL', 'http://localhost:8080/api/login/verificaPrimeiroAcesso');
-    const encryptUrl = getApiUrl('ENCRYPT_URL', 'http://localhost:8080/api/login/encryptUsuario/');
+    const apiURL = 'http://localhost:8080/api/login/autenticar';
+    const firstAccessURL = 'http://localhost:8080/api/login/verificaPrimeiroAcesso';
+    const encryptUrl = 'http://localhost:8080/api/login/encryptUsuario/';
 
     document.getElementById('loginForm').addEventListener('submit', autenticarUsuario);
 
@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 confirmButtonText: 'OK'
             }).then(async () => {
                 secureStoreToken(data.token);
-                await encryptUsuario(usuario);
-                await verificarPrimeiroAcesso(localStorage.getItem('usuario'));
+                //await encryptUsuario(usuario);
+                //await verificarPrimeiroAcesso(localStorage.getItem('usuario'));
             });
         } catch (error) {
             displayError('Erro ao fazer login', error.message);
@@ -66,15 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    async function fetchAPI(url, method, body = null) {
+    async function fetchAPI(url, method, body) {
         const requestOptions = {
             method,
             headers: { 'Content-Type': 'application/json' },
-            body: body ? JSON.stringify(body) : null
+            body: JSON.stringify(body) 
         };
 
         try {
             const response = await fetch(url, requestOptions);
+            console.log(response);
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.erro || 'Erro desconhecido');

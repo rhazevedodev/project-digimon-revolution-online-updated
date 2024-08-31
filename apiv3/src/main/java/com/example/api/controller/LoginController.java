@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/jogador")
+@RequestMapping("/api/login")
 public class LoginController {
 
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
