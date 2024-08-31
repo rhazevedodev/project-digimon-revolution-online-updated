@@ -1,12 +1,31 @@
+/* Estilo para o texto */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
 .card {
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: none;
+    border-radius: 15px;
     overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
 }
 
 .card-header {
     background-color: #f8f9fa;
     padding: 10px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .text-center {
@@ -36,12 +55,14 @@
     max-width: 16.6667%;
 }
 
-@media (max-width: 767px) {
+/* Ajustes de layout responsivo */
+@media (max-width: 768px) {
+    .col-6 {
+        width: 100%;
+    }
 
-    .col-md-4,
-    .col-xxl-2 {
-        flex: 0 0 50%;
-        max-width: 50%;
+    .modal-content {
+        padding: 20px;
     }
 }
 
@@ -55,22 +76,25 @@
     }
 }
 
+/* Botões */
 .btn-confirm {
     display: block;
     width: 100%;
     margin-top: 10px;
     padding: 10px;
     text-align: center;
-    background-color: #0d6efd;
+    background-color: #4cae4c;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .btn-confirm:hover {
-    background-color: #0056b3;
+    background-color: #558b57;
+    transform: scale(1.05);
 }
 
 .btn-confirm:disabled {
@@ -88,17 +112,14 @@
     z-index: -1; /* Mantém a imagem de fundo atrás de outros elementos */
     opacity: 0.4;
 }
+
 /* Estilos para o modal */
 .modal {
-    display: none;
-    /* Ocultar por padrão */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo mais escuro */
+    backdrop-filter: blur(5px); /* Desfoque no fundo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Modal Content/Box */
@@ -113,6 +134,12 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* Sombra suave */
     position: relative;
+}
+
+/* Animação suave para modais */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Fechar o botão */
