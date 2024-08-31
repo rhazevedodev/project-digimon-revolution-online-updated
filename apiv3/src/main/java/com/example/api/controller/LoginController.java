@@ -1,6 +1,7 @@
 package com.example.api.controller;
 
 import com.example.api.entity.dto.RequestAutenticarJogador;
+import com.example.api.entity.dto.RequestVerificarPrimeiroAcesso;
 import com.example.api.service.DigimonService;
 import com.example.api.service.JogadorService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -64,17 +65,23 @@ public class LoginController {
         }
     }
 
-    @GetMapping("/verificaPrimeiroAcesso/{usuario}")
-    public ResponseEntity<?> verificaPrimeiroAcesso(@PathVariable String usuario) {
-        logger.info("Verificando primeiro acesso para o usuário: {}", usuario);
+    @PostMapping("/verificaPrimeiroAcesso")
+    public ResponseEntity<?> verificaPrimeiroAcesso(@Valid @RequestBody RequestVerificarPrimeiroAcesso request) {
+        logger.info("Verificando primeiro acesso para o usuário: {}", request.getUsuario());
         try {
-            int idJogador = jogadorService.getIdByUsuario(usuario);
+            int idJogador = jogadorService.getIdByUsuario(request.getUsuario());
             boolean primeiroAcesso = digimonService.getDigimonByIdJogador(idJogador);
             return ResponseEntity.ok(Map.of("primeiroAcesso", !primeiroAcesso));
         } catch (Exception e) {
-            logger.error("Erro ao verificar primeiro acesso para o usuário: {}", usuario, e);
+            logger.error("Erro ao verificar primeiro acesso para o usuário: {}", request.getUsuario(), e);
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @GetMapping("/encryptUsuario/{usuario}")
+    public ResponseEntity<?> encryptUsuario(@PathVariable("usuario") String usuario) {
+        logger.info("Encrypting usuário: {}", usuario);
+        return ResponseEntity.ok(Map.of("usuario", jogadorService.encryptUsuario(usuario)));
     }
 
 }

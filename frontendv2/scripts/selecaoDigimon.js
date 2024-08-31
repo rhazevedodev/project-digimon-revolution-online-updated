@@ -1,11 +1,11 @@
 const cardsData = [
-    { src: "./images/rookies/agumon.jpg", alt: "Agumon", name: "Agumon" },
-    { src: "./images/rookies/gabumon.jpg", alt: "Gabumon", name: "Gabumon" },
-    { src: "./images/rookies/gomamon.jpg", alt: "Gomamon", name: "Gomamon" },
-    { src: "./images/rookies/palmon.jpg", alt: "Palmon", name: "Palmon" },
-    { src: "./images/rookies/patamon.jpg", alt: "Patamon", name: "Patamon" },
-    { src: "./images/rookies/piyomon.jpg", alt: "Piyomon", name: "Piyomon" },
-    { src: "./images/rookies/tentomon.jpg", alt: "Tentomon", name: "Tentomon" }
+    { src: "/imagens/digimons/rookies/agumon.jpg", alt: "Agumon", name: "Agumon" },
+    { src: "/imagens/digimons/rookies/gabumon.jpg", alt: "Gabumon", name: "Gabumon" },
+    { src: "/imagens/digimons/rookies/gomamon.jpg", alt: "Gomamon", name: "Gomamon" },
+    { src: "/imagens/digimons/rookies/palmon.jpg", alt: "Palmon", name: "Palmon" },
+    { src: "/imagens/digimons/rookies/patamon.jpg", alt: "Patamon", name: "Patamon" },
+    { src: "/imagens/digimons/rookies/piyomon.jpg", alt: "Piyomon", name: "Piyomon" },
+    { src: "/imagens/digimons/rookies/tentomon.jpg", alt: "Tentomon", name: "Tentomon" }
 ];
 
 document.addEventListener("DOMContentLoaded", function () {

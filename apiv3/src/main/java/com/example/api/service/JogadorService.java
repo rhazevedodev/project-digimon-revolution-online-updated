@@ -84,6 +84,14 @@ public class JogadorService {
         return jogadorRepository.findByUsuario(usuario);
     }
 
+    public String encryptUsuario(String usuario) {
+        try {
+            return criptografiaService.encrypt3DES(usuario);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public int getIdByUsuario(String usuario) {
         Optional<Jogador> jogador = null;
         try {

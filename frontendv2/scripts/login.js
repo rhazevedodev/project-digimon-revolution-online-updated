@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 confirmButtonText: 'OK'
             }).then(async () => {
                 secureStoreToken(data.token);
-                //await encryptUsuario(usuario);
-                //await verificarPrimeiroAcesso(localStorage.getItem('usuario'));
+                await encryptUsuario(usuario);
+                await verificarPrimeiroAcesso(localStorage.getItem('usuario'));
             });
         } catch (error) {
             displayError('Erro ao fazer login', error.message);

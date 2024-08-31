@@ -79,7 +79,7 @@
 }
 
 .background {
-    background-image: url('/frontend/images/background-login.jpg');
+    background-image: url(../imagens/fundoLogin.jpg);
     background-size: cover;
     background-position: center;
     position: fixed;
