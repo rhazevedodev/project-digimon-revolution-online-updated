@@ -1,5 +1,7 @@
 package com.example.api.domain.jogador;
 
+import java.util.Optional;
+
 /**
  * Repositório para a entidade Jogador.
  * Fornece métodos para salvar e verificar a existência de jogadores por email.
@@ -21,4 +23,6 @@ public interface JogadorRepository {
      * @return true se um jogador com o email especificado já existir, false caso contrário.
      */
     boolean existsByEmail(String email);
+
+    Optional<Jogador> findByUsuario(String usuario);
 }

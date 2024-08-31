@@ -28,9 +28,9 @@ public class Jogador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "O nome é obrigatório")
-    @Length(min = 4, max = 20, message = "O nome deve ter entre 4 e 20 caracteres")
-    private String nome;
+    @NotBlank(message = "O usuario é obrigatório")
+    @Length(min = 4, max = 20, message = "O usuario deve ter entre 4 e 20 caracteres")
+    private String usuario;
 
     @NotBlank(message = "O email é obrigatório")
     @Email(message = "O email deve ser válido")
@@ -50,12 +50,12 @@ public class Jogador {
     /**
      * Construtor da classe Jogador.
      *
-     * @param nome  Nome do jogador.
+     * @param usuario  Nome do jogador.
      * @param email Email do jogador.
      * @param senha Senha do jogador.
      */
-    public Jogador(String nome, String email, String senha) {
-        this.nome = nome;
+    public Jogador(String usuario, String email, String senha) {
+        this.usuario = usuario;
         this.email = email;
         this.senha = senha;
     }

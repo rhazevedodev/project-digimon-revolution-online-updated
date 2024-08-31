@@ -1,10 +1,12 @@
-package com.example.api.infra.persistence;
+package com.example.api.infra.persistence.jogador;
 
 import com.example.api.domain.jogador.Jogador;
 import com.example.api.domain.jogador.JogadorRepository;
 import org.springframework.stereotype.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Optional;
 
 /**
  * Implementação do repositório de jogadores utilizando JPA.
@@ -46,5 +48,10 @@ public class JogadorRepositoryImpl implements JogadorRepository {
     @Override
     public boolean existsByEmail(String email) {
         return jpaJogadorRepository.existsByEmail(email);
+    }
+
+    @Override
+    public Optional<Jogador> findByUsuario(String usuario) {
+        return jpaJogadorRepository.findByUsuario(usuario);
     }
 }

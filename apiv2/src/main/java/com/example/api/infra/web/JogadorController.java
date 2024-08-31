@@ -1,5 +1,7 @@
 package com.example.api.infra.web;
 
+import com.example.api.app.dto.RequestAutenticarJogador;
+import com.example.api.app.jogador.AutenticarJogadorUseCase;
 import com.example.api.app.jogador.CadastrarJogadorUseCase;
 import com.example.api.domain.jogador.Jogador;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 /**
  * Controlador REST para operações relacionadas a jogadores.
  */
@@ -23,14 +27,16 @@ public class JogadorController {
     private static final Logger logger = LoggerFactory.getLogger(JogadorController.class);
 
     private final CadastrarJogadorUseCase cadastrarJogadorUseCase;
+    private final AutenticarJogadorUseCase autenticarJogadorUseCase;
 
     /**
      * Construtor da classe JogadorController.
      *
      * @param cadastrarJogadorUseCase Caso de uso para cadastrar jogadores.
      */
-    public JogadorController(CadastrarJogadorUseCase cadastrarJogadorUseCase) {
+    public JogadorController(CadastrarJogadorUseCase cadastrarJogadorUseCase, AutenticarJogadorUseCase autenticarJogadorUseCase) {
         this.cadastrarJogadorUseCase = cadastrarJogadorUseCase;
+        this.autenticarJogadorUseCase = autenticarJogadorUseCase;
     }
 
     /**
@@ -45,7 +51,7 @@ public class JogadorController {
         logger.info("Requisição para cadastrar jogador recebida: {}", jogador);
         try {
             // Tratamento de IP ou outras informações do request podem ser feitas aqui ou passadas para o caso de uso.
-            Jogador novoJogador = cadastrarJogadorUseCase.executar(jogador);
+            Jogador novoJogador = cadastrarJogadorUseCase.cadastrar(jogador);
             logger.info("Jogador cadastrado com sucesso: {}", novoJogador);
             return new ResponseEntity<>(novoJogador, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -53,4 +59,20 @@ public class JogadorController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
+    @PostMapping("/autenticar")
+    public ResponseEntity<?> autenticarJogador(@Valid @RequestBody RequestAutenticarJogador jogador, HttpServletRequest request){
+        logger.info("Requisição para autenticar jogador recebida: {}", jogador);
+        try {
+            // Tratamento de IP ou outras informações do request podem ser feitas aqui ou passadas para o caso de uso.
+            Optional<String> novoJogador = autenticarJogadorUseCase.autenticar(jogador);
+            logger.info("Jogador autenticado com sucesso: {}", novoJogador);
+            return new ResponseEntity<>(novoJogador, HttpStatus.CREATED);
+        } catch (Exception e) {
+            logger.error("Erro ao autenticar jogador: {}", e.getMessage());
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
 }

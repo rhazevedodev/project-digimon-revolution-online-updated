@@ -31,7 +31,7 @@ public class CadastrarJogadorUseCase {
      * @param jogador Objeto Jogador contendo os dados do jogador a ser cadastrado.
      * @return O objeto Jogador cadastrado.
      */
-    public Jogador executar(Jogador jogador) {
+    public Jogador cadastrar(Jogador jogador) {
         // Pode ter lógica adicional aqui, como conversões de DTO, etc.
         logger.info("Executando caso de uso para cadastrar jogador: {}", jogador);
         Jogador novoJogador = jogadorService.cadastrarJogador(jogador);
