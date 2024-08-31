@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    const apiURL = 'http://localhost:8080/api/digimon/selecaoDigimon';
+    const apiURL = 'http://localhost:8080/api/selecaoDigimon/selecionar';
 
     /*
     async function decryptUsuario(decryptingUsuario) {

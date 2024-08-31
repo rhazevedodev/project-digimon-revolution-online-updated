@@ -8,6 +8,8 @@ import com.example.api.enumerator.EnumElementos;
 import com.example.api.repository.DigimonRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DigimonService {
 
@@ -56,5 +58,9 @@ public class DigimonService {
         digimonSelecionado.setAtributosElementos(atributosElementos);
 
         return digimonRepository.save(digimonSelecionado);
+    }
+
+    public List<Digimon> getDigimonByUsuario(String nomeUsuario) {
+        return digimonRepository.getDigimonByIdJogador(jogadorService.getIdByUsuario(nomeUsuario));
     }
 }
