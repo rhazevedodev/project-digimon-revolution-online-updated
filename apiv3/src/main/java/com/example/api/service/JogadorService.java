@@ -116,6 +116,14 @@ public class JogadorService {
     public String getNomeJogador(Long idJogador) {
         return jogadorRepository.findById(idJogador).get().getUsuario();
     }
+
+    public Jogador getJogadorById(Long idJogador) {
+        Optional<Jogador> jogador = jogadorRepository.findById(idJogador);
+        if(jogador.isPresent()) {
+            return jogador.get();
+        }
+        return null;
+    }
 }
 
 

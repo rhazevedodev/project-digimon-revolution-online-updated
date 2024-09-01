@@ -7,6 +7,8 @@ public class Atributos {
 
     private int pontosVida = 50;
 
+    private int pontosEnergia = 100;
+
     private int pontosForca = 1;
 
     private int pontosInteligencia = 1;
@@ -18,12 +20,21 @@ public class Atributos {
     public Atributos() {
     }
 
-    public Atributos(int pontosVida, int pontosForca, int pontosInteligencia, int pontosAgilidade, int pontosConhecimento) {
+    public Atributos(int pontosVida, int pontosEnergia, int pontosForca, int pontosInteligencia, int pontosAgilidade, int pontosConhecimento) {
         this.pontosVida = pontosVida;
+        this.pontosEnergia = pontosEnergia;
         this.pontosForca = pontosForca;
         this.pontosInteligencia = pontosInteligencia;
         this.pontosAgilidade = pontosAgilidade;
         this.pontosConhecimento = pontosConhecimento;
+    }
+
+    public int getPontosEnergia() {
+        return pontosEnergia;
+    }
+
+    public void setPontosEnergia(int pontosEnergia) {
+        this.pontosEnergia = pontosEnergia;
     }
 
     public int getPontosVida() {

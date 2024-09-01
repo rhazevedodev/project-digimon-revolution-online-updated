@@ -8,7 +8,9 @@ import com.example.api.enumerator.EnumElementos;
 import com.example.api.repository.DigimonRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DigimonService {
@@ -60,7 +62,26 @@ public class DigimonService {
         return digimonRepository.save(digimonSelecionado);
     }
 
+    public Map<String, Object> carregarImagemDigimon(Long idDigimon) {
+        Map<String, Object> response = new LinkedHashMap<>();
+        Digimon digimon = getDigimonById(idDigimon);
+        String urlImg = EnumDigimonRookie.getUrlImgById(digimon.getIdRookie()).toLowerCase();
+        response.put("url_imagem_digimon", urlImg);
+        return response;
+    }
+
     public List<Digimon> getDigimonByUsuario(String nomeUsuario) {
         return digimonRepository.getDigimonByIdJogador(jogadorService.getIdByUsuario(nomeUsuario));
+    }
+
+    public Digimon getDigimonById(Long idDigimon) {
+        return digimonRepository.findById(idDigimon)
+                .orElseThrow(() -> new RuntimeException("Digimon não encontrado"));
+    }
+
+    public Long getIdJogadorByDigimonId(Long idDigimon) {
+        return digimonRepository.findById(idDigimon)
+                .map(Digimon::getIdJogador)
+                .orElseThrow(() -> new RuntimeException("Digimon não encontrado"));
     }
 }
