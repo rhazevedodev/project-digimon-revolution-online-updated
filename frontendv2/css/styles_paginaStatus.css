@@ -1,0 +1,545 @@
+/*
+    FORMATAÇÃO BÁSICA DA PÁGINA DE STATUS
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*
+    FORMATAÇÃO BÁSICA DA PÁGINA DE STATUS
+*/
+a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    color: #ffcc99;
+}
+
+/*
+   FORMATAÇÃO DOS LINKS DA PÁGINA DE STATUS
+*/
+a:link,
+a:visited,
+a:active {
+    /*color: #f08112;
+     color: #311bf8;*/
+    color: #ba9a7b;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/*
+    FORMATAÇÃO DE FONTEWS E CORES DA CAIXA CETRAL DA PÁGINA DE STATUS
+*/
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    color: #ba9a7b;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    opacity: 0.9;
+}
+
+/*
+    SENDO USADO NO BACKGROUND DA PAGINA
+ */
+.background {
+    background-image: url(../imagens/fundoLogin.jpg);
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+/*
+    FORMATAÇÃO DO DIV PRINCIPAL DA PÁGINA DE STATUS
+*/
+#div_principal {
+    position: ;
+    width: 780px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    background-repeat: repeat-y;
+}
+
+/*
+    SENDO USADO NO BANNER DO TOPO DA PAGINA
+*/
+#banner_principal {
+    position: relative;
+    width: 780px;
+    height: 208px;
+    background-image: url(../imagens/bannerTopo.jpg);
+    background-size: cover;
+    /* Adicionado para garantir que a imagem cubra toda a div */
+    background-position: center;
+    /* Centraliza a imagem na div */
+    background-repeat: no-repeat;
+    /* Evita a repetição da imagem */
+    /*
+            opacity: 0.5; /* Ajuste o valor de opacidade conforme necessário 
+            */
+    border: #1a1a1a 1px solid;
+    border-radius: 20px;
+}
+
+/*
+    FORMATAÇÃO DAS FLAGS DE IDIOMAS
+*/
+#idiomas {
+    position: absolute;
+    height: 14px;
+    width: 73px;
+    left: 679px;
+    top: 19px;
+    text-align: center;
+}
+
+/*
+    FORMATAÇÃO DO TITULO DA PÁGINA DE STATUS
+*/
+#titulo {
+    color: #311bf8;
+}
+
+
+/*
+    FORMATAÇÃO DO MENU PRINCIPAL DA PÁGINA DE STATUS
+*/
+#menu {
+    position: relative;
+    width: 780px;
+    height: 20px;
+    text-align: left;
+    top: 15px;
+    opacity: 0.9;
+    margin-left: 10px;
+}
+
+/*
+    FORMATAÇÃO DO MENU 2 PRINCIPAL DA PÁGINA DE STATUS
+*/
+#menu-2 {
+    position: relative;
+    width: 780px;
+    height: 40px;
+    text-align: left;
+    top: 25px;
+    opacity: 0.9;
+    margin-left: 0px;
+}
+
+/*
+    FORMATAÇÃO DA CAIXA DO MENU DA PÁGINA DE STATUS
+*/
+#caixa-informacoes-menu {
+    position: relative;
+    width: 708px;
+    height: 100px;
+    border: 5px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    margin-left: 30px;
+}
+
+
+/*
+    FORMATAÇÃO DO CONTEUDO DA PÁGINA DE STATUS
+*/
+#conteudo {
+    position: relative;
+    width: 720px;
+    left: 30px;
+}
+
+/*
+    FORMATAÇÃO DA PARTE ESQUERDA DA PÁGINA DE STATUS
+*/
+#col_esquerda {
+    position: relative;
+    width: 163px;
+    float: left;
+}
+
+/*
+    FORMATAÇÃO DA CAIXA DE INFORMAÇÕES DA PARTE ESQUERDA DA PÁGINA DE STATUS
+*/
+#caixa-informacoes-esquerda {
+    position: relative;
+    width: 163px;
+    height: 150px;
+    border: 5px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    margin-top: 5px;
+}
+
+/*
+   FORMATAÇÃO DA CAIXA QUE MOSTRA A IMAGEM DO DIGIMON
+*/
+.img-bordered {
+    border: 5px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    display: block;
+    border-radius: 20px;
+    max-width: 100%;
+}
+
+/* 
+    FORMATAÇÃO DA PARTE DIREITA DA PÁGINA DE STATUS
+*/  
+#col_direita {
+    position: relative;
+    width: 554px;
+    float: left;
+}
+
+
+/* Adicionei CSS para estilizar a caixa */
+
+#caixa_informacoes {
+    border: 5px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    margin-left: 30px;
+}
+
+#caixa_informacoes_bloq {
+    border: 5px solid #ccc;
+    padding: 10px;
+    background-color: #facdcd;
+    border-radius: 5px;
+}
+
+#caixa_informacoes_bloq h3 {
+    margin-top: 0;
+}
+
+#caixa_informacoes_bloq h3 {
+    margin-top: 0;
+}
+
+.titulo-caixa {
+    padding-bottom: 5px;
+    text-align: center;
+    ;
+}
+
+.separador {
+    border-bottom: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+
+
+
+.center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-content select {
+    margin-left: 10px;
+}
+
+.styled-select {
+    text-align: center;
+    appearance: none;
+    background-color: #ba9a7b;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    width: 150px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.styled-select:hover {
+    background-color: #1a1a1a;
+}
+
+.styled-select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 228, 141, 0.5);
+}
+
+
+.box_largura_100 {
+    width: 100%;
+}
+
+.table-align-center th,
+.table-align-center td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Estilos para o select */
+.select-horas {
+    width: 78px;
+    margin-right: 10px;
+    text-align: center;
+
+    appearance: none;
+    background-color: #ba9a7b;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.select-horas:hover {
+    background-color: #1a1a1a;
+}
+
+.select-cacada {
+    width: 78px;
+    margin-right: 10px;
+    text-align: center;
+
+    appearance: none;
+    background-color: #ba9a7b;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.select-cacada:hover {
+    background-color: #1a1a1a;
+}
+
+.cacada-box {
+    text-align: center;
+    padding: 10px;
+}
+
+/* Estilos para o botão */
+.button-confirmar {
+    padding: 5px 10px;
+    background-color: #ba9a7b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    appearance: none;
+    width: 78px;
+}
+
+.button-confirmar:hover {
+    background-color: #073f09;
+}
+
+.button-resgatar {
+    padding: 5px 10px;
+    background-color: #ba9a7b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    appearance: none;
+    width: 78px;
+}
+
+.button-resgatar:hover {
+    background-color: #073f09;
+}
+
+.button-confirmar-atributos {
+    padding: 3px 0px;
+    background-color: #ba9a7b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    appearance: none;
+    width: 50px;
+}
+
+.button-confirmar-atributos:hover {
+    background-color: #073f09;
+}
+
+.button-resetar-salvar-atributos {
+    display: block;
+    margin: 0 auto;
+    /* Isso centraliza horizontalmente */
+    margin-top: 10px;
+    /* Ajuste conforme necessário */
+    padding: 5px 0px;
+    background-color: #ba9a7b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    appearance: none;
+    width: 150px;
+}
+
+.button-resetar-salvar-atributos:hover {
+    background-color: #073f09;
+}
+
+
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* Ajusta a posição do modal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    /* Define a largura do modal */
+    max-width: 600px;
+    /* Define uma largura máxima */
+    min-width: 300px;
+    /* Define uma largura mínima */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    /* Adiciona bordas arredondadas */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilização da barra de vida */
+#life-bar-container {
+    width: 100%;
+    background-color: #ccc;
+    /* Cor do fundo da barra */
+    border: 1px solid #000;
+    /* Borda da barra */
+    border-radius: 5px;
+    height: 20px;
+    /* Altura da barra */
+    margin-top: 0px;
+    /* Espaçamento superior */
+    position: relative;
+    /* Necessário para posicionar o texto */
+    display: flex;
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    margin-bottom: 2px;
+}
+
+/* Estilização da barra de vida */
+#life-bar {
+    height: 100%;
+    width: 0%;
+    /* Início com a largura 0, será ajustada via JavaScript */
+    background-color: green;
+    /* Cor da barra de vida */
+    border-radius: 5px;
+    transition: width 0.3s;
+    /* Animação para a mudança de largura */
+}
+
+/* Estilização do texto da barra de vida */
+#life-bar-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: white;
+    /* Cor do texto */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    /* Para destacar o texto */
+}
+
+/* Estilização da barra de vida */
+#energy-bar-container {
+    width: 100%;
+    background-color: #ccc;
+    /* Cor do fundo da barra */
+    border: 1px solid #000;
+    /* Borda da barra */
+    border-radius: 5px;
+    height: 20px;
+    /* Altura da barra */
+    margin-top: 0px;
+    /* Espaçamento superior */
+    position: relative;
+    /* Necessário para posicionar o texto */
+    display: flex;
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+}
+
+/* Estilização da barra de vida */
+#energy-bar {
+    height: 100%;
+    width: 0%;
+    /* Início com a largura 0, será ajustada via JavaScript */
+    background-color: rgb(253, 194, 0);
+    /* Cor da barra de vida */
+    border-radius: 5px;
+    transition: width 0.3s;
+    /* Animação para a mudança de largura */
+}
+
+/* Estilização do texto da barra de vida */
+#energy-bar-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: white;
+    /* Cor do texto */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    /* Para destacar o texto */
+}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="./css/styles_paginaStatus.css" rel="stylesheet" type="text/css">
+    <script defer src="./scripts/status_scripts.js"></script>
+
+    <title>Status</title>
+</head>
+
+<body style="padding: 0px 0px 154px;">
+    <div class="background"></div>
+    <h2 id="titulo" style="text-align: center;">Digimon Revolution Online</h2>
+    <!--INICIO DIV PRINCIPAL-->
+    <div id="div_principal" style="height: auto !important;">
+        <!--INICIO DIV BANNER PRINCIPAL-->
+        <div id="banner_principal">
+            <!--INICIO BARRA DE IDIOMAS-->
+            <div id="idiomas">
+                <img src="../imagens/brasil.gif" alt="Português" width="20" height="14" border="0">
+                <img src="../imagens/espanhol.gif" alt="Espanhol" width="20" height="14" border="0">
+                <!--FIM BARRA DE IDIOMAS-->
+            </div>
+            <!--FIM DIV BANNER PRINCIPAL-->
+        </div>
+        <br>
+        <!-- INICIO DIV MENU -->
+        <div id="caixa-informacoes-menu">
+            <div id="menu">
+                <a href="">Novidades</a>
+                |
+                <a href="">Status</a>
+                |
+                <a href="">Clã</a>
+                |
+                <a href="cacadas.html">Caçadas</a>
+                |
+                <a href="">Eventos</a>
+                |
+                <a href="">Ranking</a>
+                |
+                <a href="missoes.html">Missões</a>
+                |
+                <a href="">Elementos</a>
+                |
+                <a href="">Perfil</a>
+                |
+                <a href="">Contato</a>
+                |
+                <a href="">Conquistas</a>
+                <br>
+            </div>
+            <div id="menu-2">
+                <a href="">Manual</a>
+                |
+                <a href="invasoes.html">Invasão</a>
+                |
+                <a href="lanchonete.html">Lanchonete</a>
+                |
+                <a href="">Trocas</a>
+                |
+                <a href="loja.html">Mercado</a>
+                |
+                <a href="">Habilidades</a>
+                |
+                <a href="">Excelência</a>
+                |
+                <a href="">Raids</a>
+                |
+                <a href="">F.A.Q</a>
+                |
+                <a href="">Premium</a>
+                |
+                <a href="">Logout</a>
+                <br>
+            </div>
+        </div>
+
+        <!-- FIM DIV MENU -->
+        <br>
+        <div id="conteudo">
+            <div id="motor_game">
+                <div id="col_esquerda">
+                    <div id="image-container"></div>
+                    <div id="life-bar-container">
+                        <div id="life-bar">
+                            <span id="life-bar-text">75/100</span>
+                        </div>
+                    </div>
+                    <div id="energy-bar-container">
+                        <div id="energy-bar">
+                            <span id="energy-bar-text">75/100</span>
+                        </div>
+                    </div>
+                    <div id="caixa-informacoes-esquerda"></div>
+                </div>
+                <div id="col_direita">
+                    <!-- Nova caixa adicionada -->
+                    <div id="caixa_informacoes">
+                        <h3 class="titulo-caixa">Bem vindo ao Digimon Revolution Online</h3>
+                        <hr class="separador">
+                        <p>Nesse jogo esperamos que você encontre diversão e nostalgia com o universo digimon. Tenha um
+                            ótimo jogo!</p>
+                    </div>
+
+                    <div id="caixa_informacoes">
+                        <h3 class="titulo-caixa">Informações</h3>
+                        <hr class="separador">
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr class="box_preto_tarja">
+                                    <td width="150">No jogo desde:</td>
+                                    <td colspan="2" id="jogo_desde"></td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Indicacao:</td>
+                                    <td colspan="2" id="indicacao"></td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Reserva de Bits:</td>
+                                    <td colspan="2" id="reserva_bits"></td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Reserva de Diamantes:</td>
+                                    <td colspan="2" id="reserva_diamantes"></td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Apelido Digimon:</td>
+                                    <td colspan="2" id="apelido_digimon"></td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Digimon Estagio 1:</td>
+                                    <td colspan="2" id="digimon_estagio_1"></td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Digimon Estagio 2:</td>
+                                    <td colspan="2" id="digimon_estagio_2"></td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Digimon Estagio 3:</td>
+                                    <td colspan="2" id="digimon_estagio_3"></td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Digimon Estagio 4:</td>
+                                    <td colspan="2" id="digimon_estagio_4"></td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Nível:</td>
+                                    <td colspan="2" id="nivel"></td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Bônus Experiência:</td>
+                                    <td colspan="2" id="bonus_experiencia"> </td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Bônus Bits:</td>
+                                    <td colspan="2" id="bonus_bits"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr class="separador">
+                    </div>
+                    <div id="caixa_informacoes">
+                        <h3 class="titulo-caixa">Atributos</h3>
+                        <hr class="separador">
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr class="box_preto_tarja">
+                                    <td width="150">Atributo 1 - Força:</td>
+                                    <td colspan="2" id="atributo1_forca">
+                                        <div class="progress-bar-container">
+                                            <div class="progress-bar" id="forca-bar"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Atributo 2 - Inteligencia:</td>
+                                    <td colspan="2" id="atributo2_inteligencia">
+                                        <div class="progress-bar-container">
+                                            <div class="progress-bar" id="inteligencia-bar"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Atributo 3 - Conhecimento:</td>
+                                    <td colspan="2" id="atributo3_conhecimento">
+                                        <div class="progress-bar-container">
+                                            <div class="progress-bar" id="conhecimento-bar"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Atributo 4 - Agilidade:</td>
+                                    <td colspan="2" id="atributo4_agilidade">
+                                        <div class="progress-bar-container">
+                                            <div class="progress-bar" id="agilidade-bar"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Energia Vital:</td>
+                                    <td colspan="2" id="atributo0_vida"></td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Experiência:</td>
+                                    <td colspan="2" id="experiencia"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr class="separador">
+                        <div align="center">
+                            <button type="button" class="button-confirmar" id="botaoTreinar">
+                                Treinar
+                            </button>
+                        </div>
+                    </div>
+                    <div id="caixa_informacoes">
+                        <h3 class="titulo-caixa">Estatísticas</h3>
+                        <hr class="separador">
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr class="box_preto_tarja">
+                                    <td width="150">Bits Obtidos:</td>
+                                    <td colspan="2" id="bits_obtidos"></td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Experiência Obtida:</td>
+                                    <td colspan="2" id="exp_obtida"></td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Caçadas Concluídas:</td>
+                                    <td colspan="2" id="cacadas_concluidas"></td>
+                                </tr>
+                                <tr class="box_preto_tarja">
+                                    <td>Missões Concluídas:</td>
+                                    <td colspan="2" id="missoes_concluidas"> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr class="separador">
+                    </div>
+                </div>
+                <!--FIM DIV PRINCIPAL-->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

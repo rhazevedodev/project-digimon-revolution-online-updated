@@ -5,27 +5,27 @@ import com.example.api.service.LogService;
 
 public enum EnumDigimonRookie {
 
-    AGUMON(1, "Agumon", "FOGO", "/frontend/images/rookies/agumon.jpg"),
-    GABUMON(2, "Gabumon", "FOGO", "/frontend/images/rookies/gabumon.jpg"),
-    PIYOMON(3, "Piyomon", "VENTO", "/frontend/images/rookies/piyomon.jpg"),
-    TENTOMON(4, "Tentomon", "RAIO", "/frontend/images/rookies/tentomon.jpg"),
-    PALMON(5, "Palmon", "PLANTA", "/frontend/images/rookies/palmon.jpg"),
-    GOMAMON(6, "Gomamon", "AGUA", "/frontend/images/rookies/gomamon.jpg"),
-    PATAMON(7, "Patamon", "LUZ", "/frontend/images/rookies/patamon.jpg"),
-    SALAMON(8, "Salamon", "LUZ", "/frontend/images/rookies/salamon.jpg"),
-    VEEMON(9, "Veemon", "FOGO", "/frontend/images/rookies/veemon.jpg"),
-    WORMMON(10, "Wormmon", "TREVAS", "/frontend/images/rookies/wormmon.jpg"),
-    BEARMON(11, "Bearmon", "TERRA", "/frontend/images/rookies/bearmon.jpg"),
-    GUILMON(12, "Guilmon", "FOGO", "/frontend/images/rookies/guilmon.jpg"),
-    TERRIERMON(13, "Terriermon", "VENTO", "/frontend/images/rookies/terriermon.jpg"),
-    RENAMON(14, "Renamon", "VENTO", "/frontend/images/rookies/renamon.jpg"),
-    HAWKMON(15, "Hawkmon", "VENTO", "/frontend/images/rookies/hawkmon.jpg"),
-    ARMADILLOMON(16, "Armadillomon", "TERRA", "/frontend/images/rookies/armadillomon.jpg"),
-    IMPMON(17, "Impmon", "TREVAS", "/frontend/images/rookies/impmon.jpg"),
-    DEVIDEVIMON(18, "Devidevimon", "TREVAS", "/frontend/images/rookies/devidevimon.jpg"),
-    MONODRAMON(19, "Monodramon", "TREVAS", "/frontend/images/rookies/monodramon.jpg"),
-    LOPMON(20, "Lopmon", "GELO", "/frontend/images/rookies/lopmon.jpg"),
-    BETAMON(21, "Betamon", "PLANTA", "/frontend/images/rookies/betamon.jpg");
+    AGUMON(1, "Agumon", "FOGO", "/imagens/digimons/rookies/agumon.jpg"),
+    GABUMON(2, "Gabumon", "FOGO", "/imagens/digimons/rookies/gabumon.jpg"),
+    PIYOMON(3, "Piyomon", "VENTO", "/imagens/digimons/rookies/piyomon.jpg"),
+    TENTOMON(4, "Tentomon", "RAIO", "/imagens/digimons/rookies/tentomon.jpg"),
+    PALMON(5, "Palmon", "PLANTA", "/imagens/digimons/rookies/palmon.jpg"),
+    GOMAMON(6, "Gomamon", "AGUA", "/imagens/digimons/rookies/gomamon.jpg"),
+    PATAMON(7, "Patamon", "LUZ", "/imagens/digimons/rookies/patamon.jpg"),
+    SALAMON(8, "Salamon", "LUZ", "/imagens/digimons/rookies/salamon.jpg"),
+    VEEMON(9, "Veemon", "FOGO", "/imagens/digimons/rookies/veemon.jpg"),
+    WORMMON(10, "Wormmon", "TREVAS", "/imagens/digimons/rookies/wormmon.jpg"),
+    BEARMON(11, "Bearmon", "TERRA", "/imagens/digimons/rookies/bearmon.jpg"),
+    GUILMON(12, "Guilmon", "FOGO", "/imagens/digimons/rookies/guilmon.jpg"),
+    TERRIERMON(13, "Terriermon", "VENTO", "/imagens/digimons/rookies/terriermon.jpg"),
+    RENAMON(14, "Renamon", "VENTO", "/imagens/digimons/rookies/renamon.jpg"),
+    HAWKMON(15, "Hawkmon", "VENTO", "/imagens/digimons/rookies/hawkmon.jpg"),
+    ARMADILLOMON(16, "Armadillomon", "TERRA", "/imagens/digimons/rookies/armadillomon.jpg"),
+    IMPMON(17, "Impmon", "TREVAS", "/imagens/digimons/rookies/impmon.jpg"),
+    DEVIDEVIMON(18, "Devidevimon", "TREVAS", "/imagens/digimons/rookies/devidevimon.jpg"),
+    MONODRAMON(19, "Monodramon", "TREVAS", "/imagens/digimons/rookies/monodramon.jpg"),
+    LOPMON(20, "Lopmon", "GELO", "/imagens/digimons/rookies/lopmon.jpg"),
+    BETAMON(21, "Betamon", "PLANTA", "/imagens/digimons/rookies/betamon.jpg");
 
     private int id;
     private String descricao;

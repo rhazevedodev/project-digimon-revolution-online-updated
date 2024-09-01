@@ -25,9 +25,7 @@ public class PremiumService {
 
     public Map<String, Object> carregarInformacoesPremium(Long idDigimon) {
         Map<String, Object> response = new LinkedHashMap<>();
-        Digimon digimon = digimonService.getDigimonById(idDigimon);
-        String urlImg = EnumDigimonRookie.getUrlImgById(digimon.getIdRookie()).toLowerCase();
-        response.put("url_imagem_digimon", urlImg);
+        response.putAll(buscarPeriodoPremium(idDigimon));
         return response;
     }
 
