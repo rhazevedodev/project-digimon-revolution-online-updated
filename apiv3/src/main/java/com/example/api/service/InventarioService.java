@@ -63,6 +63,7 @@ public class InventarioService {
         // Itera sobre cada item do inventário
         for (Inventario inventario : inventarioList) {
             Map<String, Object> itemDetails = new LinkedHashMap<>();
+            itemDetails.put("urlImagem","/imagens/icones/pocaoVida.png");
             itemDetails.put("idInventario", inventario.getId());
             itemDetails.put("idDigimon", inventario.getIdDigimon());
             itemDetails.put("nomeItem", inventario.getNomeItem());

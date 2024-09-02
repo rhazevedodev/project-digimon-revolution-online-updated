@@ -14,10 +14,10 @@ function loadItems(category = 'todos') {
     itemsList.innerHTML = '';
 
     let filteredItems;
-    if (category === 'todos') {
+    if (categoriaItem === 'todos') {
         filteredItems = items;
     } else {
-        filteredItems = items.filter(item => item.category === category);
+        filteredItems = items.filter(item => item.categoriaItem === categoriaItem);
     }
 
     if (filteredItems.length === 0) {

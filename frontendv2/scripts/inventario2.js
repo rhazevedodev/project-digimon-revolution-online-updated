@@ -12,7 +12,7 @@ const items = [
 */
 
 // Função para carregar itens de uma API
-function loadItems(category = 'todos') {
+function loadItems(categoriaItem = 'TODOS') {
     const itemsList = document.getElementById('items-list');
     itemsList.innerHTML = '';
 
@@ -33,10 +33,15 @@ function loadItems(category = 'todos') {
     })
     .then(response => response.json())
     .then(data => {
-            const filteredItems = data.itens; // Ajuste conforme a estrutura da resposta da sua API
-            console.log(filteredItems);
+            const items = data.itens;
+            console.log(items) // Ajuste conforme a estrutura da resposta da sua API
 
-            
+            if (categoriaItem.toUpperCase() === 'TODOS') {
+                filteredItems = items;
+            } else {
+                filteredItems = items.filter(item => item.categoriaItem.toUpperCase() === categoriaItem.toUpperCase());
+            }
+
             if (filteredItems.length === 0) {
                 itemsList.innerHTML = '<p class="no-items">Nenhum item encontrado nesta categoria.</p>';
                 return;
@@ -48,7 +53,7 @@ function loadItems(category = 'todos') {
                 itemRow.className = 'item-row';
 
                 const itemIcon = document.createElement('img');
-                itemIcon.src = item.image;
+                itemIcon.src = item.urlImagem;
                 itemIcon.alt = item.name;
                 itemIcon.className = 'item-icon';
 
@@ -114,8 +119,8 @@ function createButton(text, className) {
 }
 
 // Função para filtrar itens
-function filterItems(category) {
-    loadItems(category);
+function filterItems(categoriaItem) {
+    loadItems(categoriaItem);
 }
 
 // Carrega todos os itens ao iniciar
