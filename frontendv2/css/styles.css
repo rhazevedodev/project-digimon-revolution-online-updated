@@ -72,6 +72,7 @@
             opacity: 0.5; /* Ajuste o valor de opacidade conforme necessário 
             */
      border: #1a1a1a 1px solid;
+     border-radius:20px;
  }
 
  #idiomas {
@@ -129,7 +130,7 @@
     padding: 10px;
     margin: 10px;
     background-color: #f9f9f9;
-    border-radius: 5px;
+    border-radius: 20px;
     margin-left: 30px;
 }
 
@@ -163,7 +164,7 @@
     border: 5px solid #ccc;
     padding: 10px;
     background-color: #f9f9f9;
-    border-radius: 5px;
+    border-radius: 20px;
     margin-top: 5px;
  }
 
@@ -174,6 +175,7 @@
      margin-bottom: 5px;
      display: block;
      max-width: 100%;
+     border-radius: 20px;
      
  }
 
@@ -191,28 +193,13 @@
      color: #ba9a7b;
  }
 
- /* Adicionei CSS para estilizar a caixa */
- /*
- #caixa_direita {
-     border: 1px solid #ccc;
-     padding: 10px;
-     margin: 10px;
-     background-color: #f9f9f9;
-     border-radius: 5px;
-     margin-left: 30px;
- }
-
- #caixa_direita h3 {
-     margin-top: 0;
- }
-     */
 
  #caixa_informacoes {
      border: 5px solid #ccc;
      padding: 10px;
      margin: 10px;
      background-color: #f9f9f9;
-     border-radius: 5px;
+     border-radius: 20px;
      margin-left: 30px;
  }
 
@@ -249,39 +236,8 @@
         border-bottom: 1px solid #ccc;
         margin: 10px 0;
  }
- /* Adicione este estilo para remover espaçamento entre as imagens
- .barra {
-     display: inline-block;
-     vertical-align: top;
-     margin: 0;
-     padding: 0;
- } */
 
- .box_preto_tarja {
-     /*background:url(/imagens/narutoplayers/batalha.jpg);*/
- }
-/*
- .progress-bar {
-     display: flex;
-     width: 100%;
-     height: 26px;
-     background-image: url('/imagens/narutoplayers/barras/azul/barra_centro.jpg');
-     background-size: cover;
-     border-radius: 13px;
- }
 
- .progress-bar-inner {
-     display: flex;
-     background-image: url('/imagens/narutoplayers/barras/azul/ponta_barra.jpg'),
-         url('/imagens/narutoplayers/barras/azul/fim_barra.jpg'),
-         url('/imagens/narutoplayers/barras/azul/barra_centro.jpg');
-     background-repeat: no-repeat, no-repeat, repeat-x;
-     background-position: left, right, center;
-     background-size: 16px 26px, 16px 26px, auto;
-     height: 100%;
-     border-radius: 13px;
- }
-*/
  .center-content {
     display: flex;
     align-items: center;
