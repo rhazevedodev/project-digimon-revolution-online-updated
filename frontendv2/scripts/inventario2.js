@@ -1,4 +1,5 @@
 // Exemplo de dados para simular a resposta do banco de dados
+/*
 const items = [
     { id: 1, name: 'Poção de Vida', category: 'consumiveis', image: 'images/potion.png', description: 'Restaura 50 pontos de vida.', quantity: 10 },
     { id: 2, name: 'Espada de Fogo', category: 'equipamentos', image: 'images/sword.png', description: 'Aumenta o ataque em 20 pontos.', quantity: 1 },
@@ -8,79 +9,102 @@ const items = [
     { id: 6, name: 'Escudo de Defesa', category: 'equipamentos', image: 'images/shield.png', description: 'Aumenta a defesa em 15 pontos.', quantity: 1 },
     // Adicione mais itens conforme necessário
 ];
+*/
 
+// Função para carregar itens de uma API
 function loadItems(category = 'todos') {
     const itemsList = document.getElementById('items-list');
     itemsList.innerHTML = '';
 
-    let filteredItems;
-    if (category === 'todos') {
-        filteredItems = items;
-    } else {
-        filteredItems = items.filter(item => item.category === category);
-    }
+    // URL da API
+    const apiUrl = `http://localhost:8080/api/telaInventario/carregarInventario`;
 
-    if (filteredItems.length === 0) {
-        itemsList.innerHTML = '<p class="no-items">Nenhum item encontrado nesta categoria.</p>';
-        return;
-    }
+    // Dados a serem enviados no corpo da requisição
+    const requestBody = {
+        idDigimon: "2"
+    };
 
-    filteredItems.forEach(item => {
-        const itemRow = document.createElement('div');
-        itemRow.className = 'item-row';
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+    })
+    .then(response => response.json())
+    .then(data => {
+            const filteredItems = data.itens; // Ajuste conforme a estrutura da resposta da sua API
+            console.log(filteredItems);
 
-        const itemIcon = document.createElement('img');
-        itemIcon.src = item.image;
-        itemIcon.alt = item.name;
-        itemIcon.className = 'item-icon';
+            
+            if (filteredItems.length === 0) {
+                itemsList.innerHTML = '<p class="no-items">Nenhum item encontrado nesta categoria.</p>';
+                return;
+            }
+                
 
-        const itemDetails = document.createElement('div');
-        itemDetails.className = 'item-details';
+            filteredItems.forEach(item => {
+                const itemRow = document.createElement('div');
+                itemRow.className = 'item-row';
 
-        const itemName = document.createElement('h3');
-        itemName.className = 'item-name';
-        itemName.textContent = item.name;
+                const itemIcon = document.createElement('img');
+                itemIcon.src = item.image;
+                itemIcon.alt = item.name;
+                itemIcon.className = 'item-icon';
 
-        const itemDescription = document.createElement('p');
-        itemDescription.className = 'item-description';
-        itemDescription.textContent = item.description;
+                const itemDetails = document.createElement('div');
+                itemDetails.className = 'item-details';
 
-        const itemQuantity = document.createElement('p');
-        itemQuantity.className = 'item-quantity';
-        itemQuantity.textContent = `Quantidade: ${item.quantity}`;
+                const itemName = document.createElement('h3');
+                itemName.className = 'item-name';
+                itemName.textContent = item.nomeItem;
 
-        const itemActions = document.createElement('div');
-        itemActions.className = 'item-actions';
+                const itemDescription = document.createElement('p');
+                itemDescription.className = 'item-description';
+                itemDescription.textContent = item.descricaoItem;
 
-        // Adiciona os botões com base na categoria
-        if (item.category === 'consumiveis') {
-            const useButton = createButton('Usar', 'use-button');
-            const sellButton = createButton('Vender', 'sell-button');
-            itemActions.appendChild(useButton);
-            itemActions.appendChild(sellButton);
-        } else if (item.category === 'equipamentos') {
-            const equipButton = createButton('Equipar', 'equip-button');
-            const sellButton = createButton('Vender', 'sell-button');
-            itemActions.appendChild(equipButton);
-            itemActions.appendChild(sellButton);
-        } else if (item.category === 'itens') {
-            const useButton = createButton('Usar', 'use-button');
-            const sellButton = createButton('Vender', 'sell-button');
-            itemActions.appendChild(useButton);
-            itemActions.appendChild(sellButton);
-        }
+                const itemQuantity = document.createElement('p');
+                itemQuantity.className = 'item-quantity';
+                itemQuantity.textContent = `Quantidade: ${item.quantidade}`;
 
-        itemDetails.appendChild(itemName);
-        itemDetails.appendChild(itemDescription);
-        itemDetails.appendChild(itemQuantity);
-        itemRow.appendChild(itemIcon);
-        itemRow.appendChild(itemDetails);
-        itemRow.appendChild(itemActions);
+                const itemActions = document.createElement('div');
+                itemActions.className = 'item-actions';
 
-        itemsList.appendChild(itemRow);
-    });
+                // Adiciona os botões com base na categoria
+                if (item.categoriaItem === 'CONSUMIVEIS') {
+                    const useButton = createButton('Usar', 'use-button');
+                    const sellButton = createButton('Vender', 'sell-button');
+                    itemActions.appendChild(useButton);
+                    itemActions.appendChild(sellButton);
+                } else if (item.categoriaItem === 'EQUIPAMENTOS') {
+                    const equipButton = createButton('Equipar', 'equip-button');
+                    const sellButton = createButton('Vender', 'sell-button');
+                    itemActions.appendChild(equipButton);
+                    itemActions.appendChild(sellButton);
+                } else if (item.categoriaItem === 'ITENS') {
+                    const useButton = createButton('Usar', 'use-button');
+                    const sellButton = createButton('Vender', 'sell-button');
+                    itemActions.appendChild(useButton);
+                    itemActions.appendChild(sellButton);
+                }
+
+                itemDetails.appendChild(itemName);
+                itemDetails.appendChild(itemDescription);
+                itemDetails.appendChild(itemQuantity);
+                itemRow.appendChild(itemIcon);
+                itemRow.appendChild(itemDetails);
+                itemRow.appendChild(itemActions);
+
+                itemsList.appendChild(itemRow);
+            });
+        })
+        .catch(error => {
+            console.error('Erro ao carregar itens:', error);
+            itemsList.innerHTML = '<p class="error">Erro ao carregar itens. Tente novamente mais tarde.</p>';
+        });
 }
 
+// Função para criar botões
 function createButton(text, className) {
     const button = document.createElement('button');
     button.className = className;
@@ -89,6 +113,7 @@ function createButton(text, className) {
     return button;
 }
 
+// Função para filtrar itens
 function filterItems(category) {
     loadItems(category);
 }
