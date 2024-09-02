@@ -71,8 +71,7 @@ public enum EnumFragmentosDigievolucao {
     JUSTIMON_CRITICAL_ARM("66", "MEGA", "FRAG_JUSTIMON_CRITICAL_ARM", "Fragmento de digievolução de Justimon Critical Arm"),
     DEVIMON("67", "CHAMPION", "FRAG_DEVIMON", "Fragmento de digievolução de Devimon"),
     MYOTISMON("68", "ULTIMATE", "FRAG_MYOTISMON", "Fragmento de digievolução de Myotismon"),
-    MALOMYOTISMON("69", "MEGA", "FRAG_MALOMYOTISMON", "Fragmento de digievolução de MaloMyotismon"),
-    ;
+    MALOMYOTISMON("69", "MEGA", "FRAG_MALOMYOTISMON", "Fragmento de digievolução de MaloMyotismon");
 
     private final String id;
     private final String tier;
