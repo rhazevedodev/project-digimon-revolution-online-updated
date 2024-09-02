@@ -1,12 +1,12 @@
 package com.example.api.service;
 
+import com.example.api.controller.StatusController;
 import com.example.api.entity.Digimon;
 import com.example.api.entity.Jogador;
-import com.example.api.enumerator.EnumDigimonChampion;
-import com.example.api.enumerator.EnumDigimonMega;
-import com.example.api.enumerator.EnumDigimonRookie;
-import com.example.api.enumerator.EnumDigimonUltimate;
+import com.example.api.enumerator.*;
 import com.example.api.utils.Data;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
@@ -14,6 +14,8 @@ import java.util.Map;
 
 @Service
 public class StatusService {
+
+    private static final Logger logger = LoggerFactory.getLogger(StatusService.class);
 
     private final DigimonService digimonService;
     private final JogadorService jogadorService;
@@ -27,18 +29,11 @@ public class StatusService {
         this.premiumService = premiumService;
     }
 
-    public Digimon carregarDigimon(Long idDigimon){
-        return digimonService.getDigimonById(idDigimon);
-    }
-
-    public Jogador carregarJogador(Long idJogador){
-        return jogadorService.getJogadorById(idJogador);
-    }
     public Map<String, Object> carregarTelaStatus(Long idDigimon) {
         Map<String, Object> response = new LinkedHashMap<>();
 
-        Digimon digimon = carregarDigimon(idDigimon);
-        Jogador jogador = carregarJogador(digimon.getIdJogador());
+        Digimon digimon = digimonService.getDigimonById(idDigimon);
+        Jogador jogador = jogadorService.getJogadorById(digimon.getIdJogador());
 
         // Chama os métodos existentes e adiciona os resultados ao response
         response.putAll(digimonService.carregarImagemDigimon(idDigimon));
@@ -85,7 +80,8 @@ public class StatusService {
         int energia = digimon.getAtributos().getPontosEnergia();
         int vida = digimon.getAtributos().getPontosVida();
         int experiencia = digimon.getPontosExperiencia();
-        preencherResponseAtributos(response, forca, inteligencia, conhecimento, agilidade, energia, vida, experiencia);
+        int experienciaNecessaria = EnumNivelDigimon.getExperienciaNecessaria(digimon.getNivel());
+        preencherResponseAtributos(response, forca, inteligencia, conhecimento, agilidade, energia, vida, experiencia, experienciaNecessaria);
         return response;
     }
 
@@ -105,14 +101,15 @@ public class StatusService {
         }
     }
 
-    private void preencherResponseAtributos(Map<String, Object> response, int forca, int inteligencia, int conhecimento, int agilidade, int energia, int vida, int experiecnia) {
+    private void preencherResponseAtributos(Map<String, Object> response, int forca, int inteligencia, int conhecimento, int agilidade, int energia, int vida, int experiencia, int experienciaNecessaria) {
         response.put("forca", forca);
         response.put("inteligencia", inteligencia);
         response.put("conhecimento", conhecimento);
         response.put("agilidade", agilidade);
         response.put("energia", energia);
         response.put("vida", vida);
-        response.put("experiencia", experiecnia);
+        response.put("experiencia", experiencia);
+        response.put("experienciaNecessaria", experienciaNecessaria);
     }
 
     private void preencherResponseInformacoes(Map<String, Object> response, String dataJogoDesde, String indicacao, int reservaBits, int reservaDiamantes, String apelidoDigimon, String digimonRookie, String digimonChampion, String digimonUltimate, String digimonMega, String tierDigimon, int nivelDigimon) {

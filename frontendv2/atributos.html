@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="./css/styles.css" rel="stylesheet" type="text/css">
+    <script defer src="./scripts/atributos_scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>Atributos</title>
+</head>
+
+<body style="padding: 0px 0px 154px;">
+    <div class="background"></div>
+    <h2 id="titulo" style="text-align: center;">Digimon Revolution Online</h2>
+    <!--INICIO DIV PRINCIPAL-->
+    <div id="div_principal" style="height: auto !important;">
+        <!--INICIO DIV BANNER PRINCIPAL-->
+        <div id="banner_principal">
+            <!--INICIO BARRA DE IDIOMAS-->
+            <div id="idiomas">
+                <img src="/imagens/narutoplayers/brasil.gif" alt="Português" width="20" height="14" border="0">
+                <img src="/imagens/narutoplayers/espanhol.gif" alt="Espanhol" width="20" height="14" border="0">
+                <!--FIM BARRA DE IDIOMAS-->
+            </div>
+            <!--FIM DIV BANNER PRINCIPAL-->
+
+        </div>
+        <br>
+        <div id="caixa-informacoes-menu">
+            <div id="menu">
+                <a href="" class="disabled">Novidades</a>
+                |
+                <a href="status.html">Status</a>
+                |
+                <a href="">Clã</a>
+                |
+                <a href="cacadas.html">Caçadas</a>
+                |
+                <a href="">Eventos</a>
+                |
+                <a href="">Ranking</a>
+                |
+                <a href="missoes.html">Missões</a>
+                |
+                <a href="">Elementos</a>
+                |
+                <a href="">Perfil</a>
+                |
+                <a href="">Contato</a>
+                |
+                <a href="">Conquistas</a>
+                <br>
+            </div>
+            <div id="menu-2">
+                <a href="">Manual</a>
+                |
+                <a href="invasoes.html">Invasão</a>
+                |
+                <a href="">Lanchonete</a>
+                |
+                <a href="">Trocas</a>
+                |
+                <a href="loja.html">Mercado</a>
+                |
+                <a href="">Habilidades</a>
+                |
+                <a href="">Excelência</a>
+                |
+                <a href="">Raids</a>
+                |
+                <a href="">F.A.Q</a>
+                |
+                <a href="">Premium</a>
+                |
+                <a href="">Logout</a>
+                <br>
+            </div>
+        </div>
+        <!--<div id="sombra_baixo_menu"></div>-->
+        <br>
+        <div id="conteudo">
+            <div id="motor_game">
+                <div id="col_esquerda">
+                    <div id="image-container"></div>
+                    <div id="life-bar-container">
+                        <div id="life-bar">
+                            <span id="life-bar-text">75/100</span>
+                        </div>
+                    </div>
+                    <div id="energy-bar-container">
+                        <div id="energy-bar">
+                            <span id="energy-bar-text">75/100</span>
+                        </div>
+                    </div>
+                    <div id="caixa-informacoes-esquerda"></div>
+                </div>
+            </div>
+            <div id="col_direita">
+                <!-- Nova caixa adicionada -->
+                <div id="caixa_informacoes">
+                    <h3 class="titulo-caixa">Melhorar Atributos</h3>
+                    <hr class="separador">
+                    <p style="text-align: justify;">Aqui você pode melhorar seus atributos.
+                        <hr class="separador">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                            <tr>
+                                <td width="150">Bits:</td>
+                                <td colspan="4" id="bits_jogador"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr class="separador">
+                    <table border="0" cellspacing="0" cellpadding="2">
+                        <tbody>
+                            <tr>
+                                <td width="150">Atributo 1 - Força:</td>
+                                <td id="atributo1_forca"></td>
+                                <td id="custoAtributo1"></td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button id="uparAtributo1" type="button" class="button-confirmar-atributos">
+                                        Upar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Atributo 2 - Inteligencia:</td>
+                                <td id="atributo2_inteligencia"></td>
+                                <td id="custoAtributo2"></td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button id="uparAtributo2" type="button" class="button-confirmar-atributos">
+                                        Upar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Atributo 3 - Conhecimento:</td>
+                                <td id="atributo3_conhecimento"></td>
+                                <td id="custoAtributo3"></td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button id="uparAtributo3" type="button" class="button-confirmar-atributos">
+                                        Upar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Atributo 4 - Agilidade:</td>
+                                <td id="atributo4_agilidade"></td>
+                                <td id="custoAtributo4"></td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button id="uparAtributo4" type="button" class="button-confirmar-atributos">
+                                        Upar
+                                    </button>
+                                </td>
+                        </tbody>
+                    </table>
+                    <hr class="separador">
+                    <p>Quanto mais alto for o nível do atributo, mais caro ficará para melhorá-lo.</p>
+                    <hr class="separador">
+                    <table border="0" cellspacing="0" cellpadding="2">
+                        <tbody>
+                            <tr>
+                                <td id="custoTotal"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr class="separador">
+                    <button type="button" class="button-resetar-salvar-atributos">
+                        Resetar Atributos
+                    </button>
+                    <button type="button" class="button-resetar-salvar-atributos">
+                        Salvar Atributos
+                    </button>
+                </div>
+
+                <!--FIM DIV PRINCIPAL-->
+            </div>
+            <p id="error-message" class="error-message"></p>
+</body>
+
+</html>

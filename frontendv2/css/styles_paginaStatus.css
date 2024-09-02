@@ -497,7 +497,7 @@ body {
     /* Para destacar o texto */
 }
 
-/* Estilização da barra de vida */
+/* Estilização da barra de energia */
 #energy-bar-container {
     width: 100%;
     background-color: #ccc;

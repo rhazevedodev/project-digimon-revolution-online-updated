@@ -7,6 +7,7 @@ import com.example.api.enumerator.EnumDigimonRookie;
 import com.example.api.enumerator.EnumElementos;
 import com.example.api.repository.DigimonRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -26,6 +27,11 @@ public class DigimonService {
     public boolean getDigimonByIdJogador(int idJogador) {
         return digimonRepository.existsByIdJogador(idJogador);
 
+    }
+
+    @Transactional
+    public void salvarDigimonTelaAtributos(Digimon digimon){
+        digimonRepository.save(digimon);
     }
 
     public String getIdByDescricao(String descricao) {
