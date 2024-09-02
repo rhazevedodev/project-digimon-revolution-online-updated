@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventário - Digimon Revolution Online</title>
+    <link rel="stylesheet" href="./css/styles_inventario.css">
+    <script defer src="./scripts/inventario.js"></script>
+</head>
+<body>
+    <div class="inventory-container">
+        <h1>Inventário</h1>
+        <div class="categories">
+            <button class="category-btn" onclick="filterItems('itens')">Itens</button>
+            <button class="category-btn" onclick="filterItems('equipamentos')">Equipamentos</button>
+            <button class="category-btn" onclick="filterItems('consumiveis')">Consumíveis</button>
+            <button class="category-btn" onclick="filterItems('fragmentos')">Fragmentos</button>
+        </div>
+        <div class="items-list" id="items-list">
+            <!-- Os itens serão carregados aqui via JavaScript -->
+        </div>
+    </div>
+
+</body>
+</html>
