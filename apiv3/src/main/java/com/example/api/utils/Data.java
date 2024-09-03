@@ -1,5 +1,6 @@
 package com.example.api.utils;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,6 +15,11 @@ public class Data {
         DateTimeFormatter formatoDesejado = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss");
         String dataFormatada = data.format(formatoDesejado);
         return dataFormatada;
+    }
+
+    public static boolean validarFinalDeSemana(LocalDate date){
+        DayOfWeek day = date.getDayOfWeek();
+        return day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY;
     }
 
 

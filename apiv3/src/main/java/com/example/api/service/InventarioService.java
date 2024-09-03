@@ -4,11 +4,14 @@ import com.example.api.entity.Digimon;
 import com.example.api.entity.Inventario;
 import com.example.api.entity.Jogador;
 import com.example.api.enumerator.EnumCategoriasInventario;
+import com.example.api.enumerator.EnumFragmentosDigievolucao;
 import com.example.api.repository.InventarioRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -83,5 +86,33 @@ public class InventarioService {
         response.put("itens", itens);
 
         return response;
+    }
+
+    @Transactional
+    public Inventario adicionarFragmentoAoInventario(Long idDigimon, EnumFragmentosDigievolucao fragmentoSorteado, int quantiaFragmentos) {
+        Inventario inventario = inventarioRepository.findByIdDigimonAndIdItem(idDigimon, Integer.parseInt(fragmentoSorteado.getId()));
+
+        if (inventario != null) {
+            inventario.setQuantidade(inventario.getQuantidade() + quantiaFragmentos);
+        } else {
+            inventario = new Inventario();
+            inventario.setDescricaoItem(fragmentoSorteado.getDescricao_item());
+            inventario.setEquipado(false);
+            inventario.setIdCategoria(4);
+            inventario.setIdDigimon(idDigimon);
+            inventario.setIdItem(Integer.parseInt(fragmentoSorteado.getId()));
+            inventario.setPodeTrocar(false);
+            inventario.setPodeVender(false);
+            inventario.setQuantidade(quantiaFragmentos);
+            inventario.setNomeItem(fragmentoSorteado.getDescricao_item());
+            inventario.setValorCompra(0);
+            inventario.setValorVenda(0);
+        }
+        inventario.setDataUltimaAlteracao(LocalDateTime.now());
+
+        inventarioRepository.save(inventario);
+
+        return inventario;
+
     }
 }

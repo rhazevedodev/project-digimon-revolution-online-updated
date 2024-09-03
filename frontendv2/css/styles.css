@@ -390,7 +390,7 @@
 
         /* Estilos CSS para fazer a imagem cobrir a div */
 .banner-missao {
-    background-image: url('/imagens/digimon_banner_missao.jpg'); /* Caminho para a imagem */
+    background-image: url(/imagens/bannerMissao.jpg); /* Caminho para a imagem */
     background-size: cover; /* Faz a imagem cobrir toda a div */
     background-position: center; /* Centraliza a imagem */
     height: 200px; /* Altura desejada da div */
