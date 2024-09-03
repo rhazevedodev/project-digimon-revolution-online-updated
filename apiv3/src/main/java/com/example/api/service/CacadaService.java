@@ -119,22 +119,28 @@ public class CacadaService {
 
     public Cacada iniciarCacada(int minutosEscolhidos, Long idDigimon) {
 
+        Digimon digimon = digimonService.getDigimonById(idDigimon);
+
         if (verificarCacadaEmAndamento(idDigimon)) {
             throw new RuntimeException("Já existe uma caçada em andamento para esse digimon");
         }
         if (minutosEscolhidos <= 0) {
             throw new RuntimeException("O tempo escolhido não pode ser menor ou igual a zero");
         }
-        if (minutosEscolhidos > verificarTempoDisponivelCacada(idDigimon)) {
-            throw new RuntimeException("O tempo escolhido é maior que o tempo disponível");
+//        if (minutosEscolhidos > verificarTempoDisponivelCacada(idDigimon)) {
+//            throw new RuntimeException("O tempo escolhido é maior que o tempo disponível");
+//        }
+        if(digimon.getAtributos().getPontosEnergia() < 10){
+            throw new RuntimeException("Energia insuficiente");
         }
 
         TempoDisponivelCacada tempoDisponivelCacada =
                 tempoDisponivelRepository.findTempoDisponivelCacadaByIdDigimonAndDataCadastro(idDigimon, LocalDate.now());
-        tempoDisponivelCacada.setTempoDisponivel(tempoDisponivelCacada.getTempoDisponivel() - minutosEscolhidos);
+//        tempoDisponivelCacada.setTempoDisponivel(tempoDisponivelCacada.getTempoDisponivel() - minutosEscolhidos);
         tempoDisponivelCacada.setDataUltimaAlteracao(LocalDateTime.now());
         tempoDisponivelRepository.save(tempoDisponivelCacada);
         digimonService.atualizarBitsDigimon(digimonService.getDigimonById(idDigimon), -10);
+        digimonService.atualizarEnergiaDigimon(digimon, -10);
 
         return cacadaRepository.save(new Cacada(idDigimon, minutosEscolhidos,
                 LocalDateTime.now().plusMinutes(minutosEscolhidos), false));

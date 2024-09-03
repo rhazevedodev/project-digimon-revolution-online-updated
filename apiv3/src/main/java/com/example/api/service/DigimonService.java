@@ -7,6 +7,7 @@ import com.example.api.enumerator.EnumDigimonRookie;
 import com.example.api.enumerator.EnumElementos;
 import com.example.api.enumerator.EnumNivelDigimon;
 import com.example.api.repository.DigimonRepository;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -181,5 +182,24 @@ public class DigimonService {
         atributos.setPontosVida(vidaNova);
         digimon.setAtributos(atributos);
         return digimonRepository.save(digimon);
+    }
+
+    @Scheduled(fixedRate = 3600000)
+    public void recuperarEnergiaVida(){
+//        Digimon digimon = getDigimonById(idDigimon);
+//        Atributos atributos = digimon.getAtributos();
+//        atributos.setPontosVida(50 * digimon.getNivel());
+//        atributos.setPontosEnergia(100);
+//        digimon.setAtributos(atributos);
+//        digimonRepository.save(digimon);
+        digimonRepository.atualizarTodosAtributos();
+    }
+
+    public void atualizarEnergiaDigimon(Digimon digimon, int i) {
+        Atributos atributos = digimon.getAtributos();
+        int energiaAtual = atributos.getPontosEnergia();
+        atributos.setPontosEnergia(energiaAtual + i);
+        digimon.setAtributos(atributos);
+        digimonRepository.save(digimon);
     }
 }
