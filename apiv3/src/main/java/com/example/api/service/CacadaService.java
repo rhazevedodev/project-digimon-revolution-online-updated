@@ -49,7 +49,6 @@ public class CacadaService {
         Map<String, Object> response = new LinkedHashMap<>();
 
         Digimon digimon = digimonService.getDigimonById(idDigimon);
-        Jogador jogador = jogadorService.getJogadorById(digimon.getIdJogador());
 
         // Chama os métodos existentes e adiciona os resultados ao response
         response.putAll(digimonService.carregarImagemDigimon(idDigimon));
