@@ -134,6 +134,7 @@ public class CacadaService {
         tempoDisponivelCacada.setTempoDisponivel(tempoDisponivelCacada.getTempoDisponivel() - minutosEscolhidos);
         tempoDisponivelCacada.setDataUltimaAlteracao(LocalDateTime.now());
         tempoDisponivelRepository.save(tempoDisponivelCacada);
+        digimonService.atualizarBitsDigimon(digimonService.getDigimonById(idDigimon), -10);
 
         return cacadaRepository.save(new Cacada(idDigimon, minutosEscolhidos,
                 LocalDateTime.now().plusMinutes(minutosEscolhidos), false));
