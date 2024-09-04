@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="./css/styles.css" rel="stylesheet" type="text/css">
+    <script defer src="./scripts/missoes_scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>Missoes</title>
+</head>
+
+<body style="padding: 0px 0px 154px;">
+    <div class="background"></div>
+    <h2 id="titulo" style="text-align: center;">Digimon Revolution Online</h2>
+    <!--INICIO DIV PRINCIPAL-->
+    <div id="div_principal" style="height: auto !important;">
+        <!--INICIO DIV BANNER PRINCIPAL-->
+        <div id="banner_principal">
+            <!--INICIO BARRA DE IDIOMAS-->
+            <div id="idiomas">
+                <img src="../imagens/brasil.gif" alt="Português" width="20" height="14" border="0">
+                <img src="../imagens/espanhol.gif" alt="Espanhol" width="20" height="14" border="0">
+                <!--FIM BARRA DE IDIOMAS-->
+            </div>
+            <!--FIM DIV BANNER PRINCIPAL-->
+
+        </div>
+        <br>
+        <div id="caixa-informacoes-menu">
+            <div id="menu">
+                <a href="">Novidades</a>
+                |
+                <a href="status.html">Status</a>
+                |
+                <a href="">Clã</a>
+                |
+                <a href="cacadas.html">Caçadas</a>
+                |
+                <a href="">Eventos</a>
+                |
+                <a href="">Ranking</a>
+                |
+                <a href="">Missões</a>
+                |
+                <a href="">Elementos</a>
+                |
+                <a href="">Perfil</a>
+                |
+                <a href="">Contato</a>
+                |
+                <a href="">Conquistas</a>
+                <br>
+            </div>
+            <div id="menu-2">
+                <a href="">Manual</a>
+                |
+                <a href="invasoes.html">Invasão</a>
+                |
+                <a href="">Lanchonete</a>
+                |
+                <a href="">Trocas</a>
+                |
+                <a href="loja.html">Mercado</a>
+                |
+                <a href="">Habilidades</a>
+                |
+                <a href="">Excelência</a>
+                |
+                <a href="">Raids</a>
+                |
+                <a href="">F.A.Q</a>
+                |
+                <a href="">Premium</a>
+                |
+                <a href="">Logout</a>
+                <br>
+            </div>
+        </div>
+        <!--<div id="sombra_baixo_menu"></div>-->
+        <br>
+        <div id="conteudo">
+            <div id="motor_game">
+                <div id="col_esquerda">
+                    <div id="image-container"></div>
+                    <div id="life-bar-container">
+                        <div id="life-bar">
+                            <span id="life-bar-text">75/100</span>
+                        </div>
+                    </div>
+                    <div id="energy-bar-container">
+                        <div id="energy-bar">
+                            <span id="energy-bar-text">75/100</span>
+                        </div>
+                    </div>
+                    <div id="caixa-informacoes-esquerda"></div>
+                </div>
+                <div id="col_direita">
+                    <!-- Nova caixa adicionada -->
+                    <div id="caixa_informacoes">
+                        <h3 class="titulo-caixa">Missões</h3>
+                        <hr class="separador">
+                        <p style="text-align: justify;">Aqui você poderá ir a missões para ganhar bits e pontos de
+                            experiência. Verifique abaixo qual
+                            é a missão ideal para você. Todas as missões tem seu valor pré-determinado e você ainda pode
+                            encontrar itens no decorrer da mesma! Para entrar numa missão você deve escolher quantas
+                            horas deseja ficar em missão no campo <strong>Quantidade de Horas</strong>. Você pode
+                            escolher um intervalo entre 1 ou 12 horas de missão.</p>
+
+                        <hr class="separador">
+                        <div align="center" class="banner-missao">
+                            <!--
+                            <img src="/imagens/digimon_banner_missao.jpg" alt="Missões" width="190" height="80">
+                            -->
+                        </div>
+                        <hr class="separador">
+                        <div id="caixa-missao"></div>
+                    </div>
+                    <!-- Modal -->
+                    <div id="resultadoModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>Resultado da Missão</h2>
+                            <div id="resultadoMissaoContent"></div>
+                            <button align="center" style="margin-left: 240px;" id="fecharModal"
+                                class="button-confirmar">Fechar</button>
+                        </div>
+                    </div>
+                    <!--FIM DIV PRINCIPAL-->
+                </div>
+</body>
+
+</html>
