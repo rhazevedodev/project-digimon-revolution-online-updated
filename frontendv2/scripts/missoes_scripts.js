@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const apiURL = 'http://localhost:8080/api/telaMissoes/carregar';
-    const apiIniciarMissaoURL = 'http://localhost:8080/api/missao/iniciarMissao';
-    const apiResgatarRecompensaURL = 'http://localhost:8080/api/missao/pegarRecompensa';
+    const apiIniciarMissaoURL = 'http://localhost:8080/api/telaMissoes/iniciarMissao';
+    const apiResgatarRecompensaURL = 'http://localhost:8080/api/telaMissoes/pegarRecompensa';
 
 
     let dataMissoes = {};
@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 */
     }
 
-
     function displayLifeBar() {
         var vidaTotal = 50 * parseInt(dataMissoes.nivel);
         const vidaAtual = dataMissoes.vida; // Pontos de vida atuais
@@ -100,10 +99,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function iniciarMissao(idMissao, horas) {
         // Dados que serão enviados no corpo da requisição
         const requestBody = {
-            idDigimon: '3',
+            idDigimon: localStorage.getItem('idDigimon'),
             idMissao: parseInt(idMissao),
             qtHoras: parseInt(horas)
         };
+    
         // Configurações da requisição
         const requestOptions = {
             method: 'POST',
@@ -112,13 +112,16 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify(requestBody)
         };
-
+    
         fetch(apiIniciarMissaoURL, requestOptions)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Erro na rede, status: ' + response.status);
+                    // Captura o erro como JSON
+                    return response.json().then(errorData => {
+                        throw new Error(errorData.mensagem || 'Erro desconhecido');
+                    });
                 }
-                return response.json();
+                return response.json(); // Continua normalmente se a resposta for bem-sucedida
             })
             .then(data => {
                 // Armazenar os dados recebidos da API
@@ -133,12 +136,23 @@ document.addEventListener('DOMContentLoaded', function () {
                     ultimaAlteracao: data.ultimaAlteracao
                     // Adicionar mais atributos conforme necessário
                 };
-
+    
+                // Recarregar a página ou fazer outra ação
                 location.reload();
             })
             .catch(error => {
-                console.error('Erro ao fazer requisição:', error);
+                // Exibir a mensagem de erro capturada
+                displayError(error.message);
             });
+    }
+
+    function displayError(title, message) {
+        Swal.fire({
+            title,
+            text: message,
+            icon: 'error',
+            confirmButtonText: 'Tentar novamente'
+        });
     }
 
     let dataResgatarRecompensa = {};
@@ -560,7 +574,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const resgatarButton = document.getElementById('button-resgatar-recompensa-missao');
         if (resgatarButton) {
             resgatarButton.addEventListener('click', function () {
-                const idDigimon = '3'; // ID do Digimon
+                const idDigimon = localStorage.getItem('idDigimon'); // ID do Digimon
                 resgatarRecompensaMissao(idDigimon);
             });
         }

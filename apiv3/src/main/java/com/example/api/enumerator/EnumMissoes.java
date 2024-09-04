@@ -36,5 +36,14 @@ public enum EnumMissoes {
     public String getBitsHora() {
         return bitsHora;
     }
+
+    public static String getNvMinimoByIdMissao(int idMissao) {
+        for (EnumMissoes missao : EnumMissoes.values()) {
+            if (missao.getId().equals(String.valueOf(idMissao))) {
+                return missao.getNivelMinimo();
+            }
+        }
+        throw new RuntimeException("ID de Missão inválido: " + idMissao);
+    }
 }
 
