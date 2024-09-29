@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digivolução</title>
+    <link rel="stylesheet" href="css/digievolucao.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="evolution-container">
+        <h1>Evolução de Digimons</h1>
+        
+        <!-- Digimon atual -->
+        <div class="current-digimon">
+            <img  src="/imagens/digimons/rookies/agumon.jpg" alt="Digimon Atual" id="digimon-image">
+            <h2 id="digimon-name">Agumon</h2>
+            <p>Fragmentos necessários para evoluir: <span id="required-fragments">50</span></p>
+            <p>Item especial: <span id="required-item">Nenhum</span></p>
+        </div>
+
+        <!-- Fragmentos e Evolução -->
+        <div class="evolution-progress">
+            <h3>Fragmentos disponíveis: <span id="current-fragments">40</span></h3>
+            <h3>Item especial disponível: <span id="special-item">Não</span></h3>
+            <button id="evolve-button" disabled>Digivolver</button>
+        </div>
+    </div>
+
+    <script src="./scripts/digievolucao.js"></script>
+</body>
+</html>

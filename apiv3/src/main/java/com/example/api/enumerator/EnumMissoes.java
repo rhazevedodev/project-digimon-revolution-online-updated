@@ -7,7 +7,7 @@ public enum EnumMissoes {
     MISSAO3("3", "1", "1000", "20"),
     MISSAO4("4", "1", "2000", "30"),
     MISSAO5("5", "1", "4000", "40"),
-    MISSAO6("3", "1", "6000", "50");
+    MISSAO6("6", "1", "6000", "50");
 
     private final String id;
     private final String tier;
