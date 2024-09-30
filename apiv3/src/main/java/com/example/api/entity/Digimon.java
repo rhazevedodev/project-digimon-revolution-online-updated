@@ -42,6 +42,9 @@ public class Digimon {
     private Atributos atributos;
 
     @Embedded
+    private AtributosModificadores atributosModificadores;
+
+    @Embedded
     private AtributosElementos atributosElementos;
 
     private LocalDate dataCadastro = LocalDate.now();
@@ -55,7 +58,7 @@ public class Digimon {
     public Digimon() {
     }
 
-    public Digimon(Long id, Long idJogador, int idRookie, int idChampion, int idUltimate, int idMega, String nome, int nivel, int bits, int diamantes, int pontosExperiencia, Atributos atributos, AtributosElementos atributosElementos, LocalDate dataCadastro, LocalDateTime dataUltimaAlteracao, Boolean bonusExperienciaAtivo, Boolean bonusBitsAtivo) {
+    public Digimon(AtributosModificadores  atributosModificadores, Long id, Long idJogador, int idRookie, int idChampion, int idUltimate, int idMega, String nome, int nivel, int bits, int diamantes, int pontosExperiencia, Atributos atributos, AtributosElementos atributosElementos, LocalDate dataCadastro, LocalDateTime dataUltimaAlteracao, Boolean bonusExperienciaAtivo, Boolean bonusBitsAtivo) {
         this.id = id;
         this.idJogador = idJogador;
         this.idRookie = idRookie;
@@ -68,11 +71,20 @@ public class Digimon {
         this.diamantes = diamantes;
         this.pontosExperiencia = pontosExperiencia;
         this.atributos = atributos;
+        this.atributosModificadores = atributosModificadores;
         this.atributosElementos = atributosElementos;
         this.dataCadastro = dataCadastro;
         this.dataUltimaAlteracao = dataUltimaAlteracao;
         this.bonusExperienciaAtivo = bonusExperienciaAtivo;
         this.bonusBitsAtivo = bonusBitsAtivo;
+    }
+
+    public AtributosModificadores getAtributosModificadores() {
+        return atributosModificadores;
+    }
+
+    public void setAtributosModificadores(AtributosModificadores atributosModificadores) {
+        this.atributosModificadores = atributosModificadores;
     }
 
     public boolean isBonusExperienciaAtivo() {

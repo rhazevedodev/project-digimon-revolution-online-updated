@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="css/digievolucao.css">
     <link rel="stylesheet" href="css/styles.css">
-    <script defer src="./scripts/cacadas_scripts2.js"></script>
+    <!--<script defer src="./scripts/digievolucao2.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <title>Digievolução</title>
@@ -106,9 +106,10 @@
                         <p style="text-align: justify;">Aqui você poderá ver o que precisa para evoluir seu digimon e após cumprir todos os requisitos, evoluir ele.</p>
 
                         <hr class="separador">
-                        <div class="evolution-container">
-                            
-                            <!-- Digimon atual -->
+                        <div id="digimon-info">
+                            <div id="evolucoes-container"></div> <!-- Este é o elemento que você está manipulando -->
+                        </div>
+                                <!--
                             <div class="current-digimon">
                                 <h2 id="digimon-name">Greymon</h2>
                                 <br>
@@ -119,14 +120,14 @@
                                 <p>Item especial: <span id="required-item">Nenhum</span></p>
                             </div>
                     
-                            <!-- Fragmentos e Evolução -->
                             <div class="evolution-progress">
-                                <h3>Fragmentos disponíveis: <span id="current-fragments">40</span></h3>
+                                <h3>Fragmentos disponíveis: <span id="current-fragments">50</span></h3>
                                 <h3>Item especial disponível: <span id="special-item">Não</span></h3>
                                 <br>
-                                <button class="button-confirmar" disabled>Digivolver</button>
+                                <button id="evolve-button" class="button-confirmar" disabled>Digivolver</button>
                             </div>
                         </div>
+                    -->
                         <hr class="separador">
                     </div>
 
@@ -142,6 +143,7 @@
 
                     <!--FIM DIV PRINCIPAL-->
                 </div>
+    <script src="./scripts/digievolucao2.js"></script>
 </body>
 
 </html>

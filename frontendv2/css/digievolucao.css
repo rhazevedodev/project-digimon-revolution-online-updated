@@ -5,17 +5,18 @@ body {
     padding: 0;
 }
 
-.evolution-container {
+.evolution-card {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 10px auto;
     background-color: white;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    border: #ccc solid 1px;
 }
 
-.current-digimon img {
+.evolution-card img {
     width: 150px;
 }
 
@@ -44,3 +45,18 @@ button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
+.button-digievoluir {
+    padding: 5px 10px;
+    background-color: #ba9a7b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    appearance: none;
+    width: 50%;
+}
+.button-digievoluir:hover {
+    background-color: #073f09;
+}
+

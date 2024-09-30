@@ -55,18 +55,20 @@ public class DigievolucaoService {
             response.setIdDigimonDestino(evolucao.getDigimonMega());
             EnumDigimonMega mega = EnumDigimonMega.getEnumById(evolucao.getDigimonMega());
             response.setDigimonDestino(mega.getDescricao());
+            response.setPathImagemDigimonDestino(mega.getUrlImg());
         }
         if(evolucao.getDigimonUltimate() != 0l) {
             response.setIdDigimonDestino(evolucao.getDigimonUltimate());
             EnumDigimonUltimate ultimate = EnumDigimonUltimate.getEnumById(evolucao.getDigimonUltimate());
             response.setDigimonDestino(ultimate.getDescricao());
+            response.setPathImagemDigimonDestino(ultimate.getUrlImg());
         }
         if(evolucao.getDigimonChampion() != 0l) {
             response.setIdDigimonDestino(evolucao.getDigimonChampion());
             EnumDigimonChampion champion = EnumDigimonChampion.getEnumById(evolucao.getDigimonChampion());
             response.setDigimonDestino(champion.getDescricao());
+            response.setPathImagemDigimonDestino(champion.getUrlImg());
         }
-
         response.setFragmentosNecessarios(evolucao.getFragmentosNecessarios());
         response.setItemEspecialNecessario(evolucao.isItemEspecialNecessario());
 //                response.setIdItemEspecial(evolucao.get());

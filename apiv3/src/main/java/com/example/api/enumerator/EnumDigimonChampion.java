@@ -5,16 +5,16 @@ import com.example.api.service.LogService;
 
 public enum EnumDigimonChampion {
 
-    GREYMON(1, "GREYMON", "FOGO", "./imagens/digimons/champions/greymon.jpg"),
-    GARURUMON(2, "GARURUMON", "GELO", "./imagens/digimons/rookies/garurumon.jpg"),
-    BIRDRAMON(3, "BIRDRAMON", "VENTO", "./imagens/digimons/rookies/birdramon.jpg"),
-    KABUTERIMON(4, "KABUTERIMON", "RAIO", "./imagens/digimons/rookies/kabuterimon.jpg"),
-    TOGEMON(5, "TOGEMON", "PLANTA", "./imagens/digimons/rookies/togemon.jpg"),
-    IKKAKUMON(6, "IKKAKUMON", "ÁGUA", "./imagens/digimons/rookies/ikkakumon.jpg"),
-    ANGEMON(7, "ANGEMON", "LUZ", "./imagens/digimons/rookies/angemon.jpg"),
-    TAILMON(8, "TAILMON", "LUZ", "./imagens/digimons/rookies/tailmon.jpg"),
-    EXVEEMON(9, "EXVEEMON", "FOGO", "./imagens/digimons/rookies/exveemon.jpg"),
-    STINGMON(10, "STINGMON", "TERRA", "./imagens/digimons/rookies/stingmon.jpg");
+    GREYMON(1, "GREYMON", "FOGO", "./imagens/digimons/champions/greymon2.jpg"),
+    GARURUMON(2, "GARURUMON", "GELO", "./imagens/digimons/champions/garurumon.jpg"),
+    BIRDRAMON(3, "BIRDRAMON", "VENTO", "./imagens/digimons/champions/birdramon.jpg"),
+    KABUTERIMON(4, "KABUTERIMON", "RAIO", "./imagens/digimons/champions/kabuterimon.jpg"),
+    TOGEMON(5, "TOGEMON", "PLANTA", "./imagens/digimons/champions/togemon.jpg"),
+    IKKAKUMON(6, "IKKAKUMON", "ÁGUA", "./imagens/digimons/champions/ikkakumon.jpg"),
+    ANGEMON(7, "ANGEMON", "LUZ", "./imagens/digimons/champions/angemon.jpg"),
+    TAILMON(8, "TAILMON", "LUZ", "./imagens/digimons/champions/tailmon.jpg"),
+    EXVEEMON(9, "EXVEEMON", "FOGO", "./imagens/digimons/champions/exveemon.jpg"),
+    STINGMON(10, "STINGMON", "TERRA", "./imagens/digimons/champions/stingmon.jpg");
 
     private int id;
     private String descricao;
