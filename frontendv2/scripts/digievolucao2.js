@@ -54,9 +54,13 @@ document.addEventListener('DOMContentLoaded', function () {
             digimonImage.alt = evolucao.digimonDestino;
             digimonImage.id = `digimon-image`;
 
+            // Cria o parágrafo com o texto "Fragmentos Obtidos:"
+            const fragmentosObtidosText = document.createElement('p');
+            fragmentosObtidosText.textContent = `Fragmentos Obtidos: ${evolucao.fragmentosDisponiveis}`;
+
             // Cria o parágrafo com o texto "Fragmentos Necessários:"
-            const fragmentosText = document.createElement('p');
-            fragmentosText.textContent = `Fragmentos Necessários: ${evolucao.fragmentosNecessarios}`;
+            const fragmentosNecessariosText = document.createElement('p');
+            fragmentosNecessariosText.textContent = `Fragmentos Necessários: ${evolucao.fragmentosNecessarios}`;
 
             let itemEspecialNecessario = 'Não';
             if(evolucao.itemEspecialNecessario){
@@ -68,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const evolutionButton = document.createElement('button');
             evolutionButton.textContent = `Evoluir para ${evolucao.digimonDestino}`;
             evolutionButton.className = `button-digievoluir`;
-            evolutionButton.disabled = evolucao.fragmentosNecessarios > 50 ? true : false;
+            evolutionButton.disabled = evolucao.fragmentosDisponiveis >= 50 ? false : true;
 
             evolutionButton.addEventListener('click', () => digivolve(index));
 
@@ -77,12 +81,13 @@ document.addEventListener('DOMContentLoaded', function () {
             evolutionDiv.appendChild(digimonImage); // Adiciona a imagem do Digimon ao card// Adiciona o texto logo após a imagem
             evolutionDiv.appendChild(document.createElement('br'));
             evolutionDiv.appendChild(document.createElement('br'));
-            evolutionDiv.appendChild(fragmentosText);
+            evolutionDiv.appendChild(fragmentosNecessariosText);
+            evolutionDiv.appendChild(fragmentosObtidosText);
+            evolutionDiv.appendChild(document.createElement('br'));
             evolutionDiv.appendChild(itemEspecialText);
             evolutionDiv.appendChild(document.createElement('br'));
             evolutionDiv.appendChild(document.createElement('br'));
             evolutionDiv.appendChild(evolutionButton); // Adiciona o botão de evolução ao card
-
 
             // Adiciona a div completa ao container principal
             evolucoesContainer.appendChild(evolutionDiv);

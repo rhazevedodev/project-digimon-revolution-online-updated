@@ -7,6 +7,7 @@ public class ResponseListarDigievolucoes {
     private int idDigimonDestino;
     private String digimonDestino;
     private String pathImagemDigimonDestino;
+    private int fragmentosDisponiveis;
     private int fragmentosNecessarios;
     private boolean itemEspecialNecessario;
     private int idItemEspecial;
@@ -15,16 +16,25 @@ public class ResponseListarDigievolucoes {
     public ResponseListarDigievolucoes() {
     }
 
-    public ResponseListarDigievolucoes(int idDigimonOrigem, String digimonOrigem, int idDigimonDestino, String digimonDestino, int fragmentosNecessarios, boolean itemEspecialNecessario, String pathImagemDigimonDestino, int idItemEspecial, String itemEspecial) {
+    public ResponseListarDigievolucoes(int idDigimonOrigem, String digimonOrigem, int idDigimonDestino, String digimonDestino, int fragmentosDisponiveis, int fragmentosNecessarios, boolean itemEspecialNecessario, String pathImagemDigimonDestino, int idItemEspecial, String itemEspecial) {
         this.idDigimonOrigem = idDigimonOrigem;
         this.digimonOrigem = digimonOrigem;
         this.idDigimonDestino = idDigimonDestino;
         this.digimonDestino = digimonDestino;
+        this.fragmentosDisponiveis = fragmentosDisponiveis;
         this.fragmentosNecessarios = fragmentosNecessarios;
         this.itemEspecialNecessario = itemEspecialNecessario;
         this.pathImagemDigimonDestino = pathImagemDigimonDestino;
         this.idItemEspecial = idItemEspecial;
         this.itemEspecial = itemEspecial;
+    }
+
+    public int getFragmentosDisponiveis() {
+        return fragmentosDisponiveis;
+    }
+
+    public void setFragmentosDisponiveis(int fragmentosDisponiveis) {
+        this.fragmentosDisponiveis = fragmentosDisponiveis;
     }
 
     public String getPathImagemDigimonDestino() {

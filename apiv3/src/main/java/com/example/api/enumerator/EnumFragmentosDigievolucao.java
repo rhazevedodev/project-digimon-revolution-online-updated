@@ -85,6 +85,20 @@ public enum EnumFragmentosDigievolucao {
         this.descricao_item = descricao_item;
     }
 
+    public static EnumFragmentosDigievolucao getEnumFragmentosDigievolucaoByDescricaoItem(String descricaoItem) {
+        for (EnumFragmentosDigievolucao fragmento : EnumFragmentosDigievolucao.values()) {
+            if (fragmento.getDescricao_item().equalsIgnoreCase(descricaoItem)) {
+                return fragmento;
+            }
+        }
+        // Caso não encontre, pode retornar null ou lançar uma exceção
+        throw new RuntimeException("Descrição de Fragmento inválida: " + descricaoItem);
+    }
+
+    public static String getDescricaoItemByEnum(EnumFragmentosDigievolucao fragmento) {
+        return fragmento.getDescricao_item();
+    }
+
     public String getId() {
         return id;
     }

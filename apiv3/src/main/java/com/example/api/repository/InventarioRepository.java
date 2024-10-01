@@ -9,5 +9,8 @@ import java.util.Optional;
 public interface InventarioRepository  extends JpaRepository<Inventario, Long> {
     List<Inventario> findByIdDigimon(Long idDigimon);
 
+    List<Inventario> findByIdDigimonAndIdCategoria(Long idDigimon, int idCategoria);
+
     Inventario findByIdDigimonAndIdItem(Long idDigimon, int i);
+
 }

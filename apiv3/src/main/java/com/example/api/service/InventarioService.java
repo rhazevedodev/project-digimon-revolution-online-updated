@@ -88,6 +88,10 @@ public class InventarioService {
         return response;
     }
 
+    public List<Inventario> getInventarioDoJogador(Long idDigimon,int idCategoria) {
+        return inventarioRepository.findByIdDigimonAndIdCategoria(idDigimon,idCategoria);
+    }
+
     @Transactional
     public Inventario adicionarFragmentoAoInventario(Long idDigimon, EnumFragmentosDigievolucao fragmentoSorteado, int quantiaFragmentos) {
         Inventario inventario = inventarioRepository.findByIdDigimonAndIdItem(idDigimon, Integer.parseInt(fragmentoSorteado.getId()));
