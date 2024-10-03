@@ -3,6 +3,7 @@ package com.example.api.service;
 import com.example.api.entity.Digievolucao;
 import com.example.api.entity.Digimon;
 import com.example.api.entity.Inventario;
+import com.example.api.entity.dto.RequestDigievolucao;
 import com.example.api.entity.dto.ResponseListarDigievolucoes;
 import com.example.api.enumerator.*;
 import com.example.api.repository.DigievolucaoRepository;
@@ -120,5 +121,39 @@ public class DigievolucaoService {
         }
 
         return 0;
+    }
+
+    public void digievolucao(RequestDigievolucao request) {
+        Digimon digimon = digimonService.getDigimonById((long) request.getIdDigimon());
+        if (digimon == null) {
+            throw new RuntimeException("Digimon não encontrado.");
+        }
+        String tierEvolucao = digimonService.getProxTierDigimon((long) request.getIdDigimon());
+        if(tierEvolucao.equals("Champion")){
+            int idDigievolucao = EnumDigimonChampion.getIdByDescricao(request.getEvolucaoEscolhida());
+        }
+        if(tierEvolucao.equals("Ultimate")){
+            int idDigievolucao = EnumDigimonUltimate.getIdByDescricao(request.getEvolucaoEscolhida());
+        }
+        if(tierEvolucao.equals("Mega")){
+            int idDigievolucao = EnumDigimonMega.getIdByDescricao(request.getEvolucaoEscolhida());
+        }
+
+
+//        Digievolucao evolucao = digievolucaoRepository.findByDigimonRookieAndDigimonMega(digimon.getId(), request.getIdEvolucaoEscolhida());
+//        if (evolucao == null) {
+//            throw new RuntimeException("Evolução não encontrada.");
+//        }
+//        if (evolucao.isItemEspecialNecessario()) {
+//            if (request.getIdItemEspecial() == 0) {
+//                throw new RuntimeException("Item especial necessário para a evolução.");
+//            }
+            // Verificar se o jogador possui o item especial
+            // Remover o item especial do inventário do jogador
+//        }
+        // Verificar se o jogador possui a quantidade de fragmentos necessária
+        // Remover a quantidade de fragmentos do inventário do jogador
+        // Atualizar o Digimon com a nova evolução
+
     }
 }

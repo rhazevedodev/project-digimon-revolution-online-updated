@@ -64,6 +64,16 @@ public enum EnumDigimonMega {
         throw new RuntimeException("ID de Digimon Mega inválido: " + id);
     }
 
+    public static int getIdByDescricao(String descricao) {
+        for (EnumDigimonMega digimon : EnumDigimonMega.values()) {
+            if (digimon.getDescricao().equals(descricao)) {
+                return digimon.getId();
+            }
+        }
+        logService.logAction("Erro ao obter ID de Digimon Mega", "Descrição de Digimon Mega inválida: " + descricao);
+        throw new RuntimeException("Descrição de Digimon Mega inválida: " + descricao);
+    }
+
     public static void setLogService(LogService logService) {
         EnumDigimonMega.logService = logService;
     }

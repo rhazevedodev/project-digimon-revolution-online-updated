@@ -64,6 +64,16 @@ public enum EnumDigimonUltimate {
         throw new RuntimeException("ID de Digimon Ultimate inválido: " + id);
     }
 
+    public static int getIdByDescricao(String descricao) {
+        for (EnumDigimonUltimate digimon : EnumDigimonUltimate.values()) {
+            if (digimon.getDescricao().equals(descricao)) {
+                return digimon.getId();
+            }
+        }
+        logService.logAction("Erro ao obter ID de Digimon Ultimate", "Descrição de Digimon Ultimate inválida: " + descricao);
+        throw new RuntimeException("Descrição de Digimon Ultimate inválida: " + descricao);
+    }
+
     public static void setLogService(LogService logService) {
         EnumDigimonUltimate.logService = logService;
     }

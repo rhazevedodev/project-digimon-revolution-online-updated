@@ -67,6 +67,16 @@ public enum EnumDigimonChampion {
         throw new RuntimeException("ID de Digimon Champion inválido: " + id);
     }
 
+    public static int getIdByDescricao(String descricao) {
+        for (EnumDigimonChampion digimon : EnumDigimonChampion.values()) {
+            if (digimon.getDescricao().equalsIgnoreCase(descricao)) {
+                return digimon.getId();
+            }
+        }
+        logService.logAction("Erro ao obter ID de Digimon Champion", "Descrição de Digimon Champion inválida: " + descricao);
+        throw new RuntimeException("Descrição de Digimon Champion inválida: " + descricao);
+    }
+
     public static void setLogService(LogService logService) {
         EnumDigimonChampion.logService = logService;
     }
