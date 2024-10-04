@@ -55,14 +55,14 @@ document.addEventListener('DOMContentLoaded', function () {
             digimonImage.alt = evolucao.digimonDestino;
             digimonImage.id = `digimon-image`;
 
-            // Cria o parágrafo com o texto "Fragmentos Obtidos:"
-            const fragmentosObtidosText = document.createElement('p');
-            fragmentosObtidosText.textContent = `Fragmentos Obtidos: ${evolucao.fragmentosDisponiveis}`;
-
             // Cria o parágrafo com o texto "Fragmentos Necessários:"
             const fragmentosNecessariosText = document.createElement('p');
             fragmentosNecessariosText.textContent = `Fragmentos Necessários: ${evolucao.fragmentosNecessarios}`;
 
+            // Cria o parágrafo com o texto "Fragmentos Obtidos:"
+            const fragmentosObtidosText = document.createElement('p');
+            fragmentosObtidosText.textContent = `Fragmentos Disponíveis: ${evolucao.fragmentosDisponiveis}`;
+            
             let itemEspecialNecessario = 'Não';
             if(evolucao.itemEspecialNecessario){
                 itemEspecialNecessario = 'Sim';
@@ -98,10 +98,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Função chamada ao clicar no botão de evolução
     function digivolve(index) {
         const evolucaoEscolhida = evolucoes[index];
-        console.log(evolucaoEscolhida.fragmentosNecessarios);
-        console.log(evolucaoEscolhida.fragmentosDisponiveis);
-        alert(`Parabéns! ${evolucaoEscolhida.digimonOrigem} evoluiu para ${evolucaoEscolhida.digimonDestino}!`);
         digievoluir(evolucaoEscolhida);
+        alert(`Parabéns! ${evolucaoEscolhida.digimonOrigem} evoluiu para ${evolucaoEscolhida.digimonDestino}!`);
         // Aqui você pode adicionar a lógica de enviar uma requisição para a API
         // para registrar a evolução, por exemplo.
     }
@@ -110,7 +108,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Dados que serão enviados no corpo da requisição
         const requestBody = {
             idDigimon: localStorage.getItem('idDigimon'),
-            evolucaoEscolhida: evolucaoEscolhida.digimonDestino
+            evolucaoEscolhida: evolucaoEscolhida.digimonDestino,
+            fragmentosNecessarios: evolucaoEscolhida.fragmentosNecessarios
         };
         // Configurações da requisição
         const requestOptions = {
@@ -125,8 +124,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => {
                 if (response.status === 200) {
                     // Se o status da resposta for 200, redireciona para a página de status
-                    const redirectPage = 'status.html';
-                    window.location.href = redirectPage;
+                    //const redirectPage = 'status.html';
+                    //window.location.href = redirectPage;
                 } else {
                     // Se o status não for 200, lança um erro
                     return response.text().then(errorMessage => {

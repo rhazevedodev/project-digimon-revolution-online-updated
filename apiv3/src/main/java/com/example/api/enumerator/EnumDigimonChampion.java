@@ -14,7 +14,28 @@ public enum EnumDigimonChampion {
     ANGEMON(7, "ANGEMON", "LUZ", "./imagens/digimons/champions/angemon.jpg"),
     TAILMON(8, "TAILMON", "LUZ", "./imagens/digimons/champions/tailmon.jpg"),
     EXVEEMON(9, "EXVEEMON", "FOGO", "./imagens/digimons/champions/exveemon.jpg"),
-    STINGMON(10, "STINGMON", "TERRA", "./imagens/digimons/champions/stingmon.jpg");
+    STINGMON(10, "STINGMON", "TERRA", "./imagens/digimons/champions/stingmon.jpg"),
+    GATOMON(11, "GATOMON", "LUZ", "./imagens/digimons/champions/gatomon.jpg"),
+    DEVIMON(12, "DEVIMON", "TREVAS", "./imagens/digimons/champions/devimon.jpg"),
+    KYUBIMON(13, "KYUBIMON", "FOGO", "./imagens/digimons/champions/kyubimon.jpg"),
+    GARGOMON(14, "GARGOMON", "TERRA", "./imagens/digimons/champions/gargomon.jpg"),
+    AQUILAMON(15, "AQUILAMON", "VENTO", "./imagens/digimons/champions/aquilamon.jpg"),
+    ANKYLOMON(16, "ANKYLOMON", "TERRA", "./imagens/digimons/champions/ankylomon.jpg"),
+    GROWLMON(17, "GROWLMON", "TERRA", "./imagens/digimons/champions/growlmon.jpg"),
+    ANTYLAMON(18, "ANTYLAMON", "LUZ", "./imagens/digimons/champions/antylamon.jpg"),
+    HOOKMON(19, "HOOKMON", "TERRA", "./imagens/digimons/champions/hookmon.jpg"),
+    GRIZZLYMON(20, "GRIZZLYMON", "TERRA", "./imagens/digimons/champions/grizzlymon.jpg"),
+    DINOREXMON(21, "DINOREXMON", "TERRA", "./imagens/digimons/champions/dinorexmon.jpg"),
+    STRIKEDRAMON(22, "STRIKEDRAMON", "TERRA", "./imagens/digimons/champions/strikedramon.jpg"),
+    MYOTISMON(23, "MYOTISMON", "TREVAS", "./imagens/digimons/champions/myotismon.jpg"),
+    MEGASEADRAMON(24, "MEGASEADRAMON", "ÁGUA", "./imagens/digimons/champions/megaseadramon.jpg"),
+    SKULLGREYMON(25, "SKULLGREYMON", "TREVAS", "./imagens/digimons/champions/skullgreymon.jpg"),
+    RISEGREYMON(26, "RISEGREYMON", "FOGO", "./imagens/digimons/champions/risegreymon.jpg"),
+    BOLTMON(27, "BOLTMON", "METAL", "./imagens/digimons/champions/boltmon.jpg"),
+    DUSKMON(28, "DUSKMON", "TREVAS", "./imagens/digimons/champions/duskmon.jpg");
+
+
+
 
     private int id;
     private String descricao;
@@ -28,6 +49,16 @@ public enum EnumDigimonChampion {
         this.descricao = descricao;
         this.elemento = elemento;
         this.urlImg = urlImg;
+    }
+
+    public static String getUrlImgById(int idChampion) {
+        for (EnumDigimonChampion digimon : EnumDigimonChampion.values()) {
+            if (digimon.getId() == idChampion) {
+                return digimon.getUrlImg();
+            }
+        }
+        logService.logAction("Erro ao obter URL de Imagem de Digimon Champion", "ID de Digimon Champion inválido: " + idChampion);
+        throw new RuntimeException("ID de Digimon Champion inválido: " + idChampion);
     }
 
     public String getUrlImg() {

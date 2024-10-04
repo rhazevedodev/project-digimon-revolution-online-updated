@@ -95,6 +95,7 @@ public enum EnumFragmentosDigievolucao {
         throw new RuntimeException("Descrição de Fragmento inválida: " + descricaoItem);
     }
 
+
     public static String getDescricaoItemByEnum(EnumFragmentosDigievolucao fragmento) {
         return fragmento.getDescricao_item();
     }

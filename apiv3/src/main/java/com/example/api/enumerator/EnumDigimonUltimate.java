@@ -27,6 +27,16 @@ public enum EnumDigimonUltimate {
         this.urlImg = urlImg;
     }
 
+    public static String getUrlImgById(int idUltimate) {
+        for (EnumDigimonUltimate digimon : EnumDigimonUltimate.values()) {
+            if (digimon.getId() == idUltimate) {
+                return digimon.getUrlImg();
+            }
+        }
+        logService.logAction("Erro ao obter URL de Imagem de Digimon Ultimate", "ID de Digimon Ultimate inválido: " + idUltimate);
+        throw new RuntimeException("ID de Digimon Ultimate inválido: " + idUltimate);
+    }
+
     public String getUrlImg() {
         return urlImg;
     }

@@ -52,6 +52,10 @@ public class InventarioService {
         return response;
     }
 
+    public Inventario carregarInventarioPorIdeDescricaoitem(Long idDigimon, String descricaoItem) {
+        return inventarioRepository.findByIdDigimonAndDescricaoItem(idDigimon, descricaoItem);
+    }
+
     public Map<String, Object> carregarInventario(Long idDigimon) {
         Map<String, Object> response = new LinkedHashMap<>();
 
@@ -118,5 +122,15 @@ public class InventarioService {
 
         return inventario;
 
+    }
+
+    @Transactional
+    public void delete(Inventario inventario) {
+        inventarioRepository.delete(inventario);
+    }
+
+    @Transactional
+    public void save(Inventario inventario) {
+        inventarioRepository.save(inventario);
     }
 }

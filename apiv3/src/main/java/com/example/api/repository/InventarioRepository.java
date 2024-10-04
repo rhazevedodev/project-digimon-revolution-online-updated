@@ -13,4 +13,5 @@ public interface InventarioRepository  extends JpaRepository<Inventario, Long> {
 
     Inventario findByIdDigimonAndIdItem(Long idDigimon, int i);
 
+    Inventario findByIdDigimonAndDescricaoItem(Long idDigimon, String descricaoItem);
 }

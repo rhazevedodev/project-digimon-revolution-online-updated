@@ -27,6 +27,16 @@ public enum EnumDigimonMega {
         this.urlImg = urlImg;
     }
 
+    public static String getUrlImgById(int idMega) {
+        for (EnumDigimonMega digimon : EnumDigimonMega.values()) {
+            if (digimon.getId() == idMega) {
+                return digimon.getUrlImg();
+            }
+        }
+        logService.logAction("Erro ao obter URL de Imagem de Digimon Mega", "ID de Digimon Mega inválido: " + idMega);
+        throw new RuntimeException("ID de Digimon Mega inválido: " + idMega);
+    }
+
     public String getUrlImg() {
         return urlImg;
     }
