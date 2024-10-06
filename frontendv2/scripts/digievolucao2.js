@@ -124,8 +124,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => {
                 if (response.status === 200) {
                     // Se o status da resposta for 200, redireciona para a página de status
-                    //const redirectPage = 'status.html';
-                    //window.location.href = redirectPage;
+                    const redirectPage = 'status.html';
+                    window.location.href = redirectPage;
                 } else {
                     // Se o status não for 200, lança um erro
                     return response.text().then(errorMessage => {

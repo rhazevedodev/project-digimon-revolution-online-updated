@@ -6,6 +6,7 @@ import com.example.api.entity.AtributosModificadores;
 import com.example.api.entity.Digimon;
 import com.example.api.enumerator.*;
 import com.example.api.repository.DigimonRepository;
+import com.example.api.utils.ModificadoresRookie;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -73,7 +74,7 @@ public class DigimonService {
         digimonSelecionado.setAtributos(atributos);
 
         AtributosModificadores atributosModificadores = new AtributosModificadores();
-        digimonSelecionado.setAtributosModificadores(definirModificadorIniciais(atributosModificadores, rookie));
+        digimonSelecionado.setAtributosModificadores(ModificadoresRookie.definidirModificadoresRookies(atributosModificadores, rookie));
 
         AtributosElementos atributosElementos = new AtributosElementos();
         atributosElementos.setElementoPrimitivo(idElementoPrimitivoRookie);
@@ -81,227 +82,6 @@ public class DigimonService {
         digimonSelecionado.setAtributosElementos(atributosElementos);
 
         return digimonRepository.save(digimonSelecionado);
-    }
-
-
-
-    public AtributosModificadores definirModificadorIniciais(AtributosModificadores atributosModificadores, EnumDigimonRookie rookie) {
-         switch(rookie){
-            case AGUMON:
-                atributosModificadores.setModificadorForca(3);
-                atributosModificadores.setModificadorConhecimento(4);
-                atributosModificadores.setModificadorInteligencia(1);
-                atributosModificadores.setModificadorAgilidade(5);
-                // Pode incluir modificador de Sorte se necessário, por exemplo:
-                // atributosModificadores.setModificadorSorte(2);
-                break;
-             case GABUMON:
-                 atributosModificadores.setModificadorForca(2);
-                 atributosModificadores.setModificadorConhecimento(3);
-                 atributosModificadores.setModificadorInteligencia(5);
-                 atributosModificadores.setModificadorAgilidade(1);
-                 // Atribui outros modificadores se necessário
-                 break;
-             case GOMAMON:
-                 atributosModificadores.setModificadorForca(4);
-                 atributosModificadores.setModificadorConhecimento(2);
-                 atributosModificadores.setModificadorInteligencia(3);
-                 atributosModificadores.setModificadorAgilidade(1);
-                 break;
-             case PALMON:
-                 atributosModificadores.setModificadorForca(5);
-                 atributosModificadores.setModificadorConhecimento(1);
-                 atributosModificadores.setModificadorInteligencia(4);
-                 atributosModificadores.setModificadorAgilidade(3);
-                 break;
-             case PATAMON:
-                 atributosModificadores.setModificadorForca(1);
-                 atributosModificadores.setModificadorConhecimento(5);
-                 atributosModificadores.setModificadorInteligencia(2);
-                 atributosModificadores.setModificadorAgilidade(4);
-                 break;
-             case PIYOMON:
-                 atributosModificadores.setModificadorForca(3);
-                 atributosModificadores.setModificadorConhecimento(5);
-                 atributosModificadores.setModificadorInteligencia(2);
-                 atributosModificadores.setModificadorAgilidade(1);
-                 break;
-             case TENTOMON:
-                 atributosModificadores.setModificadorForca(4);
-                 atributosModificadores.setModificadorConhecimento(2);
-                 atributosModificadores.setModificadorInteligencia(5);
-                 atributosModificadores.setModificadorAgilidade(3);
-                 break;
-         }
-        return atributosModificadores;
-    }
-
-    public AtributosModificadores definirModificadoresChampion(AtributosModificadores atributosModificadores, EnumDigimonChampion champion) {
-        switch (champion) {
-            case GREYMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 7);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 9);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 5);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 10);
-                break;
-            case GARURUMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 6);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 8);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 10);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 5);
-                break;
-            case IKKAKUMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 8);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 6);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 7);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 5);
-                break;
-            case TOGEMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 10);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 5);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 9);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 8);
-                break;
-            case ANGEMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 5);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 10);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 6);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 9);
-                break;
-            case BIRDRAMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 7);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 10);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 6);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 5);
-                break;
-            case KABUTERIMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 8);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 6);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 10);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 7);
-                break;
-            case GATOMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 6);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 9);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 7);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 10);
-                break;
-            case EXVEEMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 10);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 5);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 9);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 6);
-                break;
-            case DEVIMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 5);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 7);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 6);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 9);
-                break;
-            case KYUBIMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 7);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 9);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 10);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 6);
-                break;
-            case GARGOMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 6);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 5);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 7);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 10);
-                break;
-            case STINGMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 5);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 10);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 6);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 8);
-                break;
-            case AQUILAMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 8);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 7);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 5);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 6);
-                break;
-            case ANKYLOMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 10);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 6);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 9);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 8);
-                break;
-            case GROWLMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 7);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 10);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 5);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 9);
-                break;
-            case ANTYLAMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 6);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 8);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 9);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 10);
-                break;
-            case HOOKMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 5);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 9);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 10);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 6);
-                break;
-            case GRIZZLYMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 8);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 6);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 7);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 10);
-                break;
-            case DINOREXMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 10);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 5);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 9);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 6);
-                break;
-            case STRIKEDRAMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 7);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 10);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 6);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 5);
-                break;
-            case MYOTISMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 6);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 9);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 7);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 10);
-                break;
-            case MEGASEADRAMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 10);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 6);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 5);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 8);
-                break;
-            case SKULLGREYMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 8);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 9);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 6);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 5);
-                break;
-            case RISEGREYMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 5);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 10);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 9);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 7);
-                break;
-            case BOLTMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 6);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 7);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 5);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 10);
-                break;
-            case DUSKMON:
-                atributosModificadores.setModificadorForca(atributosModificadores.getModificadorForca() + 7);
-                atributosModificadores.setModificadorConhecimento(atributosModificadores.getModificadorConhecimento() + 9);
-                atributosModificadores.setModificadorInteligencia(atributosModificadores.getModificadorInteligencia() + 5);
-                atributosModificadores.setModificadorAgilidade(atributosModificadores.getModificadorAgilidade() + 8);
-                break;
-        }
-        return atributosModificadores;
     }
 
     public Map<String, Object> carregarImagemDigimon(Long idDigimon) {
@@ -441,4 +221,7 @@ public class DigimonService {
     public void save(Digimon digimon) {
         digimonRepository.save(digimon);
     }
+
+
+
 }

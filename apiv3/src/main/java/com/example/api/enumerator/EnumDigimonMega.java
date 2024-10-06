@@ -5,13 +5,13 @@ import com.example.api.service.LogService;
 
 public enum EnumDigimonMega {
 
-    WARGREYMON(1, "Wargreymon", "FOGO", "./imagens/digimons/champions/metalgreymon.jpg"),
-    METALGARURUMON(2, "Metalgarurumon", "GELO", "./imagens/digimons/rookies/weregarurumon.jpg"),
-    PHOENIXMON(3, "Phoenixmon", "VENTO", "./imagens/digimons/rookies/birdramon.jpg"),
-    HERCULESKABUTERIMON(4, "Herculeskabuterimon", "METAL", "./imagens/digimons/rookies/kabuterimon.jpg"),
-    ROSEMON(5, "Rosemon", "PLANTA", "./imagens/digimons/rookies/togemon.jpg"),
-    VIKEMON(6, "Vikemon", "ÁGUA", "./imagens/digimons/rookies/ikkakumon.jpg"),
-    SERAPHIMON(7, "Seraphimon", "LUZ", "./imagens/digimons/rookies/angemon.jpg");
+    WARGREYMON(1, "Wargreymon", "FOGO", "./imagens/digimons/megas/wargreymon.jpg"),
+    METALGARURUMON(2, "Metalgarurumon", "GELO", "./imagens/digimons/megas/metalgarurumon.jpg"),
+    PHOENIXMON(3, "Phoenixmon", "VENTO", "./imagens/digimons/megas/phoenixmon.jpg"),
+    HERCULESKABUTERIMON(4, "Herculeskabuterimon", "METAL", "./imagens/digimons/megas/herculeskabuterimon.jpg"),
+    ROSEMON(5, "Rosemon", "PLANTA", "./imagens/digimons/megas/rosemon.jpg"),
+    VIKEMON(6, "Vikemon", "ÁGUA", "./imagens/digimons/megas/vikemon.jpg"),
+    SERAPHIMON(7, "Seraphimon", "LUZ", "./imagens/digimons/megas/seraphimon.jpg");
 
     private int id;
     private String descricao;

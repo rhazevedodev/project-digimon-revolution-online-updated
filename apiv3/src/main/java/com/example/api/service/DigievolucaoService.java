@@ -9,6 +9,9 @@ import com.example.api.entity.dto.ResponseListarDigievolucoes;
 import com.example.api.enumerator.*;
 import com.example.api.repository.DigievolucaoRepository;
 import com.example.api.repository.DigimonRepository;
+import com.example.api.utils.ModificadoresChampion;
+import com.example.api.utils.ModificadoresMega;
+import com.example.api.utils.ModificadoresUltimate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -78,7 +81,7 @@ public class DigievolucaoService {
             case "Ultimate":
                 EnumDigimonUltimate ultimate = EnumDigimonUltimate.getEnumById(digimon.getIdUltimate());
                 if (ultimate != null) {
-                    lista = digievolucaoRepository.findByDigimonUltimate(Long.valueOf(digimon.getIdUltimate()));
+                    lista = digievolucaoRepository.findByDigimonUltimateAndMegaNotZero(Long.valueOf(digimon.getIdUltimate()));
                 } else {
                     throw new RuntimeException("Digimon Ultimate não encontrado.");
                 }
@@ -200,58 +203,59 @@ public class DigievolucaoService {
     }
 
     public void digievolucao(RequestDigievolucao request) {
-        Digimon digimon = digimonService.getDigimonById((long) request.getIdDigimon());
-        if (digimon == null) {
-            throw new RuntimeException("Digimon não encontrado.");
-        }
-        String tierEvolucao = digimonService.getProxTierDigimon((long) request.getIdDigimon());
-        int idDigievolucao = 0;
-        if(tierEvolucao.equals("Champion")){
-            idDigievolucao = EnumDigimonChampion.getIdByDescricao(request.getEvolucaoEscolhida());
-        }
-        if(tierEvolucao.equals("Ultimate")){
-            idDigievolucao = EnumDigimonUltimate.getIdByDescricao(request.getEvolucaoEscolhida());
-        }
-        if(tierEvolucao.equals("Mega")){
-            idDigievolucao = EnumDigimonMega.getIdByDescricao(request.getEvolucaoEscolhida());
-        }
-        String descricaoEvolucao = EnumFragmentosDigievolucao.getDescricaoItemByEnum(EnumFragmentosDigievolucao.valueOf(request.getEvolucaoEscolhida()));
+        try {
+            Digimon digimon = digimonService.getDigimonById((long) request.getIdDigimon());
+            if (digimon == null) {
+                throw new RuntimeException("Digimon não encontrado.");
+            }
+            String tierEvolucao = digimonService.getProxTierDigimon((long) request.getIdDigimon());
+            int idDigievolucao = 0;
+            if (tierEvolucao.equals("Champion")) {
+                idDigievolucao = EnumDigimonChampion.getIdByDescricao(request.getEvolucaoEscolhida());
+            }
+            if (tierEvolucao.equals("Ultimate")) {
+                idDigievolucao = EnumDigimonUltimate.getIdByDescricao(request.getEvolucaoEscolhida());
+            }
+            if (tierEvolucao.equals("Mega")) {
+                idDigievolucao = EnumDigimonMega.getIdByDescricao(request.getEvolucaoEscolhida());
+            }
+            String descricaoEvolucao = EnumFragmentosDigievolucao.getDescricaoItemByEnum(EnumFragmentosDigievolucao.valueOf(request.getEvolucaoEscolhida().toUpperCase()));
 
-        int fragmentosNecessarios = request.getFragmentosNecessarios();
-        Inventario inventarioInicioTransacao = inventarioService.carregarInventarioPorIdeDescricaoitem((long) 4, descricaoEvolucao);
-        int fragmentosDisponiveis = inventarioInicioTransacao.getQuantidade();
-        if(fragmentosDisponiveis < fragmentosNecessarios){
-            throw new RuntimeException("Quantidade de fragmentos insuficiente.");
-        }
-        int fragmentosFinalTransacao = fragmentosDisponiveis - fragmentosNecessarios;
-        if(fragmentosFinalTransacao == 0){
-            inventarioService.delete(inventarioInicioTransacao);
-        }else{
-            inventarioInicioTransacao.setQuantidade(fragmentosFinalTransacao);
-            inventarioService.save(inventarioInicioTransacao);
-        }
-
-        AtributosModificadores modificadoresAntes = digimon.getAtributosModificadores();
-        AtributosModificadores modificadoresAtualizados = digimonService.definirModificadoresChampion(modificadoresAntes, EnumDigimonChampion.valueOf(request.getEvolucaoEscolhida()));
-        digimon.setAtributosModificadores(modificadoresAtualizados);
-        digimon.setIdChampion(idDigievolucao);
-        digimonService.save(digimon);
+            int fragmentosNecessarios = request.getFragmentosNecessarios();
+            Inventario inventarioInicioTransacao = inventarioService.carregarInventarioPorIdeDescricaoitem((long) 4, descricaoEvolucao);
+            int fragmentosDisponiveis = inventarioInicioTransacao.getQuantidade();
+            if (fragmentosDisponiveis < fragmentosNecessarios) {
+                throw new RuntimeException("Quantidade de fragmentos insuficiente.");
+            }
+            int fragmentosFinalTransacao = fragmentosDisponiveis - fragmentosNecessarios;
 
 
-//        Digievolucao evolucao = digievolucaoRepository.findByDigimonRookieAndDigimonMega(digimon.getId(), request.getIdEvolucaoEscolhida());
-//        if (evolucao == null) {
-//            throw new RuntimeException("Evolução não encontrada.");
-//        }
-//        if (evolucao.isItemEspecialNecessario()) {
-//            if (request.getIdItemEspecial() == 0) {
-//                throw new RuntimeException("Item especial necessário para a evolução.");
-//            }
-            // Verificar se o jogador possui o item especial
-            // Remover o item especial do inventário do jogador
-//        }
-        // Verificar se o jogador possui a quantidade de fragmentos necessária
-        // Remover a quantidade de fragmentos do inventário do jogador
-        // Atualizar o Digimon com a nova evolução
+            AtributosModificadores modificadoresAntes = digimon.getAtributosModificadores();
+            AtributosModificadores modificadoresAtualizados = null;
+            if (tierEvolucao.equals("Champion")) {
+                modificadoresAtualizados = ModificadoresChampion.definirModificadoresChampion(modificadoresAntes, EnumDigimonChampion.valueOf(request.getEvolucaoEscolhida()));
+                digimon.setIdChampion(idDigievolucao);
+            }
+            if (tierEvolucao.equals("Ultimate")) {
+                modificadoresAtualizados = ModificadoresUltimate.definirModificadoresUltimate(modificadoresAntes, EnumDigimonUltimate.valueOf(request.getEvolucaoEscolhida().toUpperCase()));
+                digimon.setIdUltimate(idDigievolucao);
+            }
+            if (tierEvolucao.equals("Mega")) {
+                modificadoresAtualizados = ModificadoresMega.definirModificadoresMega(modificadoresAntes, EnumDigimonMega.valueOf(request.getEvolucaoEscolhida().toUpperCase()));
+                digimon.setIdMega(idDigievolucao);
+            }
+            digimon.setAtributosModificadores(modificadoresAtualizados);
+            digimonService.save(digimon);
 
+            if (fragmentosFinalTransacao == 0) {
+                inventarioService.delete(inventarioInicioTransacao);
+            } else {
+                inventarioInicioTransacao.setQuantidade(fragmentosFinalTransacao);
+                inventarioService.save(inventarioInicioTransacao);
+            }
+
+        } catch (Exception e){
+            throw new RuntimeException("Erro ao realizar a digievolução: " + e.getMessage());
+        }
     }
 }
