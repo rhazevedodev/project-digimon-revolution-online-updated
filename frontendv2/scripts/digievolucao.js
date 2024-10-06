@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const evolutionButton = document.createElement('button');
             evolutionButton.textContent = `Evoluir para ${evolucao.digimonDestino}`;
             evolutionButton.className = `button-digievoluir`;
-            evolutionButton.disabled = evolucao.fragmentosDisponiveis >= 50 ? false : true;
+            evolutionButton.disabled = evolucao.fragmentosDisponiveis >= evolucao.fragmentosNecessarios ? false : true;
 
             evolutionButton.addEventListener('click', () => digivolve(index));
 
