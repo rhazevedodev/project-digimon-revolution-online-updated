@@ -30,52 +30,127 @@ public class DigievolucaoService {
     @Autowired
     private InventarioService inventarioService;
 
-    public List<ResponseListarDigievolucoes> getEvolucoes(int idDigimon) {
-        EnumDigimonRookie rookie = EnumDigimonRookie.getEnumById(idDigimon);
-        if (rookie != null) {
-            List<Digievolucao> lista = digievolucaoRepository.findByDigimonRookie(Long.valueOf(idDigimon));
-            if (lista.isEmpty()) {
-                throw new RuntimeException("Nenhuma evolução encontrada para o Digimon solicitado.");
-            }
-            List<Inventario> inventarioFragmentos = inventarioService.getInventarioDoJogador(Long.valueOf(4), 4);
-            List<ResponseListarDigievolucoes> evolucoesPossiveis = new ArrayList<>();
-            for (Digievolucao evolucao : lista) {
-                ResponseListarDigievolucoes response = getResponseListarDigievolucoes(evolucao, inventarioFragmentos);
-                evolucoesPossiveis.add(response);
-            }
-            return evolucoesPossiveis;
-        } else {
-            throw new RuntimeException("Digimon Rookie não encontrado.");
+    public List<ResponseListarDigievolucoes> getEvolucoes(int idDigimonUsuario) {
+        Digimon digimon = digimonService.getDigimonById((long) idDigimonUsuario);
+        String proxTier = digimonService.getProxTierDigimon((long) idDigimonUsuario);
+        String tierAtual = null;
+
+        switch (proxTier) {
+            case "Champion":
+                tierAtual = "Rookie";
+                break;
+            case "Ultimate":
+                tierAtual = "Champion";
+                break;
+            case "Mega":
+                tierAtual = "Ultimate";
+                break;
+            case "Jogress":
+                tierAtual = "Mega";
+                break;
         }
+
+        if (tierAtual == null) {
+            throw new RuntimeException("Tier atual não encontrado.");
+        }
+
+        List<Digievolucao> lista = new ArrayList<>();
+        List<Inventario> inventarioFragmentos = inventarioService.getInventarioDoJogador(Long.valueOf(idDigimonUsuario), 4);
+        List<ResponseListarDigievolucoes> evolucoesPossiveis = new ArrayList<>();
+
+        switch (tierAtual) {
+            case "Rookie":
+                EnumDigimonRookie rookie = EnumDigimonRookie.getEnumById(digimon.getIdRookie());
+                if (rookie != null) {
+                    lista = digievolucaoRepository.findByDigimonRookie(Long.valueOf(digimon.getIdRookie()));
+                } else {
+                    throw new RuntimeException("Digimon Rookie não encontrado.");
+                }
+                break;
+            case "Champion":
+                EnumDigimonChampion champion = EnumDigimonChampion.getEnumById(digimon.getIdChampion());
+                if (champion != null) {
+                    lista = digievolucaoRepository.findByDigimonChampionAndUltimateNotZero(Long.valueOf(digimon.getIdChampion()));
+                } else {
+                    throw new RuntimeException("Digimon Champion não encontrado.");
+                }
+                break;
+            case "Ultimate":
+                EnumDigimonUltimate ultimate = EnumDigimonUltimate.getEnumById(digimon.getIdUltimate());
+                if (ultimate != null) {
+                    lista = digievolucaoRepository.findByDigimonUltimate(Long.valueOf(digimon.getIdUltimate()));
+                } else {
+                    throw new RuntimeException("Digimon Ultimate não encontrado.");
+                }
+                break;
+            case "Mega":
+                EnumDigimonMega mega = EnumDigimonMega.getEnumById(digimon.getIdMega());
+                if (mega != null) {
+                    lista = digievolucaoRepository.findByDigimonMega(Long.valueOf(digimon.getIdMega()));
+                } else {
+                    throw new RuntimeException("Digimon Mega não encontrado.");
+                }
+                break;
+        }
+
+        if (lista.isEmpty()) {
+            throw new RuntimeException("Nenhuma evolução encontrada para o Digimon solicitado.");
+        }
+
+        for (Digievolucao evolucao : lista) {
+            ResponseListarDigievolucoes response = getResponseListarDigievolucoes(evolucao, inventarioFragmentos);
+            evolucoesPossiveis.add(response);
+        }
+
+        return evolucoesPossiveis;
     }
 
     private static ResponseListarDigievolucoes getResponseListarDigievolucoes(Digievolucao evolucao, List<Inventario> inventarioFragmentos) {
         ResponseListarDigievolucoes response = new ResponseListarDigievolucoes();
-        response.setIdDigimonOrigem(evolucao.getDigimonRookie());
-        EnumDigimonRookie rookie = EnumDigimonRookie.getEnumById(evolucao.getDigimonRookie());
-        response.setDigimonOrigem(rookie.getDescricao());
-        if (evolucao.getDigimonMega() != 0l) {
-            response.setIdDigimonDestino(evolucao.getDigimonMega());
-            EnumDigimonMega mega = EnumDigimonMega.getEnumById(evolucao.getDigimonMega());
-            response.setDigimonDestino(mega.getDescricao());
-            response.setPathImagemDigimonDestino(mega.getUrlImg());
-            response.setFragmentosDisponiveis(getQuantidadeFragmentos(inventarioFragmentos, evolucao.getDigimonMega(), "MEGA"));
-        }
-        if (evolucao.getDigimonUltimate() != 0l) {
-            response.setIdDigimonDestino(evolucao.getDigimonUltimate());
-            EnumDigimonUltimate ultimate = EnumDigimonUltimate.getEnumById(evolucao.getDigimonUltimate());
-            response.setDigimonDestino(ultimate.getDescricao());
-            response.setPathImagemDigimonDestino(ultimate.getUrlImg());
-            response.setFragmentosDisponiveis(getQuantidadeFragmentos(inventarioFragmentos, evolucao.getDigimonUltimate(), "ULTIMATE"));
 
-        }
-        if (evolucao.getDigimonChampion() != 0l) {
+        //ROOKIE -> CHAMPION
+        if((evolucao.getDigimonRookie() != 0) && (evolucao.getDigimonChampion() != 0)){
+            //ROOKIE
+            response.setIdDigimonOrigem(evolucao.getDigimonRookie());
+            EnumDigimonRookie rookie = EnumDigimonRookie.getEnumById(evolucao.getDigimonRookie());
+            response.setDigimonOrigem(rookie.getDescricao());
+
+            //CHAMPION
             response.setIdDigimonDestino(evolucao.getDigimonChampion());
             EnumDigimonChampion champion = EnumDigimonChampion.getEnumById(evolucao.getDigimonChampion());
             response.setDigimonDestino(champion.getDescricao());
             response.setPathImagemDigimonDestino(champion.getUrlImg());
             response.setFragmentosDisponiveis(getQuantidadeFragmentos(inventarioFragmentos, evolucao.getDigimonChampion(), "CHAMPION"));
         }
+        //CHAMPION -> ULTIMATE
+        if((evolucao.getDigimonChampion() != 0) && (evolucao.getDigimonUltimate() != 0)){
+            //CHAMPION
+            response.setIdDigimonOrigem(evolucao.getDigimonChampion());
+            EnumDigimonChampion champion = EnumDigimonChampion.getEnumById(evolucao.getDigimonChampion());
+            response.setDigimonOrigem(champion.getDescricao());
+
+            //ULTIMATE
+            response.setIdDigimonDestino(evolucao.getDigimonUltimate());
+            EnumDigimonUltimate ultimate = EnumDigimonUltimate.getEnumById(evolucao.getDigimonUltimate());
+            response.setDigimonDestino(ultimate.getDescricao());
+            response.setPathImagemDigimonDestino(ultimate.getUrlImg());
+            response.setFragmentosDisponiveis(getQuantidadeFragmentos(inventarioFragmentos, evolucao.getDigimonUltimate(), "ULTIMATE"));
+        }
+        //ULTIMATE -> MEGA
+        if((evolucao.getDigimonUltimate() != 0) && (evolucao.getDigimonMega() != 0)){
+            //ULTIMATE
+            response.setIdDigimonOrigem(evolucao.getDigimonUltimate());
+            EnumDigimonUltimate ultimate = EnumDigimonUltimate.getEnumById(evolucao.getDigimonUltimate());
+            response.setDigimonOrigem(ultimate.getDescricao());
+
+            //MEGA
+            response.setIdDigimonDestino(evolucao.getDigimonMega());
+            EnumDigimonMega mega = EnumDigimonMega.getEnumById(evolucao.getDigimonMega());
+            response.setDigimonDestino(mega.getDescricao());
+            response.setPathImagemDigimonDestino(mega.getUrlImg());
+            response.setFragmentosDisponiveis(getQuantidadeFragmentos(inventarioFragmentos, evolucao.getDigimonMega(), "MEGA"));
+        }
+
         response.setFragmentosNecessarios(evolucao.getFragmentosNecessarios());
         response.setItemEspecialNecessario(evolucao.isItemEspecialNecessario());
 //                response.setIdItemEspecial(evolucao.get());

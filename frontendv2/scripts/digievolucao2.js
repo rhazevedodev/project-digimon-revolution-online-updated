@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const apiListarEvolucoes = 'http://localhost:8080/api/digievolucao/1';
+    const apiListarEvolucoes = 'http://localhost:8080/api/digievolucao/'+localStorage.getItem("idDigimon");
     const apiDigievoluir = 'http://localhost:8080/api/digievolucao/digievoluir'
 
     let evolucoes = []; // Armazena as evoluções recebidas da API

@@ -17,9 +17,9 @@ public class DigievolucaoController {
     @Autowired
     private DigievolucaoService digievolucaoService;
 
-    @GetMapping("/{idDigimon}")
-    public ResponseEntity<List<ResponseListarDigievolucoes>> listarEvolucoes(@PathVariable int idDigimon) {
-        List<ResponseListarDigievolucoes> evolucoes = digievolucaoService.getEvolucoes(idDigimon);
+    @GetMapping("/{idDigimonUsuario}")
+    public ResponseEntity<List<ResponseListarDigievolucoes>> listarEvolucoes(@PathVariable int idDigimonUsuario) {
+        List<ResponseListarDigievolucoes> evolucoes = digievolucaoService.getEvolucoes(idDigimonUsuario);
         return ResponseEntity.ok(evolucoes);
     }
 

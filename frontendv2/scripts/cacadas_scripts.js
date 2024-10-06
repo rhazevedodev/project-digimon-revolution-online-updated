@@ -154,6 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
             idDigimon: localStorage.getItem('idDigimon'),
             minutos: tempoMinutos
         };
+    
         // Configurações da requisição
         const requestOptions = {
             method: 'POST',
@@ -162,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify(requestBody)
         };
-
+    
         fetch(apiIniciarCacadaURL, requestOptions)
             .then(response => {
                 if (!response.ok) {
@@ -180,9 +181,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     horaResgateDisponivel: data.horaResgateDisponivel,
                     recompensaResgatada: data.recompensaResgatada,
                     ultimaAlteracao: data.ultimaAlteracao
-                    // Adicionar mais atributos conforme necessário
                 };
-
+    
+                // Recarrega a página após iniciar a caçada
                 location.reload();
             })
             .catch(error => {
@@ -346,8 +347,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
             } else {
                 const tempoMinutos = parseInt(document.querySelector("#tempoCacada").value)
-                iniciarCacada(tempoMinutos);
-                location.reload();
+                // Captura o valor atual da barra de energia
+                const energyText = document.getElementById('energy-bar-text').textContent; // Exemplo: "0/100"
+                
+                // Extrai o valor atual de energia usando split para separar "0" e "100"
+                const currentEnergy = parseInt(energyText.split('/')[0]);
+            
+                // Verifica se o jogador tem energia suficiente (maior que 0)
+                if (currentEnergy === 0) {
+                    // Exibe um alerta informando que o jogador está sem energia
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Sem Energia!',
+                        text: 'Você não tem energia suficiente para iniciar uma caçada.',
+                        confirmButtonText: 'Entendi'
+                    });
+                    return; // Interrompe a execução da função se não houver energia
+                } else {
+                    // Caso tenha energia, prossegue com a caçada
+                    iniciarCacada(tempoMinutos);
+                    location.reload();
+                }
             }
         }
         if (event.target && event.target.id === 'button-resgatar-recompensa-cacada') {

@@ -142,7 +142,8 @@ public class CacadaService {
         digimonService.atualizarEnergiaDigimon(digimon, -10);
 
         return cacadaRepository.save(new Cacada(idDigimon, minutosEscolhidos,
-                LocalDateTime.now().plusMinutes(1), false));
+//                LocalDateTime.now().plusMinutes(1), false));
+                LocalDateTime.now().plusSeconds(1), false));
     }
 
     public ResponseResgatarRecompensaCacadaDTO resgatarRecompensa(Long idDigimon) {
