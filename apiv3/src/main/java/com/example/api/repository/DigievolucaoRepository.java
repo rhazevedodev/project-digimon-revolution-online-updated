@@ -14,6 +14,5 @@ public interface DigievolucaoRepository extends JpaRepository<Digievolucao, Long
     List<Digievolucao> findByDigimonChampionAndUltimateNotZero(@Param("digimonChampion") Long digimonChampion);
     @Query("SELECT d FROM Digievolucao d WHERE d.digimonUltimate = :digimonUltimate AND d.digimonMega <> 0")
     List<Digievolucao> findByDigimonUltimateAndMegaNotZero(@Param("digimonUltimate") Long digimonUltimate);
-
     List<Digievolucao> findByDigimonMega(Long aLong);
 }

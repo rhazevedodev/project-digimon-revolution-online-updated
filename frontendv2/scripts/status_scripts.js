@@ -54,18 +54,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     exp_obtida: data.experienciaObtida,
                     cacadas_concluidas: data.cacadasConcluidas,
                     missoes_concluidas: data.missoesConcluidas,
-                    status_premium: data.status_premium,
-                    data_inicio_premium: data.data_inicio_premium,
-                    data_fim_premium: data.data_fim_premium
                     // Adicionar mais atributos conforme necessário
                 };
-                console.log(dataInformacoesStatus);
                 // Atualizar a interface com os dados recebidos
-                atualizarImagemDigimon(dataInformacoesStatus);
+                // atualizarImagemDigimon(dataInformacoesStatus);
                 atualizarInformacoes();
                 atualizarAtributos();
                 atualizarEstatisticas();
-                displayPremiumContent(dataInformacoesStatus);
                 displayLifeBar();
                 displayEnergyBar();
             })
@@ -74,30 +69,30 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
-    async function atualizarImagemDigimon(dataInformacoesStatus) {
+    // async function atualizarImagemDigimon(dataInformacoesStatus) {
 
-        // Obtém o contêiner onde a imagem será adicionada
-        const imageContainer = document.getElementById('image-container');
+    //     // Obtém o contêiner onde a imagem será adicionada
+    //     const imageContainer = document.getElementById('image-container');
 
-        // Remove qualquer imagem existente no contêiner
-        while (imageContainer.firstChild) {
-            imageContainer.removeChild(imageContainer.firstChild);
-        }
+    //     // Remove qualquer imagem existente no contêiner
+    //     while (imageContainer.firstChild) {
+    //         imageContainer.removeChild(imageContainer.firstChild);
+    //     }
 
-        // Verifica se a URL da imagem está disponível
-        if (dataInformacoesStatus.url_imagem_digimon) {
-            const imgElement = document.createElement('img');
-            imgElement.src = dataInformacoesStatus.url_imagem_digimon;
-            imgElement.alt = "Imagem do Digimon";
-            imgElement.width = 163;
-            imgElement.height = 174;
-            imgElement.className = "img-bordered";
+    //     // Verifica se a URL da imagem está disponível
+    //     if (dataInformacoesStatus.url_imagem_digimon) {
+    //         const imgElement = document.createElement('img');
+    //         imgElement.src = dataInformacoesStatus.url_imagem_digimon;
+    //         imgElement.alt = "Imagem do Digimon";
+    //         imgElement.width = 163;
+    //         imgElement.height = 174;
+    //         imgElement.className = "img-bordered";
 
-            imageContainer.appendChild(imgElement);
-        } else {
-            console.error('URL da imagem não encontrada.');
-        }
-    }
+    //         imageContainer.appendChild(imgElement);
+    //     } else {
+    //         console.error('URL da imagem não encontrada.');
+    //     }
+    // }
 
     function atualizarInformacoes() {
         document.getElementById('jogo_desde').textContent = '| ' + dataInformacoesStatus.jogo_desde;
@@ -131,37 +126,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('cacadas_concluidas').textContent = '| ' + dataInformacoesStatus.cacadas_concluidas;
         document.getElementById('missoes_concluidas').textContent = '| ' + dataInformacoesStatus.missoes_concluidas;
     }
-
-    function displayPremiumContent(dataInformacoesStatus) {
-
-        const container = document.getElementById('caixa-informacoes-esquerda');
-        container.innerHTML = ''; // Limpa o conteúdo existente
-
-        if (dataInformacoesStatus.status_premium === 'Ativo') {
-            container.innerHTML = `
-                    <h3 class="titulo-caixa">Premium</h3>
-                    <hr class="separador">
-                    <div id="caixa-premium">
-                        <p>De:</p>
-                        <p id="premium_inicio">${dataInformacoesStatus.data_inicio_premium}</p>
-                        <p>Até:</p>
-                        <p id="premium_fim">${dataInformacoesStatus.data_fim_premium}</p>
-                    </div>
-                    <hr class="separador">
-                `;
-        } else {
-            container.innerHTML = `
-                    <h3 class="titulo-caixa">Premium</h3>
-                    <hr class="separador">
-                    <div id="caixa-premium">
-                        <p>Sem Premium Ativo</p>
-                    </div>
-                    <hr class="separador">
-                `;
-        }
-
-    }
-
 
     function displayEnergyBar() {
         var energiaTotal = 100;

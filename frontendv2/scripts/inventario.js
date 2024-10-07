@@ -41,11 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 // Armazenar os dados recebidos da API
                 dataInformacoesTelaInventario = {
-                    url_imagem_digimon: data.url_imagem_digimon,
                     idDigimon: data.idDigimon,
-                    status_premium: data.status_premium,
-                    data_inicio_premium: data.dataInicio,
-                    data_fim_premium: data.dataFim,
                     digimonNivel: data.nivel,
                     digimonVida: data.vida,
                     digimonEnergia: data.energia
@@ -53,8 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Adicionar mais atributos conforme necessário
                 };
                 // Atualizar a interface com os dados recebidos
-                atualizarImagemDigimon(dataInformacoesTelaInventario);
-                displayPremiumContent(dataInformacoesTelaInventario);
                 displayLifeBar();
                 displayEnergyBar();
             })
@@ -104,60 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 */
     }
 
-    async function atualizarImagemDigimon(dataInformacoesTelaInventario) {
 
-        // Obtém o contêiner onde a imagem será adicionada
-        const imageContainer = document.getElementById('image-container');
-
-        // Remove qualquer imagem existente no contêiner
-        while (imageContainer.firstChild) {
-            imageContainer.removeChild(imageContainer.firstChild);
-        }
-
-        // Verifica se a URL da imagem está disponível
-        if (dataInformacoesTelaInventario.url_imagem_digimon) {
-            const imgElement = document.createElement('img');
-            imgElement.src = dataInformacoesTelaInventario.url_imagem_digimon;
-            imgElement.alt = "Imagem do Digimon";
-            imgElement.width = 163;
-            imgElement.height = 174;
-            imgElement.className = "img-bordered";
-
-            imageContainer.appendChild(imgElement);
-        } else {
-            console.error('URL da imagem não encontrada.');
-        }
-    }
-
-    function displayPremiumContent(dataInformacoesTelaInventario) {
-
-        const container = document.getElementById('caixa-informacoes-esquerda');
-        container.innerHTML = ''; // Limpa o conteúdo existente
-
-        if (dataInformacoesTelaInventario.status_premium === 'Ativo') {
-            container.innerHTML = `
-                <h3 class="titulo-caixa">Premium</h3>
-                <hr class="separador">
-                <div id="caixa-premium">
-                    <p>De:</p>
-                    <p id="premium_inicio">${dataInformacoesTelaInventario.data_inicio_premium}</p>
-                    <p>Até:</p>
-                    <p id="premium_fim">${dataInformacoesTelaInventario.data_fim_premium}</p>
-                </div>
-                <hr class="separador">
-            `;
-        } else {
-            container.innerHTML = `
-                <h3 class="titulo-caixa">Premium</h3>
-                <hr class="separador">
-                <div id="caixa-premium">
-                    <p>Sem Premium Ativo</p>
-                </div>
-                <hr class="separador">
-            `;
-        }
-
-    }
 
     carregarTelaInventario();
 

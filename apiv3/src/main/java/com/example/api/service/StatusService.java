@@ -36,8 +36,6 @@ public class StatusService {
         Jogador jogador = jogadorService.getJogadorById(digimon.getIdJogador());
 
         // Chama os métodos existentes e adiciona os resultados ao response
-        response.putAll(digimonService.carregarImagemDigimon(idDigimon));
-        response.putAll(premiumService.carregarInformacoesPremium(idDigimon));
         response.putAll(carregarInformacoes(digimon, jogador));
         response.putAll(carregarAtributos(digimon, jogador));
         response.putAll(carregarEstatisticas(idDigimon));

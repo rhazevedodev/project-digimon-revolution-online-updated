@@ -23,6 +23,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 return response.json();
             })
             .then(data => {
+                if (data.length === 0) {
+                    const digimonName = 'Este Digimon';
+                    document.getElementById('evolucoes-container').innerHTML = `
+                        <div class="no-evolution">
+                            <p>Infelizmente, ${digimonName} ainda não possui nenhuma evolução disponível no momento.</p>
+                        </div>
+                    `;
+                    return;
+                }
                 // Armazenar as evoluções recebidas
                 evolucoes = data;
                 /*currentDigimon = evolucoes[0].digimonOrigem; // Exemplo de pegar o nome do Digimon atual*/

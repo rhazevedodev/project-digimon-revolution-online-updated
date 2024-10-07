@@ -28,11 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 // Armazenar os dados recebidos da API
                 dataCacadas = {
-                    url_imagem_digimon: data.url_imagem_digimon,
                     tempoDisponivel: data.tempoDisponivel,
-                    status_premium: data.status_premium,
-                    data_inicio_premium: data.dataInicio,
-                    data_fim_premium: data.dataFim,
                     emAndamento: data.emAndamento,
                     horaResgate: data.horaResgate,
                     resgateDisponivel: data.resgateDisponivel,
@@ -42,8 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Adicionar mais atributos conforme necessário
                 };
                 // Atualizar a interface com os dados recebidos
-                displayPremiumContent(dataCacadas);
-                atualizarImagemDigimon(dataCacadas)
                 carregarCaixaCacadaPorTempo(dataCacadas);
                 displayLifeBar();
                 displayEnergyBar();
@@ -191,31 +185,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
-    async function atualizarImagemDigimon(dataCacadas) {
-
-        // Obtém o contêiner onde a imagem será adicionada
-        const imageContainer = document.getElementById('image-container');
-
-        // Remove qualquer imagem existente no contêiner
-        while (imageContainer.firstChild) {
-            imageContainer.removeChild(imageContainer.firstChild);
-        }
-
-        // Verifica se a URL da imagem está disponível
-        if (dataCacadas.url_imagem_digimon) {
-            const imgElement = document.createElement('img');
-            imgElement.src = dataCacadas.url_imagem_digimon;
-            imgElement.alt = "Imagem do Digimon";
-            imgElement.width = 163;
-            imgElement.height = 174;
-            imgElement.className = "img-bordered";
-
-            imageContainer.appendChild(imgElement);
-        } else {
-            console.error('URL da imagem não encontrada.');
-        }
-    }
-
     function carregarCaixaCacadaPorTempo(dataCacadas) {
         const container = document.getElementById('caixa-cacada-tempo');
         container.innerHTML = ''; // Limpa o conteúdo existente
@@ -296,36 +265,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                 `;
             }
         }
-    }
-
-    function displayPremiumContent(dataCacadas) {
-
-        const container = document.getElementById('caixa-informacoes-esquerda');
-        container.innerHTML = ''; // Limpa o conteúdo existente
-
-        if (dataCacadas.status_premium === 'Ativo') {
-            container.innerHTML = `
-                    <h3 class="titulo-caixa">Premium</h3>
-                    <hr class="separador">
-                    <div id="caixa-premium">
-                        <p>De:</p>
-                        <p id="premium_inicio">${dataCacadas.data_inicio_premium}</p>
-                        <p>Até:</p>
-                        <p id="premium_fim">${dataCacadas.data_fim_premium}</p>
-                    </div>
-                    <hr class="separador">
-                `;
-        } else {
-            container.innerHTML = `
-                    <h3 class="titulo-caixa">Premium</h3>
-                    <hr class="separador">
-                    <div id="caixa-premium">
-                        <p>Sem Premium Ativo</p>
-                    </div>
-                    <hr class="separador">
-                `;
-        }
-
     }
 
     // Event listener para o botão de iniciar caçada

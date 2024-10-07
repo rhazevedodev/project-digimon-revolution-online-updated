@@ -7,6 +7,8 @@ import com.example.api.entity.Digimon;
 import com.example.api.enumerator.*;
 import com.example.api.repository.DigimonRepository;
 import com.example.api.utils.ModificadoresRookie;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,8 @@ import java.util.Map;
 
 @Service
 public class DigimonService {
+
+    private static final Logger logger = LoggerFactory.getLogger(DigimonService.class);
 
     private DigimonRepository digimonRepository;
     private JogadorService jogadorService;
@@ -207,6 +211,7 @@ public class DigimonService {
 //        digimon.setAtributos(atributos);
 //        digimonRepository.save(digimon);
         digimonRepository.atualizarTodosAtributos();
+        logger.info("Vida e energia de todos os digimons foram restaurados");
     }
 
     public void atualizarEnergiaDigimon(Digimon digimon, int i) {

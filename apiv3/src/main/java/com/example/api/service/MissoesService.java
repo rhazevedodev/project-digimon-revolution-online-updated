@@ -44,8 +44,6 @@ public class MissoesService {
         Digimon digimon = digimonService.getDigimonById(idDigimon);
 
         // Chama os métodos existentes e adiciona os resultados ao response
-        response.putAll(digimonService.carregarImagemDigimon(idDigimon));
-        response.putAll(premiumService.carregarInformacoesPremium(idDigimon));
        response.putAll(carregarDadosMissoes(idDigimon, response));
         response.put("nivel", digimon.getNivel());
         response.put("vida", digimon.getAtributos().getPontosVida());

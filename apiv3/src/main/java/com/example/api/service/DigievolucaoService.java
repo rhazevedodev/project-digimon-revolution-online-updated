@@ -89,16 +89,17 @@ public class DigievolucaoService {
             case "Mega":
                 EnumDigimonMega mega = EnumDigimonMega.getEnumById(digimon.getIdMega());
                 if (mega != null) {
-                    lista = digievolucaoRepository.findByDigimonMega(Long.valueOf(digimon.getIdMega()));
+//                    lista = digievolucaoRepository.findByDigimonMega(Long.valueOf(digimon.getIdMega()));
+                    lista = new ArrayList<>();
                 } else {
                     throw new RuntimeException("Digimon Mega não encontrado.");
                 }
                 break;
         }
 
-        if (lista.isEmpty()) {
-            throw new RuntimeException("Nenhuma evolução encontrada para o Digimon solicitado.");
-        }
+//        if (lista.isEmpty()) {
+//            throw new RuntimeException("Nenhuma evolução encontrada para o Digimon solicitado.");
+//        }
 
         for (Digievolucao evolucao : lista) {
             ResponseListarDigievolucoes response = getResponseListarDigievolucoes(evolucao, inventarioFragmentos);

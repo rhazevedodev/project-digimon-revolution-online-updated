@@ -34,8 +34,6 @@ public class AtributosService {
         Digimon digimon = digimonService.getDigimonById(idDigimon);
         Jogador jogador = jogadorService.getJogadorById(digimon.getIdJogador());
 
-        response.putAll(digimonService.carregarImagemDigimon(idDigimon));
-        response.putAll(premiumService.carregarInformacoesPremium(idDigimon));
         response.putAll(carregarAtributos(digimon));
         response.put("nivel", digimon.getNivel());
 

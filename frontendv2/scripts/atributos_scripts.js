@@ -34,15 +34,11 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 // Armazenar os dados recebidos da API
                 dataAtributos = {
-                    url_imagem_digimon: data.url_imagem_digimon,
                     bits_jogador: data.digimonBits, // Exemplo de bits_jogador, ajustar conforme necessidade real
                     atributo1_forca: data.forca,
                     atributo2_inteligencia: data.inteligencia,
                     atributo3_conhecimento: data.conhecimento,
                     atributo4_agilidade: data.agilidade,
-                    status_premium: data.status_premium,
-                    data_inicio_premium: data.data_inicio_premium,
-                    data_fim_premium: data.data_fim_premium,
                     energia: data.energia,
                     vida: data.vida,
                     nivel: data.nivel
@@ -51,8 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Atualizar a interface com os dados recebidos
                 atualizarAtributos();
                 atualizarCustosAtributos();
-                atualizarImagemDigimon(dataAtributos);
-                displayPremiumContent(dataAtributos)
                 displayLifeBar();
                 displayEnergyBar();
             })
@@ -100,61 +94,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('life-bar').style.width = porcentagemVida + '%';
                 document.getElementById('life-bar-text').textContent = `${vidaAtual}/${vidaMaxima}`;
                 */
-    }
-
-    async function atualizarImagemDigimon(dataAtributos) {
-
-        // Obtém o contêiner onde a imagem será adicionada
-        const imageContainer = document.getElementById('image-container');
-    
-        // Remove qualquer imagem existente no contêiner
-        while (imageContainer.firstChild) {
-            imageContainer.removeChild(imageContainer.firstChild);
-        }
-    
-        // Verifica se a URL da imagem está disponível
-        if (dataAtributos.url_imagem_digimon) {
-            const imgElement = document.createElement('img');
-            imgElement.src = dataAtributos.url_imagem_digimon;
-            imgElement.alt = "Imagem do Digimon";
-            imgElement.width = 163;
-            imgElement.height = 174;
-            imgElement.className = "img-bordered";
-    
-            imageContainer.appendChild(imgElement);
-        } else {
-            console.error('URL da imagem não encontrada.');
-        }
-    }
-
-    function displayPremiumContent(dataAtributos) {
-
-        const container = document.getElementById('caixa-informacoes-esquerda');
-        container.innerHTML = ''; // Limpa o conteúdo existente
-
-        if (dataAtributos.status_premium === 'Ativo') {
-            container.innerHTML = `
-                    <h3 class="titulo-caixa">Premium</h3>
-                    <hr class="separador">
-                    <div id="caixa-premium">
-                        <p>De:</p>
-                        <p id="premium_inicio">${dataAtributos.data_inicio_premium}</p>
-                        <p>Até:</p>
-                        <p id="premium_fim">${dataAtributos.data_fim_premium}</p>
-                    </div>
-                    <hr class="separador">
-                `;
-        } else {
-            container.innerHTML = `
-                    <h3 class="titulo-caixa">Premium</h3>
-                    <hr class="separador">
-                    <div id="caixa-premium">
-                        <p>Sem Premium Ativo</p>
-                    </div>
-                    <hr class="separador">
-                `;
-        }
-
     }
 
     // Função para atualizar os atributos na página

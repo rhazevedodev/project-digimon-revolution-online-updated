@@ -60,3 +60,14 @@ button:disabled {
     background-color: #073f09;
 }
 
+.no-evolution {
+    text-align: center;
+    color: #ff6347; /* Escolha a cor que deseja */
+    font-size: 18px;
+    font-style: italic;
+}
+
+.no-evolution-img {
+    margin-top: 10px;
+    width: 150px; /* Tamanho da imagem */
+}
