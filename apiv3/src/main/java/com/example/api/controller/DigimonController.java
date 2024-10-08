@@ -40,4 +40,12 @@ public class DigimonController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @GetMapping("/carregarVidaEnergia/{idDigimonUsuario}")
+    public ResponseEntity<?> carregarVidaEnergia(@PathVariable int idDigimonUsuario) {
+        logger.info("Requisição para carregar vida e energia do digimon recebida: {}", idDigimonUsuario);
+        Map<String, Object> response = digimonService.carregarVidaEnergia(Long.valueOf(idDigimonUsuario));
+        logger.info("Vida e energia do digimon carregadas: {}", response);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
 }

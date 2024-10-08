@@ -38,63 +38,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     atributo1_forca: data.forca,
                     atributo2_inteligencia: data.inteligencia,
                     atributo3_conhecimento: data.conhecimento,
-                    atributo4_agilidade: data.agilidade,
-                    energia: data.energia,
-                    vida: data.vida,
-                    nivel: data.nivel
+                    atributo4_agilidade: data.agilidade
                     // Adicionar mais atributos conforme necessário
                 };
                 // Atualizar a interface com os dados recebidos
                 atualizarAtributos();
                 atualizarCustosAtributos();
-                displayLifeBar();
-                displayEnergyBar();
             })
             .catch(error => {
                 console.error('Erro ao fazer requisição:', error);
             });
     }
 
-    function displayEnergyBar() {
-        var energiaTotal = 100;
-        const energiaAtual = dataAtributos.energia; // Pontos de energia atuais
-        const energiaMaxima = energiaTotal; // Pontos de energia máximos
-
-
-        // Calcula a largura da barra de vida com base na porcentagem
-        const energyBarWidth = (energiaAtual / energiaMaxima) * 100;
-        const energyBar = document.getElementById('energy-bar');
-        energyBar.style.width = energyBarWidth + '%';
-
-        const energyBarText = document.getElementById('energy-bar-text');
-        energyBarText.textContent = `${energiaAtual}/${energiaMaxima}`;
-
-        /*
-                document.getElementById('life-bar').style.width = porcentagemVida + '%';
-                document.getElementById('life-bar-text').textContent = `${vidaAtual}/${vidaMaxima}`;
-                */
-    }
-
-
-    function displayLifeBar() {
-        var vidaTotal = 50 * parseInt(dataAtributos.nivel);
-        const vidaAtual = dataAtributos.vida; // Pontos de vida atuais
-        const vidaMaxima = vidaTotal; // Pontos de vida máximos
-
-
-        // Calcula a largura da barra de vida com base na porcentagem
-        const lifeBarWidth = (vidaAtual / vidaMaxima) * 100;
-        const lifeBar = document.getElementById('life-bar');
-        lifeBar.style.width = lifeBarWidth + '%';
-
-        const lifeBarText = document.getElementById('life-bar-text');
-        lifeBarText.textContent = `${vidaAtual}/${vidaMaxima}`;
-
-        /*
-                document.getElementById('life-bar').style.width = porcentagemVida + '%';
-                document.getElementById('life-bar-text').textContent = `${vidaAtual}/${vidaMaxima}`;
-                */
-    }
 
     // Função para atualizar os atributos na página
     function atualizarAtributos() {

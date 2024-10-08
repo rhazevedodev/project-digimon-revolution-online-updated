@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    const premiumAPIURL = 'http://localhost:8080/api/digimon/carregarImagemDigimon/'+localStorage.getItem('idDigimon');
+    const carregarImagemURL = 'http://localhost:8080/api/digimon/carregarImagemDigimon/'+localStorage.getItem('idDigimon');
     
     let dataImagemDigimon = {};
     
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
     
-        fetch(premiumAPIURL, requestOptions)
+        fetch(carregarImagemURL, requestOptions)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro na rede, status: ' + response.status);

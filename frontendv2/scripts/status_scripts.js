@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     atributo2_inteligencia: data.inteligencia,
                     atributo3_conhecimento: data.conhecimento,
                     atributo4_agilidade: data.agilidade,
-                    pontosEnergia: data.energia,
                     atributo0_vida: data.vida,
                     experiencia: data.experiencia,
                     experienciaNecessaria: data.experienciaNecessaria,
@@ -56,43 +55,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     missoes_concluidas: data.missoesConcluidas,
                     // Adicionar mais atributos conforme necessário
                 };
-                // Atualizar a interface com os dados recebidos
-                // atualizarImagemDigimon(dataInformacoesStatus);
                 atualizarInformacoes();
                 atualizarAtributos();
                 atualizarEstatisticas();
-                displayLifeBar();
-                displayEnergyBar();
             })
             .catch(error => {
                 console.error('Erro ao fazer requisição:', error);
             });
     }
-
-    // async function atualizarImagemDigimon(dataInformacoesStatus) {
-
-    //     // Obtém o contêiner onde a imagem será adicionada
-    //     const imageContainer = document.getElementById('image-container');
-
-    //     // Remove qualquer imagem existente no contêiner
-    //     while (imageContainer.firstChild) {
-    //         imageContainer.removeChild(imageContainer.firstChild);
-    //     }
-
-    //     // Verifica se a URL da imagem está disponível
-    //     if (dataInformacoesStatus.url_imagem_digimon) {
-    //         const imgElement = document.createElement('img');
-    //         imgElement.src = dataInformacoesStatus.url_imagem_digimon;
-    //         imgElement.alt = "Imagem do Digimon";
-    //         imgElement.width = 163;
-    //         imgElement.height = 174;
-    //         imgElement.className = "img-bordered";
-
-    //         imageContainer.appendChild(imgElement);
-    //     } else {
-    //         console.error('URL da imagem não encontrada.');
-    //     }
-    // }
 
     function atualizarInformacoes() {
         document.getElementById('jogo_desde').textContent = '| ' + dataInformacoesStatus.jogo_desde;
@@ -125,47 +95,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('exp_obtida').textContent = '| ' + dataInformacoesStatus.exp_obtida;
         document.getElementById('cacadas_concluidas').textContent = '| ' + dataInformacoesStatus.cacadas_concluidas;
         document.getElementById('missoes_concluidas').textContent = '| ' + dataInformacoesStatus.missoes_concluidas;
-    }
-
-    function displayEnergyBar() {
-        var energiaTotal = 100;
-        const energiaAtual = dataInformacoesStatus.pontosEnergia; // Pontos de energia atuais
-        const energiaMaxima = energiaTotal; // Pontos de energia máximos
-
-
-        // Calcula a largura da barra de vida com base na porcentagem
-        const energyBarWidth = (energiaAtual / energiaMaxima) * 100;
-        const energyBar = document.getElementById('energy-bar');
-        energyBar.style.width = energyBarWidth + '%';
-
-        const energyBarText = document.getElementById('energy-bar-text');
-        energyBarText.textContent = `${energiaAtual}/${energiaMaxima}`;
-
-        /*
-                document.getElementById('life-bar').style.width = porcentagemVida + '%';
-                document.getElementById('life-bar-text').textContent = `${vidaAtual}/${vidaMaxima}`;
-                */
-    }
-
-
-    function displayLifeBar() {
-        var vidaTotal = 50 * parseInt(dataInformacoesStatus.nivel);
-        const vidaAtual = dataInformacoesStatus.atributo0_vida; // Pontos de vida atuais
-        const vidaMaxima = vidaTotal; // Pontos de vida máximos
-
-
-        // Calcula a largura da barra de vida com base na porcentagem
-        const lifeBarWidth = (vidaAtual / vidaMaxima) * 100;
-        const lifeBar = document.getElementById('life-bar');
-        lifeBar.style.width = lifeBarWidth + '%';
-
-        const lifeBarText = document.getElementById('life-bar-text');
-        lifeBarText.textContent = `${vidaAtual}/${vidaMaxima}`;
-
-        /*
-                document.getElementById('life-bar').style.width = porcentagemVida + '%';
-                document.getElementById('life-bar-text').textContent = `${vidaAtual}/${vidaMaxima}`;
-                */
     }
 
     carregarTelaStatus();

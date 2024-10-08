@@ -228,5 +228,14 @@ public class DigimonService {
     }
 
 
+    public Map<String, Object> carregarVidaEnergia(Long idDigimonUsuario) {
+        Map<String, Object> response = new LinkedHashMap<>();
 
+        Digimon digimon = getDigimonById(idDigimonUsuario);
+        response.put("nivel", digimon.getNivel());
+        response.put("vida", digimon.getAtributos().getPontosVida());
+        response.put("energia", digimon.getAtributos().getPontosEnergia());
+
+        return response;
+    }
 }
