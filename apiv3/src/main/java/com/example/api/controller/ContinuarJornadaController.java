@@ -30,7 +30,7 @@ public class ContinuarJornadaController {
         try {
             String decryptedUsuario = jogadorService.decryptUsuario(nomeUsuario);
             logger.info("Usuário decriptado: {}", decryptedUsuario);
-            return ResponseEntity.ok(digimonService.getDigimonByUsuario(decryptedUsuario));
+            return ResponseEntity.ok(digimonService.carregarDigimonsContinuarJornada(decryptedUsuario));
         } catch (Exception e) {
             logger.error("Erro ao obter Digimons para o usuário: {}", nomeUsuario, e);
             return ResponseEntity.badRequest().body(e.getMessage());

@@ -4,6 +4,7 @@ import com.example.api.entity.Atributos;
 import com.example.api.entity.AtributosElementos;
 import com.example.api.entity.AtributosModificadores;
 import com.example.api.entity.Digimon;
+import com.example.api.entity.dto.ResponseContinuarJornada;
 import com.example.api.enumerator.*;
 import com.example.api.repository.DigimonRepository;
 import com.example.api.utils.ModificadoresRookie;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,6 +88,18 @@ public class DigimonService {
         digimonSelecionado.setAtributosElementos(atributosElementos);
 
         return digimonRepository.save(digimonSelecionado);
+    }
+
+    public List<ResponseContinuarJornada> carregarDigimonsContinuarJornada(String nomeUsuario){
+        List<Digimon> digimons = getDigimonByUsuario(nomeUsuario);
+        List<ResponseContinuarJornada> response = new ArrayList<>();
+        for(Digimon digimon : digimons){
+            Map<String, Object> urlImagemDigimon = carregarImagemDigimon(digimon.getId());
+            // Assuming the correct constructor takes (Digimon, String)
+            String urlImagem = (String) urlImagemDigimon.get("url_imagem_digimon");
+            response.add(new ResponseContinuarJornada(digimon, urlImagem));
+        }
+        return response;
     }
 
     public Map<String, Object> carregarImagemDigimon(Long idDigimon) {

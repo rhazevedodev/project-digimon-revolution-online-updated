@@ -3,35 +3,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const usuario = localStorage.getItem('usuario');
     const urlApi = `http://localhost:8080/api/continuarJornada/obterDigimons/${usuario}`;
 
-    const digimonImages = {
-        1: '/imagens/digimons/rookies/agumon.jpg',
-        2: '/imagens/digimons/rookies/gabumon.jpg',
-        3: '/imagens/digimons/rookies/piyomon.jpg',
-        4: '/imagens/digimons/rookies/tentomon.jpg',
-        5: '/imagens/digimons/rookies/palmon.jpg',
-        6: '/imagens/digimons/rookies/gomamon.jpg',
-        7: '/imagens/digimons/rookies/patamon.jpg',
-        default: '/imagens/digimons/rookies/default.jpg',
-    };
-
-    function getImageSrc(idRookie) {
-        return digimonImages[idRookie] || digimonImages.default;
-    }
-
     function createDigimonCard(digimon) {
         const card = document.createElement('div');
         card.className = 'card';
 
-        const imgSrc = getImageSrc(digimon.idRookie);
+        const imgSrc = digimon.urlImagemDigimon;
 
         card.innerHTML = `
-            <img src="${imgSrc}" alt="${digimon.nome}">
-            <div class="card-title">${digimon.nome}</div>
-            <p>Energia: ${digimon.atributos.pontosEnergia}</p>
-            <p>Vida: ${digimon.atributos.pontosVida}</p>
-            <p>Nível: ${digimon.nivel}</p>
-            <p>Bits: ${digimon.bits}</p>
-            <div hidden>${digimon.id}</div>
+            <img src="${imgSrc}" alt="${dataContinuarJornada.digimon.nome}">
+            <div class="card-title">${dataContinuarJornada.digimon.nome}</div>
+            <p>Energia: ${dataContinuarJornada.digimon.atributos.pontosEnergia}</p>
+            <p>Vida: ${dataContinuarJornada.digimon.atributos.pontosVida}</p>
+            <p>Nível: ${dataContinuarJornada.digimon.nivel}</p>
+            <p>Bits: ${dataContinuarJornada.digimon.bits}</p>
+            <div hidden>${dataContinuarJornada.digimon.id}</div>
             <button class="card-btn" data-id="${digimon.id}">Continuar</button>
         `;
 
@@ -48,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = 'status.html';
     }
 
+    let dataContinuarJornada = {};
     function fetchDigimons() {
         fetch(urlApi)
             .then(response => {
@@ -57,8 +43,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 return response.json();
             })
             .then(data => {
-                data.forEach(digimon => {
-                    const card = createDigimonCard(digimon);
+                data.forEach(data => {
+                    dataContinuarJornada = data;
+                    const card = createDigimonCard(dataContinuarJornada);
                     container.appendChild(card);
                 });
             })

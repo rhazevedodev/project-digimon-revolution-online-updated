@@ -43,9 +43,9 @@ public class InventarioService {
         Jogador jogador = jogadorService.getJogadorById(digimon.getIdJogador());
 
         // Chama os métodos existentes e adiciona os resultados ao response
-        response.put("nivel", digimon.getNivel());
-        response.put("vida", digimon.getAtributos().getPontosVida());
-        response.put("energia", digimon.getAtributos().getPontosEnergia());
+//        response.put("nivel", digimon.getNivel());
+//        response.put("vida", digimon.getAtributos().getPontosVida());
+//        response.put("energia", digimon.getAtributos().getPontosEnergia());
 
         return response;
     }

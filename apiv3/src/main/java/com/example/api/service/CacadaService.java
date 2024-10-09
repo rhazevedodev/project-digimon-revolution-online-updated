@@ -52,9 +52,9 @@ public class CacadaService {
 
         // Chama os métodos existentes e adiciona os resultados ao response
         response.putAll(carregarDadosCacada(idDigimon));
-        response.put("nivel", digimon.getNivel());
-        response.put("vida", digimon.getAtributos().getPontosVida());
-        response.put("energia", digimon.getAtributos().getPontosEnergia());
+//        response.put("nivel", digimon.getNivel());
+//        response.put("vida", digimon.getAtributos().getPontosVida());
+//        response.put("energia", digimon.getAtributos().getPontosEnergia());
 
         return response;
     }

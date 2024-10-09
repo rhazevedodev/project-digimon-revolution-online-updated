@@ -45,9 +45,9 @@ public class MissoesService {
 
         // Chama os métodos existentes e adiciona os resultados ao response
        response.putAll(carregarDadosMissoes(idDigimon, response));
-        response.put("nivel", digimon.getNivel());
-        response.put("vida", digimon.getAtributos().getPontosVida());
-        response.put("energia", digimon.getAtributos().getPontosEnergia());
+//        response.put("nivel", digimon.getNivel());
+//        response.put("vida", digimon.getAtributos().getPontosVida());
+//        response.put("energia", digimon.getAtributos().getPontosEnergia());
 
         return response;
     }
