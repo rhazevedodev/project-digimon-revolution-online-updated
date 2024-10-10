@@ -29,7 +29,7 @@ public enum EnumFragmentosDigievolucao {
 //    TAOMON("24", "ULTIMATE", "FRAG_TAOMON", "Fragmento de digievolução de Taomon"),
 //    SAKUYAMON("25", "MEGA", "FRAG_SAKUYAMON", "Fragmento de digievolução de Sakuyamon"),
     TOGEMON("26", "CHAMPION", "FRAG_TOGEMON", "Fragmento de digievolução de Togemon"),
-    LILIMON("27", "ULTIMATE", "FRAG_LILIMON", "Fragmento de digievolução de Lilimon"),
+    LILLIMON("27", "ULTIMATE", "FRAG_LILLIMON", "Fragmento de digievolução de Lillimon"),
     ROSEMON("28", "MEGA", "FRAG_ROSEMON", "Fragmento de digievolução de Rosemon"),
 //    GRIZZLYMON("29", "CHAMPION", "FRAG_GRIZZLYMON", "Fragmento de digievolução de Grizzlymon"),
 //    GRAPLEOMON("30", "ULTIMATE", "FRAG_GRAPLEOMON", "Fragmento de digievolução de GrapLeomon"),
@@ -37,18 +37,18 @@ public enum EnumFragmentosDigievolucao {
 //    ICEDEVIMON("32", "CHAMPION", "FRAG_ICEDEVIMON", "Fragmento de digievolução de IceDevimon"),
 //    SKULLSATAMON("33", "ULTIMATE", "FRAG_SKULLSATAMON", "Fragmento de digievolução de SkullSatamon"),
 //    BEELZEBUMON("34", "MEGA", "FRAG_BEELZEBUMON", "Fragmento de digievolução de Beelzebumon"),
-    ZUDOMON("35", "CHAMPION", "FRAG_ZUDOMON", "Fragmento de digievolução de Zudomon"),
+    ZUDOMON("35", "ULTIMATE", "FRAG_ZUDOMON", "Fragmento de digievolução de Zudomon"),
 //    PLESIOMON("36", "ULTIMATE", "FRAG_PLESIOMON", "Fragmento de digievolução de Plesiomon"),
 //    AEGISDRAMON("37", "MEGA", "FRAG_AEGISDRAMON", "Fragmento de digievolução de AegisDramon"),
     ANGEMON("38", "CHAMPION", "FRAG_ANGEMON", "Fragmento de digievolução de Angemon"),
-    HOLYANGEMON("39", "ULTIMATE", "FRAG_HOLYANGEMON", "Fragmento de digievolução de HolyAngemon"),
+    MAGNAANGEMON("39", "ULTIMATE", "FRAG_MAGNAANGEMON", "Fragmento de digievolução de MagnaAngemon"),
     SERAPHIMON("40", "MEGA", "FRAG_SERAPHIMON", "Fragmento de digievolução de Seraphimon"),
     BIRDRAMON("41", "CHAMPION", "FRAG_BIRDRAMON", "Fragmento de digievolução de Birdramon"),
     GARUDAMON("42", "ULTIMATE", "FRAG_GARUDAMON", "Fragmento de digievolução de Garudamon"),
     PHOENIXMON("43", "MEGA", "FRAG_PHOENIXMON", "Fragmento de digievolução de Phoenixmon"),
     KABUTERIMON("44", "CHAMPION", "FRAG_KABUTERIMON", "Fragmento de digievolução de Kabuterimon"),
     MEGAKABUTERIMON("45", "ULTIMATE", "FRAG_MEGAKABUTERIMON", "Fragmento de digievolução de MegaKabuterimon"),
-    HERCULESKABUTERIMON("46", "MEGA", "FRAG_HERCULESKABUTERIMON", "Fragmento de digievolução de HerculesKabuterimon");
+    HERCULESKABUTERIMON("46", "MEGA", "FRAG_HERCULESKABUTERIMON", "Fragmento de digievolução de HerculesKabuterimon"),
 //    TAILMON("47", "CHAMPION", "FRAG_TAILMON", "Fragmento de digievolução de Tailmon"),
 //    ANGEWOMON("48", "ULTIMATE", "FRAG_ANGEWOMON", "Fragmento de digievolução de Angewomon"),
 //    OPHANIMON("49", "MEGA", "FRAG_OPHANIMON", "Fragmento de digievolução de Ophanimon"),
@@ -72,6 +72,8 @@ public enum EnumFragmentosDigievolucao {
 //    DEVIMON("67", "CHAMPION", "FRAG_DEVIMON", "Fragmento de digievolução de Devimon"),
 //    MYOTISMON("68", "ULTIMATE", "FRAG_MYOTISMON", "Fragmento de digievolução de Myotismon"),
 //    MALOMYOTISMON("69", "MEGA", "FRAG_MALOMYOTISMON", "Fragmento de digievolução de MaloMyotismon");
+    IKKAKUMON("70", "CHAMPION", "FRAG_IKKAKUMON", "Fragmento de digievolução de Ikkakumon"),
+    VIKEMON("71", "MEGA", "FRAG_VIKEMON", "Fragmento de digievolução de Vikemon");
 
     private final String id;
     private final String tier;

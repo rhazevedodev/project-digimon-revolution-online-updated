@@ -2,9 +2,9 @@ package com.example.api.enumerator;
 
 public enum EnumItens {
 
-    POCAO_CURA_1(1, "POCAO DE CURA 1", "Recupera 15% dos seus pontos de vida", "consumivel", 100, false, false),
-    POCAO_CURA_2(2, "POCAO DE CURA 2", "Recupera 35% dos seus pontos de vida", "consumivel", 350, false, false),
-    POCAO_CURA_3(3, "POCAO DE CURA 3", "Recupera 55% dos seus pontos de vida", "consumivel", 550, false, false);
+    POCAO_CURA_1(1, "POCAO DE CURA 1", "Recupera 15% dos seus pontos de vida", "CONSUMIVEIS", 100, false, false),
+    POCAO_CURA_2(2, "POCAO DE CURA 2", "Recupera 35% dos seus pontos de vida", "CONSUMIVEIS", 350, false, false),
+    POCAO_CURA_3(3, "POCAO DE CURA 3", "Recupera 55% dos seus pontos de vida", "CONSUMIVEIS", 550, false, false);
 
 
     private final int id;

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(data => {
                 if (data.length === 0) {
-                    const digimonName = 'Este Digimon';
+                    const digimonName = 'este Digimon';
                     document.getElementById('evolucoes-container').innerHTML = `
                         <div class="no-evolution">
                             <p>Infelizmente, ${digimonName} ainda não possui nenhuma evolução disponível no momento.</p>
