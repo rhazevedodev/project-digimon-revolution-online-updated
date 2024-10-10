@@ -61,7 +61,7 @@ public class InventarioService {
 
         // Verifica se a lista está vazia
         if (inventarioList.isEmpty()) {
-            response.put("message", "Nenhum item encontrado para o Digimon com ID " + idDigimon);
+            response.put("message", "Nenhum item encontrado para esse Digimon");
             return response;
         }
 

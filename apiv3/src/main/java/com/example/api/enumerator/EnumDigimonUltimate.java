@@ -5,13 +5,13 @@ import com.example.api.service.LogService;
 
 public enum EnumDigimonUltimate {
 
-    METALGREYMON(1, "MetalGreymon", "FOGO", "./imagens/digimons/champions/metalgreymon.jpg"),
+    METALGREYMON(1, "MetalGreymon", "FOGO", "./imagens/digimons/ultimates/metalgreymon.jpg"),
     WEREGARURUMON(2, "WereGarurumon", "GELO", "./imagens/digimons/ultimates/weregarurumon.jpg"),
-    GARUDAMON(3, "Garudamon", "VENTO", "./imagens/digimons/rookies/birdramon.jpg"),
-    MEGAKABUTERIMON(4, "Megakabuterimon", "METAL", "./imagens/digimons/rookies/kabuterimon.jpg"),
-    LILLIMON(5, "Lillimon", "PLANTA", "./imagens/digimons/rookies/togemon.jpg"),
-    ZUDOMON(6, "Zudomon", "ÁGUA", "./imagens/digimons/rookies/ikkakumon.jpg"),
-    MAGNAANGEMON(7, "Magnaangemon", "LUZ", "./imagens/digimons/rookies/angemon.jpg");
+    GARUDAMON(3, "Garudamon", "VENTO", "./imagens/digimons/ultimates/garudamon.jpg"),
+    MEGAKABUTERIMON(4, "Megakabuterimon", "METAL", "./imagens/digimons/ultimates/megakabuterimon.jpg"),
+    LILLIMON(5, "Lillimon", "PLANTA", "./imagens/digimons/ultimates/lillimon.jpg"),
+    ZUDOMON(6, "Zudomon", "ÁGUA", "./imagens/digimons/ultimates/zudomon.jpg"),
+    MAGNAANGEMON(7, "Magnaangemon", "LUZ", "./imagens/digimons/ultimates/magnaangemon.jpg");
 
     private int id;
     private String descricao;

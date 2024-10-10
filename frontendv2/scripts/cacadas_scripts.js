@@ -39,53 +39,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 };
                 // Atualizar a interface com os dados recebidos
                 carregarCaixaCacadaPorTempo(dataCacadas);
-                displayLifeBar();
-                displayEnergyBar();
             })
             .catch(error => {
                 console.error('Erro ao fazer requisição:', error);
             });
-    }
-
-    function displayEnergyBar() {
-        var energiaTotal = 100;
-        const energiaAtual = dataCacadas.energia; // Pontos de energia atuais
-        const energiaMaxima = energiaTotal; // Pontos de energia máximos
-
-
-        // Calcula a largura da barra de vida com base na porcentagem
-        const energyBarWidth = (energiaAtual / energiaMaxima) * 100;
-        const energyBar = document.getElementById('energy-bar');
-        energyBar.style.width = energyBarWidth + '%';
-
-        const energyBarText = document.getElementById('energy-bar-text');
-        energyBarText.textContent = `${energiaAtual}/${energiaMaxima}`;
-
-        /*
-                document.getElementById('life-bar').style.width = porcentagemVida + '%';
-                document.getElementById('life-bar-text').textContent = `${vidaAtual}/${vidaMaxima}`;
-                */
-    }
-
-
-    function displayLifeBar() {
-        var vidaTotal = 50 * parseInt(dataCacadas.nivel);
-        const vidaAtual = dataCacadas.vida; // Pontos de vida atuais
-        const vidaMaxima = vidaTotal; // Pontos de vida máximos
-
-
-        // Calcula a largura da barra de vida com base na porcentagem
-        const lifeBarWidth = (vidaAtual / vidaMaxima) * 100;
-        const lifeBar = document.getElementById('life-bar');
-        lifeBar.style.width = lifeBarWidth + '%';
-
-        const lifeBarText = document.getElementById('life-bar-text');
-        lifeBarText.textContent = `${vidaAtual}/${vidaMaxima}`;
-
-        /*
-                document.getElementById('life-bar').style.width = porcentagemVida + '%';
-                document.getElementById('life-bar-text').textContent = `${vidaAtual}/${vidaMaxima}`;
-                */
     }
 
     let dataRecompensaCacada = {};

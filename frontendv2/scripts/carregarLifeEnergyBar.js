@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(data => {
                 dataBarras = data;
-                console.log(dataBarras);
                 atualizarBarras();
             })
             .catch(error => {

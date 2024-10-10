@@ -108,9 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function digivolve(index) {
         const evolucaoEscolhida = evolucoes[index];
         digievoluir(evolucaoEscolhida);
-        alert(`Parabéns! ${evolucaoEscolhida.digimonOrigem} evoluiu para ${evolucaoEscolhida.digimonDestino}!`);
-        // Aqui você pode adicionar a lógica de enviar uma requisição para a API
-        // para registrar a evolução, por exemplo.
+
     }
 
     function digievoluir(evolucaoEscolhida) {
@@ -133,8 +131,16 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => {
                 if (response.status === 200) {
                     // Se o status da resposta for 200, redireciona para a página de status
-                    const redirectPage = 'status.html';
-                    window.location.href = redirectPage;
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sucesso',
+                        text: 'Parabéns! ' + evolucaoEscolhida.digimonOrigem + ' evoluiu para ' + evolucaoEscolhida.digimonDestino + '!',
+                        confirmButtonText: 'Ok'
+                    });
+                    setTimeout(function() {
+                        const redirectPage = 'status.html';
+                        window.location.href = redirectPage;
+                    }, 5000);
                 } else {
                     // Se o status não for 200, lança um erro
                     return response.text().then(errorMessage => {
@@ -144,7 +150,12 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(error => {
                 console.error(error.message); // Exibe o erro no console
-                alert('Erro ao tentar realizar a evolução: ' + error.message); // Exibe uma mensagem de erro na interface
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Erro ao tentar realizar a evolução: ' + error.message, // Exibe a mensagem de erro com SweetAlert
+                    confirmButtonText: 'Ok'
+                });
             });
     }
 

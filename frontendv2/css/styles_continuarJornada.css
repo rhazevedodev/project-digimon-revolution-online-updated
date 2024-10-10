@@ -114,6 +114,17 @@ body {
     transition: background-color 0.3s;
 }
 
+.card-btn-sacrificar {
+    margin-top: 12px;
+    padding: 15px 20px;
+    background-color: #f56565;
+    color: #fff;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
 .card:hover {
     transform: scale(1.05);
 }
@@ -121,6 +132,11 @@ body {
 .card-btn:hover {
     background-color: #45a049;
 }
+
+.card-btn-sacrificar:hover {
+    background-color: #f72c2c;
+}
+
 
 /* Responsividade */
 @media (max-width: 768px) {

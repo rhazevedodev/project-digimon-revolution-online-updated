@@ -3,11 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const usuario = localStorage.getItem('usuario');
     const urlApi = `http://localhost:8080/api/continuarJornada/obterDigimons/${usuario}`;
 
-    function createDigimonCard(digimon) {
+    function createDigimonCard(dataContinuarJornada) {
         const card = document.createElement('div');
         card.className = 'card';
 
-        const imgSrc = digimon.urlImagemDigimon;
+        const imgSrc = dataContinuarJornada.urlImagemDigimon;
 
         card.innerHTML = `
             <img src="${imgSrc}" alt="${dataContinuarJornada.digimon.nome}">
@@ -17,19 +17,19 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>Nível: ${dataContinuarJornada.digimon.nivel}</p>
             <p>Bits: ${dataContinuarJornada.digimon.bits}</p>
             <div hidden>${dataContinuarJornada.digimon.id}</div>
-            <button class="card-btn" data-id="${digimon.id}">Continuar</button>
+            <button class="card-btn" data-id="${dataContinuarJornada.digimon.id}">Continuar</button>
+            <button class="card-btn-sacrificar" >Sacrificar</button>
         `;
 
         card.querySelector('.card-btn').addEventListener('click', function () {
-            handleContinueButtonClick(digimon.id);
+            handleContinueButtonClick(dataContinuarJornada);
         });
 
         return card;
     }
 
-    function handleContinueButtonClick(id) {
-        console.log('ID do Digimon:', id);
-        localStorage.setItem('idDigimon', id);
+    function handleContinueButtonClick(dataContinuarJornada) {
+        localStorage.setItem('idDigimon', dataContinuarJornada.digimon.id);
         window.location.href = 'status.html';
     }
 

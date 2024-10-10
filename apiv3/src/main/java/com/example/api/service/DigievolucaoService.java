@@ -223,7 +223,7 @@ public class DigievolucaoService {
             String descricaoEvolucao = EnumFragmentosDigievolucao.getDescricaoItemByEnum(EnumFragmentosDigievolucao.valueOf(request.getEvolucaoEscolhida().toUpperCase()));
 
             int fragmentosNecessarios = request.getFragmentosNecessarios();
-            Inventario inventarioInicioTransacao = inventarioService.carregarInventarioPorIdeDescricaoitem((long) 4, descricaoEvolucao);
+            Inventario inventarioInicioTransacao = inventarioService.carregarInventarioPorIdeDescricaoitem((long) request.getIdDigimon(), descricaoEvolucao);
             int fragmentosDisponiveis = inventarioInicioTransacao.getQuantidade();
             if (fragmentosDisponiveis < fragmentosNecessarios) {
                 throw new RuntimeException("Quantidade de fragmentos insuficiente.");
@@ -234,7 +234,7 @@ public class DigievolucaoService {
             AtributosModificadores modificadoresAntes = digimon.getAtributosModificadores();
             AtributosModificadores modificadoresAtualizados = null;
             if (tierEvolucao.equals("Champion")) {
-                modificadoresAtualizados = ModificadoresChampion.definirModificadoresChampion(modificadoresAntes, EnumDigimonChampion.valueOf(request.getEvolucaoEscolhida()));
+                modificadoresAtualizados = ModificadoresChampion.definirModificadoresChampion(modificadoresAntes, EnumDigimonChampion.valueOf(request.getEvolucaoEscolhida().toUpperCase()));
                 digimon.setIdChampion(idDigievolucao);
             }
             if (tierEvolucao.equals("Ultimate")) {

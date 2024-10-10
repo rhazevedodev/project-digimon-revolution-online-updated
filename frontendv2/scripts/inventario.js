@@ -77,7 +77,14 @@ function loadItems(categoriaItem = 'TODOS') {
     })
         .then(response => response.json())
         .then(data => {
+            // Verifica se há uma mensagem de erro na resposta
+            if (data.message) {
+                itemsList.innerHTML = `<p class="error">${data.message}</p>`;
+                return; // Interrompe a execução caso haja uma mensagem de erro
+            }        
             const items = data.itens;// Ajuste conforme a estrutura da resposta da sua API
+
+            let filteredItems;
 
             if (categoriaItem.toUpperCase() === 'TODOS') {
                 filteredItems = items;
