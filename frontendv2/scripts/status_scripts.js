@@ -45,6 +45,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     atributo3_conhecimento: data.conhecimento,
                     atributo4_agilidade: data.agilidade,
                     atributo0_vida: data.vida,
+                    modificadorForca: data.modificadorForca,
+                    modificadorInteligencia: data.modificadorInteligencia,
+                    modificadorConhecimento: data.modificadorConhecimento,
+                    modificadorAgilidade: data.modificadorAgilidade,
                     experiencia: data.experiencia,
                     experienciaNecessaria: data.experienciaNecessaria,
                     bonus_experiencia: data.bonus_experiencia,
@@ -82,10 +86,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function atualizarAtributos() {
         var vidaTotal = 50 * parseInt(dataInformacoesStatus.nivel);
-        document.getElementById('atributo1_forca').textContent = '| [ ' + dataInformacoesStatus.atributo1_forca + ' ] ';
-        document.getElementById('atributo2_inteligencia').textContent = '| [ ' + dataInformacoesStatus.atributo2_inteligencia + ' ] ';
-        document.getElementById('atributo3_conhecimento').textContent = '| [ ' + dataInformacoesStatus.atributo3_conhecimento + ' ] ';
-        document.getElementById('atributo4_agilidade').textContent = '| [ ' + dataInformacoesStatus.atributo4_agilidade + ' ] ';
+        document.getElementById('atributo1_forca').textContent = '| [ ' + dataInformacoesStatus.atributo1_forca + ' ] + [ ' + dataInformacoesStatus.modificadorForca + ' ]';
+        document.getElementById('atributo2_inteligencia').textContent = '| [ ' + dataInformacoesStatus.atributo2_inteligencia + ' ] + [ ' + dataInformacoesStatus.modificadorInteligencia + ' ]';
+        document.getElementById('atributo3_conhecimento').textContent = '| [ ' + dataInformacoesStatus.atributo3_conhecimento + ' ] + [ ' + dataInformacoesStatus.modificadorConhecimento + ' ]';
+        document.getElementById('atributo4_agilidade').textContent = '| [ ' + dataInformacoesStatus.atributo4_agilidade + ' ] + [ ' + dataInformacoesStatus.modificadorAgilidade + ' ]';
         document.getElementById('atributo0_vida').textContent = '| [ ' + dataInformacoesStatus.atributo0_vida + ' | ' + vidaTotal + ' ] ';
         document.getElementById('experiencia').textContent = '| [ ' + dataInformacoesStatus.experiencia + ' | ' + dataInformacoesStatus.experienciaNecessaria + ' ] ';
     }

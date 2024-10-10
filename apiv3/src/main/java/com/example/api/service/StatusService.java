@@ -79,7 +79,14 @@ public class StatusService {
         int vida = digimon.getAtributos().getPontosVida();
         int experiencia = digimon.getPontosExperiencia();
         int experienciaNecessaria = EnumNivelDigimon.getExperienciaNecessaria(digimon.getNivel());
-        preencherResponseAtributos(response, forca, inteligencia, conhecimento, agilidade, energia, vida, experiencia, experienciaNecessaria);
+        int modificadorForca = digimon.getAtributosModificadores().getModificadorForca();
+        int modificadorInteligencia = digimon.getAtributosModificadores().getModificadorInteligencia();
+        int modificadorConhecimento = digimon.getAtributosModificadores().getModificadorConhecimento();
+        int modificadorAgilidade = digimon.getAtributosModificadores().getModificadorAgilidade();
+        int modificadorEnergia = digimon.getAtributosModificadores().getModificadorEnergia();
+        int modificadorVida = digimon.getAtributosModificadores().getModificadorVida();
+        preencherResponseAtributos(response, forca, inteligencia, conhecimento, agilidade, energia, vida, experiencia, experienciaNecessaria,
+                modificadorForca, modificadorInteligencia, modificadorConhecimento, modificadorAgilidade, modificadorEnergia, modificadorVida);
         return response;
     }
 
@@ -99,7 +106,8 @@ public class StatusService {
         }
     }
 
-    private void preencherResponseAtributos(Map<String, Object> response, int forca, int inteligencia, int conhecimento, int agilidade, int energia, int vida, int experiencia, int experienciaNecessaria) {
+    private void preencherResponseAtributos(Map<String, Object> response, int forca, int inteligencia, int conhecimento, int agilidade, int energia, int vida, int experiencia, int experienciaNecessaria,
+                                            int modificadorForca, int modificadorInteligencia, int modificadorConhecimento, int modificadorAgilidade, int modificadorEnergia, int modificadorVida) {
         response.put("forca", forca);
         response.put("inteligencia", inteligencia);
         response.put("conhecimento", conhecimento);
@@ -108,6 +116,12 @@ public class StatusService {
         response.put("vida", vida);
         response.put("experiencia", experiencia);
         response.put("experienciaNecessaria", experienciaNecessaria);
+        response.put("modificadorForca", modificadorForca);
+        response.put("modificadorInteligencia", modificadorInteligencia);
+        response.put("modificadorConhecimento", modificadorConhecimento);
+        response.put("modificadorAgilidade", modificadorAgilidade);
+        response.put("modificadorEnergia", modificadorEnergia);
+        response.put("modificadorVida", modificadorVida);
     }
 
     private void preencherResponseInformacoes(Map<String, Object> response, String dataJogoDesde, String indicacao, int reservaBits, int reservaDiamantes, String apelidoDigimon, String digimonRookie, String digimonChampion, String digimonUltimate, String digimonMega, String tierDigimon, int nivelDigimon) {
