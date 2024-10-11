@@ -27,10 +27,12 @@ public class DigimonService {
 
     private DigimonRepository digimonRepository;
     private JogadorService jogadorService;
+    private ConquistasService conquistasService;
 
-    public DigimonService(DigimonRepository digimonRepository, JogadorService jogadorService) {
+    public DigimonService(DigimonRepository digimonRepository, JogadorService jogadorService, ConquistasService conquistasService) {
         this.digimonRepository = digimonRepository;
         this.jogadorService = jogadorService;
+        this.conquistasService = conquistasService;
     }
 
     public boolean getDigimonByIdJogador(int idJogador) {
@@ -86,6 +88,9 @@ public class DigimonService {
         atributosElementos.setElementoPrimitivo(idElementoPrimitivoRookie);
         atributosElementos.setPontosElementoPrimitivo(1);
         digimonSelecionado.setAtributosElementos(atributosElementos);
+
+        //INICIALIZAR CONQUISTAS
+        conquistasService.inicializarConquistas(digimonSelecionado);
 
         return digimonRepository.save(digimonSelecionado);
     }
