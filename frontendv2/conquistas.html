@@ -1,19 +1,125 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Conquistas</title>
-    <link rel="stylesheet" href="./css/styles_conquistas.css">
-</head>
-<body>
-    <div class="achievement-container">
-        <h1>Conquistas</h1>
-        <div class="achievements">
-            <!-- Conquistas serão geradas dinamicamente aqui -->
-        </div>
-    </div>
 
-    <script src="./scripts/app.js"></script>
+    <link href="./css/styles.css" rel="stylesheet" type="text/css">
+    <link href="./css/styles_conquistas.css" rel="stylesheet" type="text/css">
+    <script defer src="./scripts/inventario.js"></script>
+    <script defer src="./scripts/carregarPremium.js"></script>
+    <script defer src="./scripts/carregarImagemDigimon.js"></script>
+    <script defer src="./scripts/carregarLifeEnergyBar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>Conquistas</title>
+</head>
+
+<body style="padding: 0px 0px 154px;">
+    <div class="background"></div>
+    <h2 id="titulo" style="text-align: center;">Digimon Revolution Online</h2>
+    <!--INICIO DIV PRINCIPAL-->
+    <div id="div_principal" style="height: auto !important;">
+        <!--INICIO DIV BANNER PRINCIPAL-->
+        <div id="banner_principal">
+            <!--INICIO BARRA DE IDIOMAS-->
+            <div id="idiomas">
+                <img src="../imagens/brasil.gif" alt="Português" width="20" height="14" border="0">
+                <img src="../imagens/espanhol.gif" alt="Espanhol" width="20" height="14" border="0">
+                <!--FIM BARRA DE IDIOMAS-->
+            </div>
+            <!--FIM DIV BANNER PRINCIPAL-->
+
+        </div>
+        <br>
+        <div id="caixa-informacoes-menu">
+            <div id="menu">
+                <a href="" class="disabled">Novidades</a>
+                |
+                <a href="status.html">Status</a>
+                |
+                <a href="">Clã</a>
+                |
+                <a href="cacadas.html">Caçadas</a>
+                |
+                <a href="">Eventos</a>
+                |
+                <a href="">Ranking</a>
+                |
+                <a href="missoes.html">Missões</a>
+                |
+                <a href="">Elementos</a>
+                |
+                <a href="">Perfil</a>
+                |
+                <a href="">Contato</a>
+                |
+                <a href="">Conquistas</a>
+                <br>
+            </div>
+            <div id="menu-2">
+                <a href="">Manual</a>
+                |
+                <a href="invasoes.html">Invasão</a>
+                |
+                <a href="lanchonete.html">Lanchonete</a>
+                |
+                <a href="">Trocas</a>
+                |
+                <a href="loja.html">Mercado</a>
+                |
+                <!--<a href="">Habilidades</a>-->
+                <a href="digievolucao.html">Digievolução</a>
+                |
+                <!--<a href="">Excelência</a>-->
+                <a href="inventario.html">Inventario</a>
+                |
+                <a href="">Raids</a>
+                |
+                <a href="">F.A.Q</a>
+                |
+                <a href="">Premium</a>
+                |
+                <a href="">Logout</a>
+                <br>
+            </div>
+        </div>
+        <!--<div id="sombra_baixo_menu"></div>-->
+        <br>
+        <div id="conteudo">
+            <div id="motor_game">
+                <div id="col_esquerda">
+                    <div id="image-container"></div>
+                    <div id="life-bar-container">
+                        <div id="life-bar">
+                            <span id="life-bar-text">0/100</span>
+                        </div>
+                    </div>
+                    <div id="energy-bar-container">
+                        <div id="energy-bar">
+                            <span id="energy-bar-text">0/100</span>
+                        </div>
+                    </div>
+                    <div id="caixa-informacoes-esquerda"></div>
+                </div>
+            </div>
+            <div id="col_direita">
+                <!-- Nova caixa adicionada -->
+                <div id="caixa_informacoes">
+                    <h2 class="titulo-caixa">Conquistas</h2>
+                    <hr class="separador">
+                    <!-- <div class="achievement-container"> -->
+                        <div class="achievements">
+                            <!-- Conquistas serão geradas dinamicamente aqui -->
+                        </div>
+                    <!-- </div> -->
+                </div>
+
+                <!--FIM DIV PRINCIPAL-->
+            </div>
+            <p id="error-message" class="error-message"></p>
+            <script src="./scripts/app.js"></script>
 </body>
+
 </html>
