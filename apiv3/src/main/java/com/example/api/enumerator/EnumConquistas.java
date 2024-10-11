@@ -4,7 +4,8 @@ public enum EnumConquistas {
 
     CONQUISTA1(1, "Caçador I", "Complete sua primeira caçada", "exploracao.jpg", "DIAMANTE",10),
     CONQUISTA2(2, "Explorador I", "Complete sua primeira  missao", "exploracao.jpg", "DIAMANTE",10),
-    CONQUISTA3(3, "Em busca da riqueza I", "Acumule 100 bits", "exploracao.jpg", "DIAMANTE",10);
+    CONQUISTA3(3, "Em busca da riqueza I", "Acumule 100 bits", "exploracao.jpg", "DIAMANTE",10),
+    CONQUISTA4(4, "Aprendiz de treinador I", "Treine seu digimon pela primeira vez", "exploracao.jpg", "DIAMANTE",10);
 
         private final int id;
         private final String nomeConquista;
@@ -20,6 +21,51 @@ public enum EnumConquistas {
         this.imagemConquista = imagemConquista;
         this.tipoRecompensa = tipoRecompensa;
         this.quantidadeRecompensa = quantidadeRecompensa;
+    }
+
+    public static int getIdConquistaByNomeConquista(String nomeConquista) {
+        for (EnumConquistas conquista : EnumConquistas.values()) {
+            if (conquista.getNomeConquista().equals(nomeConquista)) {
+                return conquista.getId();
+            }
+        }
+        return 0;
+    }
+
+    public static String getDescricaoConquistaByNomeConquista(String nomeConquista) {
+        for (EnumConquistas conquista : EnumConquistas.values()) {
+            if (conquista.getNomeConquista().equals(nomeConquista)) {
+                return conquista.getDescricaoConquista();
+            }
+        }
+        return "";
+    }
+
+    public static String getImagemConquistaByNomeConquista(String nomeConquista) {
+        for (EnumConquistas conquista : EnumConquistas.values()) {
+            if (conquista.getNomeConquista().equals(nomeConquista)) {
+                return conquista.getImagemConquista();
+            }
+        }
+        return "";
+    }
+
+    public static String getTipoRecompensaByNomeConquista(String nomeConquista) {
+        for (EnumConquistas conquista : EnumConquistas.values()) {
+            if (conquista.getNomeConquista().equals(nomeConquista)) {
+                return conquista.getTipoRecompensa();
+            }
+        }
+        return "";
+    }
+
+    public static int getQuantidadeRecompensaByNomeConquista(String nomeConquista) {
+        for (EnumConquistas conquista : EnumConquistas.values()) {
+            if (conquista.getNomeConquista().equals(nomeConquista)) {
+                return conquista.getQuantidadeRecompensa();
+            }
+        }
+        return 0;
     }
 
     public int getId() {

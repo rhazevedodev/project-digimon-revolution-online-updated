@@ -18,14 +18,10 @@ public class AtributosService {
 
     private final DigimonService digimonService;
     private final JogadorService jogadorService;
-    private final RegistroConquistasService registroConquistasService;
-    private final PremiumService premiumService;
 
-    public AtributosService(DigimonService digimonService, JogadorService jogadorService, RegistroConquistasService registroConquistasService, PremiumService premiumService) {
+    public AtributosService(DigimonService digimonService, JogadorService jogadorService) {
         this.digimonService = digimonService;
         this.jogadorService = jogadorService;
-        this.registroConquistasService = registroConquistasService;
-        this.premiumService = premiumService;
     }
 
     public Map<String, Object> carregarTelaAtributos(Long idDigimon){

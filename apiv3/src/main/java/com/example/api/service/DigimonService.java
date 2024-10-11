@@ -90,7 +90,9 @@ public class DigimonService {
         digimonSelecionado.setAtributosElementos(atributosElementos);
 
         //INICIALIZAR CONQUISTAS
-        conquistasService.inicializarConquistas(digimonSelecionado);
+        if(!conquistasService.verificarSeConquistasForamInicializadas(digimonSelecionado.getIdJogador())){
+            conquistasService.inicializarConquistas(digimonSelecionado);
+        }
 
         return digimonRepository.save(digimonSelecionado);
     }

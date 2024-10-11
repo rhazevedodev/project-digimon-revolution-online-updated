@@ -42,6 +42,10 @@ body {
     background-color: #4caf50;
     color: #fff;
 }
+.achievement.resgatada {
+    background-color: #f7a815;
+    color: #fff;
+}
 
 /* .achievement img {
     width: 100px;

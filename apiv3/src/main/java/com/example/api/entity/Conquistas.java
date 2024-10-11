@@ -20,18 +20,29 @@ public class Conquistas {
 
     private int meta;
 
+    private boolean conquistaResgatada;
+
     private Long idJogador;
 
     public Conquistas() {
     }
 
-    public Conquistas(Long id, String nomeConquista, boolean desbloqueada, int progresso, int meta, Long idJogador) {
+    public Conquistas(Long id, String nomeConquista, boolean desbloqueada, int progresso, int meta, boolean conquistaResgatada, Long idJogador) {
         this.id = id;
         this.nomeConquista = nomeConquista;
         this.desbloqueada = desbloqueada;
         this.progresso = progresso;
         this.meta = meta;
+        this.conquistaResgatada = conquistaResgatada;
         this.idJogador = idJogador;
+    }
+
+    public boolean isConquistaResgatada() {
+        return conquistaResgatada;
+    }
+
+    public void setConquistaResgatada(boolean conquistaResgatada) {
+        this.conquistaResgatada = conquistaResgatada;
     }
 
     public Long getId() {
