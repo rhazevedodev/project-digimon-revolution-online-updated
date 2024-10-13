@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passe de Batalha - Digimon Revolution</title>
+    <style>
+        /* Estilos globais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2d2f36;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            margin: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Ajuste para exibir os níveis na vertical */
+        #battle-pass-progress {
+            text-align: center;
+            margin: 20px;
+        }
+
+        #progress-bar {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            height: 600px;
+            width: 80px;
+        }
+
+        .level {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        /* Estilo das recompensas */
+        .reward-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .reward {
+            padding: 10px;
+            width: 48%;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .free-reward {
+            background-color: #87CEFA;
+        }
+
+        .premium-reward {
+            background-color: #FFD700;
+        }
+
+        /* Botões */
+        #actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            width: 50%;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .close-btn {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Passe de Batalha – Digimon Revolution</h1>
+        <div id="season-timer">Restam X dias para o fim da temporada</div>
+    </header>
+
+    <main>
+        <!-- Progresso Geral do Passe de Batalha -->
+        <section id="battle-pass-progress">
+            <h2>Progresso</h2>
+            <div id="progress-bar">
+                <!-- Níveis (Vertical) -->
+                <div class="level" data-level="1">1</div>
+                <div class="level" data-level="2">2</div>
+                <div class="level" data-level="3">3</div>
+                <!-- Adicione mais níveis conforme necessário -->
+                <div class="level" data-level="50">50</div>
+            </div>
+        </section>
+
+        <!-- Recompensas por Nível -->
+        <section id="rewards">
+            <h2>Recompensas</h2>
+            <div class="reward-row">
+                <div class="reward free-reward">Recompensa Gratuita</div>
+                <div class="reward premium-reward">Recompensa Premium</div>
+            </div>
+        </section>
+
+        <!-- Botões de Ação -->
+        <section id="actions">
+            <button id="buy-premium-btn">Adquirir Passe Premium</button>
+            <button id="view-challenges-btn">Ver Conquistas do Passe</button>
+        </section>
+    </main>
+
+    <!-- Modal para Compra de Passe Premium -->
+    <div id="premium-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Adquira o Passe Premium</h2>
+            <p>Desbloqueie recompensas exclusivas, skins e evoluções de Digimon.</p>
+            <button id="purchase-premium">Comprar Agora</button>
+        </div>
+    </div>
+
+    <script>
+        // Função para abrir o modal de passe premium
+        document.getElementById('buy-premium-btn').addEventListener('click', function() {
+            document.getElementById('premium-modal').style.display = 'block';
+        });
+
+        // Função para fechar o modal
+        document.querySelector('.close-btn').addEventListener('click', function() {
+            document.getElementById('premium-modal').style.display = 'none';
+        });
+
+        // Função para fechar o modal clicando fora da área de conteúdo
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('premium-modal')) {
+                document.getElementById('premium-modal').style.display = 'none';
+            }
+        };
+
+        // Função para mudar o progresso com base no nível (para ser integrada com o backend)
+        const levels = document.querySelectorAll('.level');
+        levels.forEach(level => {
+            level.addEventListener('click', function() {
+                const levelSelected = level.getAttribute('data-level');
+                alert('Você selecionou o nível: ' + levelSelected);
+                // Aqui você pode adicionar lógica para mostrar as recompensas desse nível
+            });
+        });
+
+        // Função para mostrar contagem regressiva da temporada
+        function updateSeasonTimer(daysRemaining) {
+            document.getElementById('season-timer').innerText = `Restam ${daysRemaining} dias para o fim da temporada`;
+        }
+
+        // Exemplo de como você pode atualizar a contagem de dias
+        updateSeasonTimer(30);  // Substituir por cálculo dinâmico vindo do backend
+    </script>
+</body>
+</html>
