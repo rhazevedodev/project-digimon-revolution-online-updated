@@ -68,6 +68,15 @@ public enum EnumConquistas {
         return 0;
     }
 
+    public static EnumConquistas getNomeConquistaById(int idConquista) {
+        for (EnumConquistas conquista : EnumConquistas.values()) {
+            if (conquista.getId() == idConquista) {
+                return conquista;
+            }
+        }
+        return null;
+    }
+
     public int getId() {
         return id;
     }

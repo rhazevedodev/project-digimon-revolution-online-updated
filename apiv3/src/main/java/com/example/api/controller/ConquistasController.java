@@ -1,5 +1,6 @@
 package com.example.api.controller;
 
+import com.example.api.entity.Digimon;
 import com.example.api.service.ConquistasService;
 import com.example.api.service.DigimonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,13 @@ public class ConquistasController {
     public ResponseEntity<?> carregarTelaConquistas(@PathVariable String idDigimon) {;
         Long idJogador = digimonService.getIdJogadorByDigimonId(Long.valueOf(idDigimon));
         return new ResponseEntity<>(conquistasService.listarConquistasDoJogador(idJogador), HttpStatus.OK);
+    }
+
+    @GetMapping("/resgatarConquista/{idConquista}/{idDigimon}")
+    public ResponseEntity<?> resgatarConquista(@PathVariable String idConquista, @PathVariable String idDigimon) {
+        Digimon digimon = digimonService.getDigimonById(Long.valueOf(idDigimon));
+        conquistasService.resgatarConquista(Long.valueOf(idConquista),digimon);
+        return new ResponseEntity<>("Conquista resgatada com sucesso", HttpStatus.OK);
     }
 
 }

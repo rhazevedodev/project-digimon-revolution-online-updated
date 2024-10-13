@@ -9,4 +9,6 @@ public interface ConquistasRepository extends JpaRepository<Conquistas, Long> {
     List<Conquistas> findByIdJogador(Long idJogador);
 
     boolean existsByIdJogador(Long idJogador);
+
+    Conquistas getConquistasByNomeConquista(String nomeConquista);
 }

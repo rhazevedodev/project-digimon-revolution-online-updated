@@ -5,6 +5,7 @@ import com.example.api.entity.Digimon;
 import com.example.api.entity.dto.ResponseListarConquistas;
 import com.example.api.enumerator.EnumConquistas;
 import com.example.api.repository.ConquistasRepository;
+import com.example.api.repository.DigimonRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,9 +16,11 @@ import java.util.List;
 public class ConquistasService {
 
     private ConquistasRepository conquistasRepository;
+    private DigimonRepository digimonRepository;
 
-    public ConquistasService(ConquistasRepository conquistasRepository) {
+    public ConquistasService(ConquistasRepository conquistasRepository, DigimonRepository digimonRepository) {
         this.conquistasRepository = conquistasRepository;
+        this.digimonRepository = digimonRepository;
     }
 
     public void inicializarConquistas(Digimon digimonSelecionado) {
@@ -58,5 +61,29 @@ public class ConquistasService {
 
     public boolean verificarSeConquistasForamInicializadas(Long idJogador) {
         return conquistasRepository.existsByIdJogador(idJogador);
+    }
+
+    public void resgatarConquista(Long idConquista, Digimon digimon) {
+        int idConquistaInteiro = idConquista.intValue();
+        EnumConquistas conquista = EnumConquistas.getNomeConquistaById(idConquistaInteiro);
+        Conquistas conquistaBusca = conquistasRepository.getConquistasByNomeConquista(conquista.getNomeConquista());
+        if(!conquistaBusca.isDesbloqueada()){
+            throw new RuntimeException("Conquista não desbloqueada");
+        }
+        if(conquistaBusca.isConquistaResgatada()){
+            throw new RuntimeException("Conquista já resgatada");
+        }
+        String tipoRecompensa = conquista.getTipoRecompensa();
+        int quantidadeRecompensa = conquista.getQuantidadeRecompensa();
+        if(tipoRecompensa.equals("DIAMANTE")){
+            digimon.setDiamantes(digimon.getDiamantes() + quantidadeRecompensa);
+        }
+        if(tipoRecompensa.equals("BIT")){
+            digimon.setBits(digimon.getBits() + quantidadeRecompensa);
+        }
+        digimonRepository.save(digimon);
+        conquistaBusca.setConquistaResgatada(true);
+        conquistasRepository.save(conquistaBusca);
+
     }
 }

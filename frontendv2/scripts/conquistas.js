@@ -2,11 +2,10 @@
 async function carregarConquistas() {
     try {
         // Substitua pela URL da sua API
-        const response = await fetch('http://localhost:8080/api/telaConquistas/carregar/'+localStorage.getItem("idDigimon"));
+        const response = await fetch('http://localhost:8080/api/telaConquistas/carregar/' + localStorage.getItem("idDigimon"));
         const conquistasAPI = await response.json();
 
         // Chama a função de renderização com os dados da API
-        console.log(conquistasAPI);
         renderizarConquistas(conquistasAPI);
     } catch (error) {
         console.error("Erro ao carregar conquistas:", error);
@@ -21,9 +20,13 @@ function renderizarConquistas(conquistas) {
     conquistas.forEach(conquista => {
         const div = document.createElement('div');
         div.classList.add('achievement');
+        
+        // Se a conquista foi desbloqueada, adiciona a classe 'unlocked'
         if (conquista.conquista.desbloqueada) {
             div.classList.add('unlocked');
         }
+
+        // Se a conquista foi resgatada, adiciona a classe 'resgatada'
         if (conquista.conquista.desbloqueada && conquista.conquista.conquistaResgatada) {
             div.classList.add('resgatada');
         }
@@ -46,11 +49,13 @@ function renderizarConquistas(conquistas) {
             recompensaTexto = `${conquista.quantidadeRecompensa} Bits`;
         }
 
+        // Verifica se o botão de resgate deve ser exibido
         let botaoCommands = '';
-        if(conquista.conquista.desbloqueada && !conquista.conquista.conquistaResgatada){ 
-            botaoCommands = `<button class="button-confirmar" onclick="receberConquista(${conquista.conquista.idConquista})">Receber</button>`;
+        if (conquista.conquista.desbloqueada && !conquista.conquista.conquistaResgatada) { 
+            botaoCommands = `<button class="button-confirmar" onclick="receberConquista(${conquista.conquista.id})">Receber</button>`;
         }
 
+        // Monta o HTML da conquista
         div.innerHTML = `
             <h3>${conquista.conquista.nomeConquista}</h3>
             <p>${conquista.descricaoConquista}</p>
@@ -65,6 +70,45 @@ function renderizarConquistas(conquistas) {
         `;
         
         container.appendChild(div);
+    });
+}
+
+// Função para resgatar a recompensa
+function receberConquista(idConquista) {
+    fetch(`http://localhost:8080/api/telaConquistas/resgatarConquista/${idConquista}/` + localStorage.getItem("idDigimon"), {
+        method: 'GET', // Altere conforme o método correto da sua API ('POST', 'PUT', etc.)
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => {
+        if (response.status === 200) {
+            console.log("Recompensa resgatada com sucesso!");
+        } else {
+            throw new Error('Erro ao resgatar a recompensa');
+        }
+    })
+    .then(data => {
+        // Exibir o SweetAlert se o resgate for bem-sucedido
+        Swal.fire({
+            icon: 'success',
+            title: 'Recompensa Resgatada!',
+            text: 'Você resgatou sua recompensa com sucesso.',
+            confirmButtonText: 'Ok'
+        });
+
+        // Aqui você pode também atualizar a UI para refletir que a recompensa foi recebida
+        carregarConquistas(); // Recarrega as conquistas para atualizar a UI
+    })
+    .catch(error => {
+        // Tratamento de erros, exibir SweetAlert com erro
+        Swal.fire({
+            icon: 'error',
+            title: 'Erro',
+            text: 'Houve um problema ao resgatar a recompensa. Tente novamente mais tarde.',
+            confirmButtonText: 'Ok'
+        });
+        console.error('Erro:', error);
     });
 }
 
