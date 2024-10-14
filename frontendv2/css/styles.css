@@ -102,25 +102,32 @@
      border: #1a1a1a 1px solid;
  }
 
- #menu {
-     position: relative;
-     width: 780px;
-     height: 20px;
-     text-align: left;
-     top: 15px;
-     opacity: 0.9;
-     margin-left: 10px;
- }
+/*
+    FORMATAÇÃO DO MENU PRINCIPAL DA PÁGINA DE STATUS
+*/
+#menu {
+    position: relative;
+    width: 780px;
+    height: 20px;
+    text-align: left;
+    top: 13%;
+    opacity: 0.9;
+    /* margin-left: px; */
+    padding-bottom: 13%;
+}
 
- #menu-2 {
-     position: relative;
-     width: 780px;
-     height: 40px;
-     text-align: left;
-     top: 25px;
-     opacity: 0.9;
-     margin-left: 0px;
- }
+/*
+    FORMATAÇÃO DO MENU 2 PRINCIPAL DA PÁGINA DE STATUS
+*/
+#menu-2 {
+    position: relative;
+    width: 780px;
+    height: 40px;
+    text-align: left;
+    top: -60%;
+    opacity: 0.9;
+    margin-left: 0px;
+}
 
  #caixa-informacoes-menu {
     position: relative;

@@ -18,10 +18,10 @@
 
         .dungeons-container {
             display: flex;
-            flex-direction: column; /* Muda a direção para coluna */
+            flex-direction: column;
             gap: 20px;
-            width: 100%; /* Ocupa toda a largura */
-            max-width: 600px; /* Largura máxima para centralizar melhor */
+            width: 100%;
+            max-width: 600px;
         }
 
         .dungeon-card {
@@ -31,18 +31,18 @@
             display: flex;
             align-items: center;
             padding: 20px;
-            width: 100%; /* Largura do card ocupando 100% */
+            width: 100%;
             gap: 20px;
         }
 
         .dungeon-image {
-            width: 50%; /* Definindo a largura da imagem */
+            width: 50%;
             height: 100px;
             border-radius: 10px;
         }
 
         .dungeon-info {
-            display: flex;
+            display: block;
             flex-direction: column;
             justify-content: center;
         }
@@ -62,7 +62,6 @@
             background-color: #0056b3;
         }
 
-        /* Estilos do modal */
         .modal {
             display: none;
             position: fixed;
@@ -104,7 +103,6 @@
 <body>
 
     <div class="dungeons-container">
-        <!-- Dungeon Card 1 -->
         <div class="dungeon-card">
             <img src="./imagens/bannerMissao.jpg" alt="Dungeon 1" class="dungeon-image">
             <div class="dungeon-info">
@@ -115,7 +113,6 @@
             </div>
         </div>
 
-        <!-- Dungeon Card 2 -->
         <div class="dungeon-card">
             <img src="./imagens/bannerMissao.jpg" alt="Dungeon 2" class="dungeon-image">
             <div class="dungeon-info">
@@ -126,7 +123,6 @@
             </div>
         </div>
 
-        <!-- Dungeon Card 3 -->
         <div class="dungeon-card">
             <img src="./imagens/bannerMissao.jpg" alt="Dungeon 3" class="dungeon-image">
             <div class="dungeon-info">
@@ -138,19 +134,16 @@
         </div>
     </div>
 
-    <!-- Modal -->
     <div id="rewardsModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <h3 id="modalTitle">Recompensas</h3>
             <div id="modalRewards">
-                <!-- As recompensas serão exibidas aqui -->
             </div>
         </div>
     </div>
 
     <script>
-        // Função para abrir o modal e exibir as recompensas
         function openModal(dungeonName) {
             const modal = document.getElementById('rewardsModal');
             const modalTitle = document.getElementById('modalTitle');
@@ -162,13 +155,11 @@
             modal.style.display = 'block';
         }
 
-        // Função para fechar o modal
         function closeModal() {
             const modal = document.getElementById('rewardsModal');
             modal.style.display = 'none';
         }
 
-        // Função para gerar as recompensas
         function generateRewards(dungeonName) {
             let rewards = '';
 
@@ -207,14 +198,10 @@
             return rewards;
         }
 
-        // Função para iniciar a dungeon
         function startDungeon(dungeonName) {
             alert('Iniciando ' + dungeonName + '...');
-            // Aqui você pode adicionar a lógica para iniciar a dungeon
-            // Por exemplo, redirecionar para uma nova página ou chamar uma API
         }
 
-        // Fechar o modal quando o usuário clicar fora dele
         window.onclick = function(event) {
             const modal = document.getElementById('rewardsModal');
             if (event.target == modal) {

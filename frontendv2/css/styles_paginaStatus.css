@@ -118,9 +118,10 @@ body {
     width: 780px;
     height: 20px;
     text-align: left;
-    top: 15px;
+    top: 13%;
     opacity: 0.9;
-    margin-left: 10px;
+    /* margin-left: px; */
+    padding-bottom: 13%;
 }
 
 /*
@@ -131,7 +132,7 @@ body {
     width: 780px;
     height: 40px;
     text-align: left;
-    top: 25px;
+    top: -60%;
     opacity: 0.9;
     margin-left: 0px;
 }
