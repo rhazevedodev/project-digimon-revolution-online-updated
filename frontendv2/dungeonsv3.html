@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeon - Batalha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            padding: 2rem;
+        }
+
+        /* Estilização dos cards */
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 12px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            max-width: 180px;
+            text-align: center;
+        }
+
+        /* Estilização da imagem do Digimon */
+        .card img {
+            border-radius: 8px;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 12px;
+        }
+
+        /* Título do card */
+        .card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        /* Título do card */
+        .card-title-name-desafiante {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color:#4cae4c;
+        }
+
+        /* Título do card */
+        .card-title-name-defensor {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color:#f56565;
+        }
+
+        /* Estilização dos textos de atributos */
+        .card p {
+            font-size: 0.9em;
+            margin: 6px 0;
+            padding: 4px;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Botão de ação */
+        .card-btn {
+            margin-top: 8px;
+            padding: 10px 15px;
+            background-color: #4cae4c;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .card-btn-sacrificar {
+            margin-top: 8px;
+            padding: 10px 15px;
+            background-color: #f56565;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        /* Hover */
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-btn:hover {
+            background-color: #45a049;
+        }
+
+        .card-btn-sacrificar:hover {
+            background-color: #f72c2c;
+        }
+
+        /* Estilo da caixa de log */
+        .log-box {
+            width: 80%;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            min-height: 100px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 0.9em;
+            overflow-y: auto;
+        }
+
+        .log-box p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>Dungeon - Batalha</h1>
+    </header>
+
+    <div class="container">
+        <!-- Card do Digimon Desafiante -->
+        <div class="card">
+            <img src="./imagens/digimons/ultimates/magnaangemon.jpg" alt="Imagem do Digimon Desafiante">
+            <h2 class="card-title">Digimon Desafiante</h2>
+            <h2 class="card-title-name-desafiante">Teste 01</h2>
+            <p>Vida: 2000</p>
+            <p>Energia: 150</p>
+            <p>Força: 300</p>
+            <p>Inteligência: 200</p>
+            <p>Conhecimento: 100</p>
+            <p>Agilidade: 250</p>
+            <p>Sorte: 50</p>
+            <button class="card-btn" onclick="registrarAcao('atacar', 'Desafiante')">Atacar</button>
+            <button class="card-btn-sacrificar" onclick="registrarAcao('defender', 'Desafiante')">Defender</button>
+            <button class="card-btn-sacrificar" onclick="registrarAcao('habilidade', 'Desafiante')">Habilidade</button>
+            <button class="card-btn-sacrificar" onclick="registrarAcao('esquivar', 'Desafiante')">Esquivar</button>
+            <button class="card-btn-sacrificar" onclick="registrarAcao('fugir', 'Desafiante')">Fugir</button>
+        </div>
+
+        <!-- Card do Digimon Defensor da Dungeon -->
+        <div class="card">
+            <img src="./imagens/digimons/ultimates/garudamon.jpg" alt="Imagem do Digimon Defensor">
+            <h2 class="card-title">Digimon Defensor</h2>
+            <h2 class="card-title-name-desafiante">Garudamon</h2>
+            <p>Vida: 1800</p>
+            <p>Energia: 100</p>
+            <p>Força: 320</p>
+            <p>Inteligência: 180</p>
+            <p>Conhecimento: 120</p>
+            <p>Agilidade: 230</p>
+            <p>Sorte: 60</p>
+        </div>
+    </div>
+
+    <!-- Caixa de log de ações -->
+    <div class="log-box" id="logBox">
+        <!-- As ações serão registradas aqui -->
+    </div>
+
+    <script>
+        // Função para registrar a ação no log
+        function registrarAcao(acao, digimon) {
+            const logBox = document.getElementById('logBox');
+            const timestamp = new Date().toLocaleTimeString();
+            const mensagem = `${timestamp} - O ${digimon} realizou a ação: ${acao}.`;
+
+            // Cria um novo parágrafo para a mensagem
+            const novaMensagem = document.createElement('p');
+            novaMensagem.textContent = mensagem;
+
+            // Adiciona a nova mensagem ao log
+            logBox.appendChild(novaMensagem);
+
+            // Faz o scroll automático para o final do log
+            logBox.scrollTop = logBox.scrollHeight;
+        }
+    </script>
+
+</body>
+
+</html>
