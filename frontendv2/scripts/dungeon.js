@@ -358,28 +358,29 @@ function mostrarDungeons(tier) {
 
     if (tier === 'champion') {
         dungeons = [
-            { nome: 'Masmorra da Tempestade', nivelMin: 10, tier: 'Champion' },
-            { nome: 'Masmorra da Serenidade', nivelMin: 20, tier: 'Champion' },
-            { nome: 'Masmorra do Labirinto', nivelMin: 30, tier: 'Champion' },
-            { nome: 'Masmorra do Crepusculo', nivelMin: 40, tier: 'Champion' }
+            { nome: 'Masmorra da Tempestade', nivelMin: 10, tier: 'Champion', urlImg: './imagens/areas/masmorraTempestade.jpg' },
+            { nome: 'Masmorra da Serenidade', nivelMin: 20, tier: 'Champion', urlImg: './imagens/areas/masmorraSerenidade.jpg' },
+            { nome: 'Masmorra do Labirinto', nivelMin: 30, tier: 'Champion', urlImg: './imagens/areas/masmorraLabirinto.jpg' },
+            { nome: 'Masmorra do Crepusculo', nivelMin: 40, tier: 'Champion', urlImg: './imagens/areas/masmorraLabirinto.jpg' }
         ];
     } else if (tier === 'ultimate') {
         dungeons = [
-            { nome: 'Masmorra das Profundezas', nivelMin: 50, tier: 'Ultimate' },
-            { nome: 'Masmorra das Correntes', nivelMin: 60, tier: 'Ultimate' },
-            { nome: 'Masmorra do Vórtice', nivelMin: 70, tier: 'Ultimate' },
-            { nome: 'Masmorra do Tempo', nivelMin: 80, tier: 'Ultimate' }
+            { nome: 'Masmorra das Profundezas', nivelMin: 50, tier: 'Ultimate', urlImg: './imagens/areas/masmorraProfundezas.jpg' },
+            { nome: 'Masmorra das Correntes', nivelMin: 60, tier: 'Ultimate', urlImg: './imagens/areas/masmorraLabirinto.jpg' },
+            { nome: 'Masmorra do Vórtice', nivelMin: 70, tier: 'Ultimate', urlImg: './imagens/areas/masmorraLabirinto.jpg' },
+            { nome: 'Masmorra do Tempo', nivelMin: 80, tier: 'Ultimate', urlImg: './imagens/areas/masmorraLabirinto.jpg' }
         ];
     }
 
         // Gerar o HTML para cada dungeon
         dungeons.forEach(dungeon => {
             const dungeonCard = `
+            <br>
                 <div class="dungeon-card">
-                    <img src="./imagens/bannerMissao.jpg" alt="${dungeon.nome}" class="dungeon-image">
+                    <img src="${dungeon.urlImg}" alt="${dungeon.nome}" class="dungeon-image">
                     <div class="dungeon-info">
                         <h3>${dungeon.nome}</h3>
-                        <p>Nível Mínimo: ${dungeon.nivelMin}</p>
+                        <!-- <p>Nível Mínimo: ${dungeon.nivelMin}</p> -->
                         <p>Tier: ${dungeon.tier}</p>
                         <button class="rewards-btn" onclick="openModal('${dungeon.nome}')">Ver Recompensas</button>
                         <button class="start-btn" onclick="startDungeon('${dungeon.nome}')">Iniciar Dungeon</button>
