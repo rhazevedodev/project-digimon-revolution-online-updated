@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles_dungeon.css">
+    <!--<script defer src="./scripts/digievolucao2.js"></script>-->
+    <script defer src="./scripts/carregarPremium.js"></script>
+    <script defer src="./scripts/carregarImagemDigimon.js"></script>
+    <script defer src="./scripts/carregarLifeEnergyBar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>Dungeon</title>
+</head>
+
+<body style="padding: 0px 0px 154px;">
+    <div class="background"></div>
+    <!--INICIO DIV PRINCIPAL-->
+    <div id="div_principal" style="height: auto !important;">
+        <!-- INICIO DIV TOPO-->
+        <div id="topo"></div>
+        <!-- INICIO DIV MENU -->
+        <div id="menu"></div>
+        <br>
+        <div id="conteudo">
+            <div id="motor_game">
+                <div id="col_esquerda">
+                    <div id="image-container"></div>                    
+                    <div id="life-bar-container">
+                        <div id="life-bar">
+                            <span id="life-bar-text">0/100</span>
+                        </div>
+                    </div>
+                    <div id="energy-bar-container">
+                        <div id="energy-bar">
+                            <span id="energy-bar-text">0/100</span>
+                        </div>
+                    </div>
+                    <div id="caixa-informacoes-esquerda"></div>
+                </div>
+                <div id="col_direita">
+                    <!-- Nova caixa adicionada -->
+                    <div id="caixa_informacoes">
+                        <h3 class="titulo-caixa">Dungeon/Masmorra</h3>
+                        <hr class="separador">
+                    
+                        <!-- Botões de Toggle para Champion e Ultimate -->
+                        <div class="tabs-container">
+                            <button class="tab-button" onclick="mostrarDungeons('champion')">Tier Champion</button>
+                            <button class="tab-button" onclick="mostrarDungeons('ultimate')">Tier Ultimate</button>
+                        </div>
+                    
+                        <!-- Container para carregar as dungeons -->
+                        <div id="dungeons-container">
+                            <!-- Dungeons serão carregadas aqui -->
+                        </div>
+                    
+                        <!-- Modal de Recompensas -->
+                        <div id="rewardsModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close" onclick="closeModal()">&times;</span>
+                                <h3 id="modalTitle">Recompensas</h3>
+                                <br>
+                                <div id="modalRewards"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div id="erroModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>Erro</h2>
+                            <div id="erroModalContent"></div>
+                            <button text-align="center" style="margin-left: 240px;" id="fecharModal" class="button-confirmar">Fechar</button>
+                        </div>
+                    </div>
+
+                    <!--FIM DIV PRINCIPAL-->
+                </div>
+    <script src="./scripts/dungeon.js"></script>
+    <script src="./scripts/carregarMenu.js"></script>
+    <script src="./scripts/carregarTopo.js"></script>
+</body>
+
+</html>
