@@ -59,7 +59,8 @@
                                     <p>Conhecimento: 100</p>
                                     <p>Agilidade: 250</p>
                                     <p>Sorte: 50</p>
-                                    <button class="card-btn" onclick="registrarAcao('atacar', 'Desafiante')">Atacar</button>
+                                    <!-- <button class="card-btn" onclick="registrarAcao('atacar', 'Desafiante')">Atacar</button> -->
+                                    <button class="card-btn" onclick="atacar()">Atacar</button>
                                     <button class="card-btn-sacrificar" onclick="registrarAcao('defender', 'Desafiante')">Defender</button>
                                     <button class="card-btn-sacrificar" onclick="registrarAcao('habilidade', 'Desafiante')">Habilidade</button>
                                     <button class="card-btn-sacrificar" onclick="registrarAcao('esquivar', 'Desafiante')">Esquivar</button>
@@ -111,24 +112,9 @@
                 </div>
 
                 <script>
-                    // Função para registrar a ação no log
-                    function registrarAcao(acao, digimon) {
-                        const logBox = document.getElementById('logBox');
-                        const timestamp = new Date().toLocaleTimeString();
-                        const mensagem = `${timestamp} - O ${digimon} realizou a ação: ${acao}.`;
-            
-                        // Cria um novo parágrafo para a mensagem
-                        const novaMensagem = document.createElement('p');
-                        novaMensagem.textContent = mensagem;
-            
-                        // Adiciona a nova mensagem ao log
-                        logBox.appendChild(novaMensagem);
-            
-                        // Faz o scroll automático para o final do log
-                        logBox.scrollTop = logBox.scrollHeight;
-                    }
+
                 </script>
-    <!-- <script src="./scripts/dungeon.js"></script> -->
+    <script src="./scripts/dungeonCombate.js"></script>
     <script src="./scripts/carregarMenu.js"></script>
     <script src="./scripts/carregarTopo.js"></script>
 </body>
