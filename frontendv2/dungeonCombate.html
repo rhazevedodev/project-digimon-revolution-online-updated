@@ -88,15 +88,20 @@
                     
                     
                         <!-- Modal de Recompensas -->
-                        <div id="rewardsModal" class="modal">
-                            <div class="modal-content">
-                                <span class="close" onclick="closeModal()">&times;</span>
-                                <h3 id="modalTitle">Recompensas</h3>
+                        <div id="recompensaModal" class="modalDungeonCombate" style="display:none;">
+                            <div class="modalDungeonCombate-content">
+                                <span class="closeDungeonCombate" onclick="fecharModal()">&times;</span>
+                                <h2>Recompensa Recebida!</h2>
                                 <br>
-                                <div id="modalRewards"></div>
+                                <hr>
+                                <br>
+                                <p id="mensagemRecompensa">Você ganhou uma recompensa!</p>
+                                <br>
+                                <div class="button-container"> <!-- Novo contêiner para o botão -->
+                                    <button class="button-dungeonCombate" onclick="fecharModal()">Fechar</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                     <!-- Modal -->
                     <div id="erroModal" class="modal">

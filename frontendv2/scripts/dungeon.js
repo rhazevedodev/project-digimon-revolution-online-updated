@@ -348,6 +348,7 @@ function generateRewards(dungeonName) {
 
 function startDungeon(dungeonName) {
     alert('Iniciando ' + dungeonName + '...');
+    window.location.href = "dungeonCombate.html"; // Redireciona para a tela de status
 }
 
 function mostrarDungeons(tier) {

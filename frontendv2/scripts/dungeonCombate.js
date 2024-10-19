@@ -167,15 +167,42 @@ function atacar() {
         // O defensor foi derrotado
         registrarAcao(`Turno ${turno}: O Defensor foi derrotado!`);
         // Desabilitar botões ou ações adicionais se necessário
+        desabilitarBotoes(); // Desabilitar botões quando o desafiante for derrotado
     }
     
     if (novaVidaDesafiante <= 0) {
         // O desafiante foi derrotado
         registrarAcao(`Turno ${turno}: O Desafiante foi derrotado!`);
         // Desabilitar botões ou ações adicionais se necessário
+        desabilitarBotoes(); // Desabilitar botões quando o desafiante for derrotado
     }
         // Incrementa o turno após as ações
         turno++;
+}
+
+function fecharModal() {
+    const modal = document.getElementById('recompensaModal');
+    modal.style.display = 'none';
+    window.location.href = "status.html"; // Redireciona para a tela de status
+}
+
+function mostrarModal(recompensa) {
+    const modal = document.getElementById('recompensaModal');
+    const mensagemRecompensa = document.getElementById('mensagemRecompensa');
+
+    mensagemRecompensa.textContent = `Você ganhou: ${recompensa}!`;
+    modal.style.display = 'flex'; // Exibe o modal
+}
+
+// Função para desabilitar todos os botões
+function desabilitarBotoes() {
+    const botoes = document.querySelectorAll('.card-btn, .card-btn-sacrificar'); // Seleciona todos os botões
+    botoes.forEach(botao => {
+        botao.disabled = true; // Desabilita o botão
+    });
+
+    // Exibir o modal com a recompensa
+    mostrarModal("100 pontos de experiência"); // Personalize a recompensa aqui
 }
 
 // Chama a função para carregar os dados mockados assim que a página for carregada
