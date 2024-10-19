@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles_dungeonCombate.css">
+    <!--<script defer src="./scripts/digievolucao2.js"></script>-->
+    <script defer src="./scripts/carregarPremium.js"></script>
+    <script defer src="./scripts/carregarImagemDigimon.js"></script>
+    <script defer src="./scripts/carregarLifeEnergyBar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>Dungeon - Combate</title>
+</head>
+
+<body style="padding: 0px 0px 154px;">
+    <div class="background"></div>
+    <!--INICIO DIV PRINCIPAL-->
+    <div id="div_principal" style="height: auto !important;">
+        <!-- INICIO DIV TOPO-->
+        <div id="topo"></div>
+        <!-- INICIO DIV MENU -->
+        <div id="menu"></div>
+        <br>
+        <div id="conteudo">
+            <div id="motor_game">
+                <div id="col_esquerda">
+                    <div id="image-container"></div>                    
+                    <div id="life-bar-container">
+                        <div id="life-bar">
+                            <span id="life-bar-text">0/100</span>
+                        </div>
+                    </div>
+                    <div id="energy-bar-container">
+                        <div id="energy-bar">
+                            <span id="energy-bar-text">0/100</span>
+                        </div>
+                    </div>
+                    <div id="caixa-informacoes-esquerda"></div>
+                </div>
+                <div id="col_direita">
+                    <!-- Nova caixa adicionada -->
+                    <div id="caixa_informacoes_dungeon_combate">
+                        <!-- <h3 class="titulo-caixa">Dungeon/Masmorra</h3>
+                        <hr class="separador"> -->
+                        <div class="container">
+                                <!-- Card do Digimon Desafiante -->
+                                <div class="card">
+                                    <img src="./imagens/digimons/ultimates/magnaangemon.jpg" alt="Imagem do Digimon Desafiante">
+                                    <h2 class="card-title">Digimon Desafiante</h2>
+                                    <h2 class="card-title-name-desafiante">Teste 01</h2>
+                                    <p>Vida: 2000</p>
+                                    <p>Energia: 150</p>
+                                    <p>Força: 300</p>
+                                    <p>Inteligência: 200</p>
+                                    <p>Conhecimento: 100</p>
+                                    <p>Agilidade: 250</p>
+                                    <p>Sorte: 50</p>
+                                    <button class="card-btn" onclick="registrarAcao('atacar', 'Desafiante')">Atacar</button>
+                                    <button class="card-btn-sacrificar" onclick="registrarAcao('defender', 'Desafiante')">Defender</button>
+                                    <button class="card-btn-sacrificar" onclick="registrarAcao('habilidade', 'Desafiante')">Habilidade</button>
+                                    <button class="card-btn-sacrificar" onclick="registrarAcao('esquivar', 'Desafiante')">Esquivar</button>
+                                    <button class="card-btn-sacrificar" onclick="registrarAcao('fugir', 'Desafiante')">Fugir</button>
+                                </div>
+
+                                <!-- Card do Digimon Defensor da Dungeon -->
+                                <div class="card">
+                                    <img src="./imagens/digimons/ultimates/garudamon.jpg" alt="Imagem do Digimon Defensor">
+                                    <h2 class="card-title">Digimon Defensor</h2>
+                                    <h2 class="card-title-name-desafiante">Garudamon</h2>
+                                    <p>Vida: 1800</p>
+                                    <p>Energia: 100</p>
+                                    <p>Força: 320</p>
+                                    <p>Inteligência: 180</p>
+                                    <p>Conhecimento: 120</p>
+                                    <p>Agilidade: 230</p>
+                                    <p>Sorte: 60</p>
+                                </div>
+                            </div>
+                                <!-- Caixa de log de ações -->
+                                <div class="log-box" id="logBox">
+                                    <!-- As ações serão registradas aqui -->
+                                </div>
+                    
+                    
+                        <!-- Modal de Recompensas -->
+                        <div id="rewardsModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close" onclick="closeModal()">&times;</span>
+                                <h3 id="modalTitle">Recompensas</h3>
+                                <br>
+                                <div id="modalRewards"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div id="erroModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>Erro</h2>
+                            <div id="erroModalContent"></div>
+                            <button text-align="center" style="margin-left: 240px;" id="fecharModal" class="button-confirmar">Fechar</button>
+                        </div>
+                    </div>
+
+                    <!--FIM DIV PRINCIPAL-->
+                </div>
+
+                <script>
+                    // Função para registrar a ação no log
+                    function registrarAcao(acao, digimon) {
+                        const logBox = document.getElementById('logBox');
+                        const timestamp = new Date().toLocaleTimeString();
+                        const mensagem = `${timestamp} - O ${digimon} realizou a ação: ${acao}.`;
+            
+                        // Cria um novo parágrafo para a mensagem
+                        const novaMensagem = document.createElement('p');
+                        novaMensagem.textContent = mensagem;
+            
+                        // Adiciona a nova mensagem ao log
+                        logBox.appendChild(novaMensagem);
+            
+                        // Faz o scroll automático para o final do log
+                        logBox.scrollTop = logBox.scrollHeight;
+                    }
+                </script>
+    <!-- <script src="./scripts/dungeon.js"></script> -->
+    <script src="./scripts/carregarMenu.js"></script>
+    <script src="./scripts/carregarTopo.js"></script>
+</body>
+
+</html>

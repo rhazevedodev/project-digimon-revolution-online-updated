@@ -372,10 +372,12 @@ function mostrarDungeons(tier) {
         ];
     }
 
-        // Gerar o HTML para cada dungeon
+        // Gerar HTML de forma acumulativa
+        let dungeonsHtml = '';
+
         dungeons.forEach(dungeon => {
-            const dungeonCard = `
-            <br>
+            dungeonsHtml += `
+                <br>
                 <div class="dungeon-card">
                     <img src="${dungeon.urlImg}" alt="${dungeon.nome}" class="dungeon-image">
                     <div class="dungeon-info">
@@ -387,8 +389,10 @@ function mostrarDungeons(tier) {
                     </div>
                 </div>
             `;
-            dungeonsContainer.innerHTML += dungeonCard;
         });
+
+        // Definir o HTML uma única vez
+        dungeonsContainer.innerHTML = dungeonsHtml;
     }
 
 // Carregar as dungeons de Champion por padrão ao carregar a página
