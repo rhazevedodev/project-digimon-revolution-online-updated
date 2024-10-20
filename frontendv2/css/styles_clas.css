@@ -1,0 +1,234 @@
+/* Estilo Global */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #444;
+}
+
+/* Tabela de clãs */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #e8eff7;
+    color: #444;
+    text-align: center; /* Centraliza o texto no cabeçalho */
+    width: 25%; /* Distribui igualmente o espaço entre as colunas */
+}
+
+table tr:hover {
+    background-color: #f0f5fc;
+}
+
+table td button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+table td button:hover {
+    background-color: #0056b3;
+}
+
+/* Botões gerais */
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro com transparência */
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 90%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    cursor: pointer;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #444;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Tabela de membros do clã */
+.members-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.members-table th, .members-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.members-table th {
+    background-color: #f0f5fc;
+    color: #444;
+}
+
+.members-table td {
+    background-color: #fff;
+}
+
+.members-table tr:hover {
+    background-color: #e8eff7;
+}
+
+/* Lista de requisitos */
+#requisitosClan {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#requisitosClan li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Estilo dos botões dentro do modal */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    width: 45%;
+}
+
+/* Tabela de listagem de clãs */
+.clan-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.clan-list th, .clan-list td {
+    padding: 12px;
+    text-align: left; /* Mantém o nome do clã alinhado à esquerda */
+    border-bottom: 1px solid #ddd;
+}
+
+.clan-list th {
+    background-color: #f0f5fc;
+    color: #444;
+    text-align: left;
+}
+
+/* Centraliza as colunas de nível, membros e ações */
+.clan-list td:nth-child(1), /* Coluna Nome */
+.clan-list td:nth-child(2), /* Coluna Nível */
+.clan-list td:nth-child(3), /* Coluna Membros */
+.clan-list td:nth-child(4) { /* Coluna Ações */
+    text-align: center; /* Centraliza o texto dentro da célula */
+}
+
+/* Estilo para os botões de ação */
+.btn-primary {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}

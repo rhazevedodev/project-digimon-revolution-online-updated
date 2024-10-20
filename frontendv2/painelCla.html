@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles_painelClas.css">
+    <title>Painel do Clã</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Painel do Clã</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Início</a></li>
+                    <li><a href="#">Membros</a></li>
+                    <li><a href="#">Convites Pendentes</a></li>
+                    <li><a href="#">Loja do Clã</a></li>
+                    <li><a href="#">Eventos</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="clan-info">
+                <h2>Informações do Clã</h2>
+                <p><strong>Nome do Clã:</strong> <span id="clan-name">Nome do Clã Aqui</span></p>
+                <p><strong>Membros:</strong> <span id="current-members">0</span> / <span id="max-members">10</span></p>
+                <p><strong>Nível do Clã:</strong> <span id="clan-level">1</span></p>
+                <p><strong>Requisitos Mínimos de Entrada:</strong> <span id="entry-requirements">Nível 5 e acima</span></p>
+            </section>
+
+            <section class="clan-description">
+                <h2>Descrição do Clã</h2>
+                <p id="clan-description">Este é o espaço para a descrição do seu clã. A descrição pode incluir a história do clã, objetivos, regras e outras informações relevantes.</p>
+            </section>
+
+            <section class="member-list">
+                <h2>Membros do Clã</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Nível</th>
+                            <th>Tier</th>
+                            <th>Cargo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="member-list">
+                        <!-- Lista de membros será preenchida aqui pelo JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="pending-invites">
+                <h2>Aplicacoes Pendentes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nickname</th>
+                            <th>Nível</th>
+                            <th>Tier</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pending-invites">
+                        <!-- Convites pendentes serão preenchidos aqui pelo JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- <section class="clan-store">
+                <h2>Loja do Clã</h2>
+                <button onclick="openClanStore()">Acessar Loja</button>
+            </section>
+
+            <section class="clan-events">
+                <h2>Eventos do Clã</h2>
+                <button onclick="viewClanEvents()">Ver Eventos</button>
+            </section> -->
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Digimon Revolution Online. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="./scripts/painelClas.js"></script>
+</body>
+</html>

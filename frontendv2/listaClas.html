@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Clãs - Lista de Clãs</title>
+    <link rel="stylesheet" href="./css/styles_clas.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Clãs</h1>
+        <div class="clan-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Nome do Clã</th>
+                        <th style="text-align:center">Nível</th>
+                        <th style="text-align:center">Membros</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Clã Alpha</td>
+                        <td>10</td>
+                        <td>50/50</td>
+                        <td><button class="btn-primary" onclick="verDetalhesClan('1')">Ver Detalhes</button></td>
+                    </tr>
+                    <tr>
+                        <td>Clã Beta</td>
+                        <td>5</td>
+                        <td>25/50</td>
+                        <td><button class="btn-primary" onclick="verDetalhesClan('2')">Ver Detalhes</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal de Detalhes do Clã -->
+    <div id="clanDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h2>Detalhes do Clã</h2>
+            
+            <!-- Informações do clã -->
+            <p id="nomeClan">Nome do Clã: Clã Alpha</p>
+            <p id="nivelClan">Nível: 10</p>
+            <p id="membrosClan">Membros: 50/50</p>
+            <p id="descricaoClan">Descrição: Um clã focado em conquistas e vitórias!</p>
+            
+            <!-- Requisitos mínimos do clã -->
+            <h3>Requisitos Mínimos</h3>
+            <ul id="requisitosClan">
+                <li>Nível mínimo: 30</li>
+                <li>Poder Total mínimo: 5000</li>
+                <li>Participação em eventos obrigatória</li>
+            </ul>
+            
+            <!-- Lista de membros do clã em formato de tabela -->
+            <h3>Membros do Clã</h3>
+            <table class="members-table">
+                <thead>
+                    <tr>
+                        <th>Nickname</th>
+                        <th>Cargo</th>
+                        <th>Poder Total</th>
+                    </tr>
+                </thead>
+                <tbody id="membrosLista">
+                    <tr>
+                        <td>Jogador 1</td>
+                        <td>Líder</td>
+                        <td>8500</td>
+                    </tr>
+                    <tr>
+                        <td>Jogador 2</td>
+                        <td>Membro</td>
+                        <td>6200</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Botões de ação -->
+            <div class="modal-actions">
+                <button class="btn-primary" onclick="aplicarNoClan()">Aplicar no Clã</button>
+                <button class="btn-secondary" onclick="fecharModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function aplicarNoClan() {
+            alert('Você aplicou para entrar no clã!');
+            fecharModal(); // Fecha o modal após aplicar no clã
+        }
+
+        function verDetalhesClan(clanId) {
+            document.getElementById('clanDetailsModal').style.display = 'block';
+        }
+
+        function fecharModal() {
+            document.getElementById('clanDetailsModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
